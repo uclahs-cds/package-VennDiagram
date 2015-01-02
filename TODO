@@ -1,0 +1,14 @@
+Known Bugs:
+* having an expression in the category names prints, but is left aligned with multiple lines instead of centred
+* very weird bug when only a single element in one circle.  Here is a test-case
+venn.diagram(list(A=c(5,45,46,57), B=c(42), C=c(4,42,56,63)), filename = 'x.tiff');
+
+Improvements to make:
+* Flag to plot percentages instead of actual overlap count
+* Refactoring all of the draw.'code'.R files to condense them down into a few select files, or even a single one
+* COMMENT COMMENT COMMENT
+* Structure the various functions so that they have identical parameter structures where possible
+* Move away from scalars for areas and convert everything, where possible, to vectors and lists
+* Add functionality into the venn.diagram function so that it will save in a specific file type given an appropriate file extension (BoutrosLab.plotting.general has a good solution)
+* There may be a non-unique solution to the triple-Venn scaling problem as implemented in Vennerable (https://r-forge.r-project.org/projects/vennerable/)
+* Weirdness in venn.diagram help in the PDF version with lack of wrapping in the parameter-table
