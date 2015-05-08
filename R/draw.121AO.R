@@ -44,8 +44,9 @@ draw.121AO <- function(
 	...
 	) {
 
-	for (i in 1:3) {
-		tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse = TRUE);
+	#Go through all of the rotations until it fits. Since it uses both reverse and forward rotations
+	for (i in 1:6) {
+		tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = (i>3));
 		if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[5] & 0 == tmp$areas[6]) { break; }
 		}
 
