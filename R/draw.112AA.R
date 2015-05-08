@@ -38,6 +38,7 @@ draw.112AA <- function(
 	cat.prompts = FALSE,
 	fill = NULL,
 	alpha = rep(0.5, 3),
+	percents=FALSE,
 	...
 	) {
 
@@ -121,6 +122,7 @@ draw.112AA <- function(
 			cat.just = cat.just,
 			fill = fill,
 			alpha = alpha,
+			percents=percents,
 			...
 			)
 		);

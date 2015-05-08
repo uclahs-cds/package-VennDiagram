@@ -40,6 +40,7 @@ draw.022AAOO <- function(
 	fill = NULL,
 	alpha = rep(0.5, 3),
 	scaled = TRUE,
+	percents=FALSE,
 	...
 	) {
 
@@ -140,6 +141,7 @@ draw.022AAOO <- function(
 			cat.just = cat.just,
 			fill = fill,
 			alpha = alpha,
+			percents=percents,
 			...
 			)
 		);

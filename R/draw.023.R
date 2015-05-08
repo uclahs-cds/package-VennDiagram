@@ -40,6 +40,7 @@ draw.023 <- function(
 	alpha = rep(0.5, 3),
 	scaled = TRUE,
 	offset = 0,
+	percents=FALSE,
 	...
 	) {
 
@@ -134,6 +135,7 @@ draw.023 <- function(
 			cat.just = cat.just,
 			fill = fill,
 			alpha = alpha,
+			percents=percents,
 			...
 			)
 		);

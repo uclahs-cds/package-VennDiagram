@@ -41,6 +41,7 @@ draw.sp.case <- function(
 	cat.prompts = FALSE,
 	fill = NULL,
 	alpha = rep(0.5, 3),
+	percents = percents,
 	...
 	) {
 
@@ -84,23 +85,51 @@ draw.sp.case <- function(
 		}
 
 	# add the text labels
-	for (i in 1:7) {
-		if (i %in% enabled.areas) {
-			grob.list <- gList(
-				grob.list,
-				textGrob(
-					label = area.list[i],
-					x = area.x[i],
-					y = area.y[i],
-					just = c('centre', 'centre'),
-					gp = gpar(
-						col = label.col[i],
-						cex = cex[i],
-						fontface = fontface[i],
-						fontfamily = fontfamily[i]
+	# make it percents if it is enabled
+	# else give the count number
+	if(percents)
+	{
+		percents <- area.list/sum(area.list);
+		for (i in 1:7) {
+			if (i %in% enabled.areas) {
+				grob.list <- gList(
+					grob.list,
+					textGrob(
+						label = signif(percents[i],digits=4),
+						x = area.x[i],
+						y = area.y[i],
+						just = c('centre', 'centre'),
+						gp = gpar(
+							col = label.col[i],
+							cex = cex[i],
+							fontface = fontface[i],
+							fontfamily = fontfamily[i]
+							)
 						)
-					)
-				);
+					);
+				}
+			}
+		}
+	else
+	{
+		for (i in 1:7) {
+			if (i %in% enabled.areas) {
+				grob.list <- gList(
+					grob.list,
+					textGrob(
+						label = area.list[i],
+						x = area.x[i],
+						y = area.y[i],
+						just = c('centre', 'centre'),
+						gp = gpar(
+							col = label.col[i],
+							cex = cex[i],
+							fontface = fontface[i],
+							fontfamily = fontfamily[i]
+							)
+						)
+					);
+				}
 			}
 		}
 

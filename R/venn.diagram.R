@@ -36,6 +36,7 @@ venn.diagram <- function(
 	sub.just = c(0.5, 1),
 	category.names = names(x),
 	force.unique = TRUE,
+	percents = FALSE,
 	...
 	) {
 
@@ -118,6 +119,7 @@ venn.diagram <- function(
 			category = list.names,
 			ind = FALSE,
 			list.order = 1:3,
+			percents=percents,
 			...
 			);
 		}

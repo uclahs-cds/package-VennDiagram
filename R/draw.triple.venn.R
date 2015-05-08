@@ -46,7 +46,8 @@ draw.triple.venn <- function(
 	ind = TRUE,
 	sep.dist = 0.05,
 	offset = 0,
-        cex.prop=NULL,
+    cex.prop=NULL,
+    percents=FALSE,
 	...
 	) {
 
@@ -172,6 +173,7 @@ draw.triple.venn <- function(
 				cat.prompts = cat.prompts,
 				fill = fill,
 				alpha = alpha,
+				percents = percents,
 				...
 				);
 
@@ -463,22 +465,46 @@ draw.triple.venn <- function(
         }
         
 	# create the text labels
-	for (i in 1:7) {
-		grob.list <- gList(
-			grob.list,
-			textGrob(
-				label = cell.labels[i],
-				x = cell.x[i],
-				y = cell.y[i],
-				gp = gpar(
-					col = label.col[i],
-					cex = cex[i],
-					fontface = fontface[i],
-					fontfamily = fontfamily[i]
+	if(percents)
+	{
+		percents <- cell.labels/sum(cell.labels);
+		for (i in 1:7) {
+			grob.list <- gList(
+				grob.list,
+				textGrob(
+					label = signif(percents[i],digits=4),
+					x = cell.x[i],
+					y = cell.y[i],
+					gp = gpar(
+						col = label.col[i],
+						cex = cex[i],
+						fontface = fontface[i],
+						fontfamily = fontfamily[i]
+						)
 					)
-				)
-			);
+				);
+			}
 		}
+	else
+	{
+		for (i in 1:7) {
+			grob.list <- gList(
+				grob.list,
+				textGrob(
+					label = cell.labels[i],
+					x = cell.x[i],
+					y = cell.y[i],
+					gp = gpar(
+						col = label.col[i],
+						cex = cex[i],
+						fontface = fontface[i],
+						fontfamily = fontfamily[i]
+						)
+					)
+				);
+			}
+		}
+
 
 	# plot all category names
 	text.location.mapping <- c(1,3,7);

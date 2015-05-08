@@ -1,3 +1,9 @@
+VennDiagram 1.6.11 2015-05-08 (David Wang)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
+* Fixed bug with draw.121AO.R. Need to try both forward and reverse rotations.
+* Added optional parameter field "percents" which defaults to FALSE. Prints percent of total area with 4 significant digits
+
 VennDiagram 1.6.11 2015-01-02 (Warren W. Kretzschmar)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES

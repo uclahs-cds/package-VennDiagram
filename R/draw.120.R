@@ -41,6 +41,7 @@ draw.120 <- function(
 	alpha = rep(0.5, 3),
 	scaled = TRUE,
 	sep.dist = 0.05,
+	percents=FALSE,
 	...
 	) {
 
@@ -162,6 +163,7 @@ draw.120 <- function(
 			cat.just = cat.just,
 			fill = fill,
 			alpha = alpha,
+			percents=percents,
 			...
 			)
 		);
