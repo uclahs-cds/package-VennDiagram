@@ -45,7 +45,7 @@ draw.121AO <- function(
 	) {
 
 	for (i in 1:3) {
-		tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse = FALSE);
+		tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse = TRUE);
 		if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[5] & 0 == tmp$areas[6]) { break; }
 		}
 
