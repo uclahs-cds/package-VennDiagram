@@ -89,13 +89,13 @@ draw.sp.case <- function(
 	# else give the count number
 	if(percents)
 	{
-		percents <- area.list/sum(area.list);
+		percentLabel <- area.list/sum(area.list)*100;
 		for (i in 1:7) {
 			if (i %in% enabled.areas) {
 				grob.list <- gList(
 					grob.list,
 					textGrob(
-						label = signif(percents[i],digits=4),
+						label = paste(signif(percentLabel[i],digits=4),"%",sep=""),
 						x = area.x[i],
 						y = area.y[i],
 						just = c('centre', 'centre'),

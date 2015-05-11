@@ -63,6 +63,7 @@ draw.quintuple.venn <- function(
 	rotation.centre = c(0.5, 0.5),
 	ind = TRUE,
         cex.prop=NULL,
+        percents=FALSE,
 	...
 	) {
 
@@ -343,20 +344,40 @@ draw.quintuple.venn <- function(
 	label.matrix[30,] <- c(a30, 0.5220, 0.2730);
 	label.matrix[31,] <- c(a31, 0.5000, 0.5000);
 
-	for (i in 1:nrow(label.matrix)) {
-		tmp <- textGrob(
-			label = label.matrix[i,'label'],
-			x = label.matrix[i,'x'],
-			y = label.matrix[i,'y'],
-			gp = gpar(
-				col = label.col[i],
-				cex = cex[i],
-				fontface = fontface[i],
-				fontfamily = fontfamily[i]
-				)
-			);
-		grob.list <- gList(grob.list, tmp);
-		}
+	if(percents){
+		percentLabel <- label.matrix[,'label']/sum(label.matrix[,'label'])*100;
+		for (i in 1:nrow(label.matrix)) {
+			tmp <- textGrob(
+				label = paste(signif(percentLabel[i],digits=4),"%",sep=""),
+				x = label.matrix[i,'x'],
+				y = label.matrix[i,'y'],
+				gp = gpar(
+					col = label.col[i],
+					cex = cex[i],
+					fontface = fontface[i],
+					fontfamily = fontfamily[i]
+					)
+				);
+			grob.list <- gList(grob.list, tmp);
+			}
+	}
+	else{
+		for (i in 1:nrow(label.matrix)) {
+			tmp <- textGrob(
+				label = label.matrix[i,'label'],
+				x = label.matrix[i,'x'],
+				y = label.matrix[i,'y'],
+				gp = gpar(
+					col = label.col[i],
+					cex = cex[i],
+					fontface = fontface[i],
+					fontfamily = fontfamily[i]
+					)
+				);
+			grob.list <- gList(grob.list, tmp);
+			}
+
+	}
 
 	# find the location and plot all the category names
 	cat.pos.x <- c(0.4555, 0.08, 0.3, 0.79, 0.90);

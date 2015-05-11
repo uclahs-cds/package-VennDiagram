@@ -467,12 +467,12 @@ draw.triple.venn <- function(
 	# create the text labels
 	if(percents)
 	{
-		percents <- cell.labels/sum(cell.labels);
+		percentLabel <- cell.labels/sum(cell.labels)*100;
 		for (i in 1:7) {
 			grob.list <- gList(
 				grob.list,
 				textGrob(
-					label = signif(percents[i],digits=4),
+					label = paste(signif(percentLabel[i],digits=4),"%",sep=""),
 					x = cell.x[i],
 					y = cell.y[i],
 					gp = gpar(

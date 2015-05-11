@@ -48,7 +48,8 @@ draw.pairwise.venn <- function(
 	ind = TRUE,
 	sep.dist = 0.05,
 	offset = 0,
-        cex.prop=NULL,
+    cex.prop=NULL,
+    percents=FALSE,
 	...
 	) {
 
@@ -216,6 +217,26 @@ draw.pairwise.venn <- function(
 	if (area1 == area2 & area2 == cross.area) { special.coincidental <- TRUE; }
 	if (cross.area != 0 & (cross.area == area2 | cross.area == area1)) { special.inclusion <- TRUE; }
 	if (0 == cross.area) { special.exclusion <- TRUE; }
+	
+	wrapLab <- function(num){
+		if(percents)
+		{
+			return(paste(signif(num,digits=4),"%",sep=""));
+		}
+		return(num);
+	}
+	
+	print(c(area1,area2,cross.area));
+	
+	if(percents)
+	{
+		denom <- area1+area2-cross.area;
+		area1 <- area1*100/denom;
+		area2 <- area2*100/denom;
+		cross.area <- cross.area*100/denom;
+	}
+	
+	print(c(area1,area2,cross.area));
 
 	# plot scaled, generic pairwise Venn diagram with or without external texts
 	# ALL OF THE BELOW SECTIONS HAVE A SIMILAR STRUCTURE TO THIS IF BRACKET
@@ -320,7 +341,7 @@ draw.pairwise.venn <- function(
 			if ( (area1 - cross.area) / area1 > ext.percent[1] & (area1 - cross.area) / area2 > ext.percent[1]) {
 				# draw label normally
 				tmp <- textGrob(
-					label = ifelse(!inverted, area1, area2) - cross.area,
+					label = wrapLab(ifelse(!inverted, area1, area2) - cross.area),
 					x = area.1.pos,
 					y = 0.5,
 					gp = gpar(
@@ -339,7 +360,7 @@ draw.pairwise.venn <- function(
 				area.1.ypos <- label.pos$y
 				# draw label outside
 				tmp <- textGrob(
-					label = ifelse(!inverted, area1, area2) - cross.area,
+					label = wrapLab(ifelse(!inverted, area1, area2) - cross.area),
 					x = area.1.xpos,
 					y = area.1.ypos,
 					gp = gpar(
@@ -367,7 +388,7 @@ draw.pairwise.venn <- function(
 			if ((area2 - cross.area) / area2 > ext.percent[2] & (area2 - cross.area) / area1 > ext.percent[2]) {
 				# draw label normally
 				tmp <- textGrob(
-					label = ifelse(inverted, area1, area2) - cross.area,
+					label = wrapLab(ifelse(inverted, area1, area2) - cross.area),
 					x = area.2.pos,
 					y = 0.5,
 					gp = gpar(
@@ -386,7 +407,7 @@ draw.pairwise.venn <- function(
 				area.2.ypos <- label.pos$y;
 				# draw label outside
 				tmp <- textGrob(
-					label = ifelse(inverted, area1, area2) - cross.area,
+					label = wrapLab(ifelse(inverted, area1, area2) - cross.area),
 					x = area.2.xpos,
 					y = area.2.ypos,
 					gp = gpar(
@@ -414,7 +435,7 @@ draw.pairwise.venn <- function(
 			if (cross.area / area2 > ext.percent[3] & cross.area / area1 > ext.percent[3]) {
 				# draw label normally
 				tmp <- textGrob(
-					label = cross.area,
+					label = wrapLab(cross.area),
 					x = x.centre.1 + (d - ifelse(!inverted, r2, r1)) + (r1 + r2 - d) / 2,
 					y = 0.5,
 					gp = gpar(
@@ -434,7 +455,7 @@ draw.pairwise.venn <- function(
 				cross.area.ypos <- cross.pos$y
 				# draw label outside
 				tmp <- textGrob(
-					label = cross.area,
+					label = wrapLab(cross.area),
 					x = cross.area.xpos,
 					y = cross.area.ypos,
 					gp = gpar(
@@ -463,7 +484,7 @@ draw.pairwise.venn <- function(
 		else {
 			area.1.pos <-  x.centre.1 + ifelse(!inverted, -r1 + ( (2 * r1 - (r1 + r2 - d)) / 2), -r2 + ( (2 * r2 - (r2 + r1 - d)) / 2));
 			tmp <- textGrob(
-				label = ifelse(!inverted, area1, area2) - cross.area,
+				label = wrapLab(ifelse(!inverted, area1, area2) - cross.area),
 				x = area.1.pos,
 				y = 0.5,
 				gp = gpar(
@@ -476,7 +497,7 @@ draw.pairwise.venn <- function(
 			grob.list <- gList(grob.list, tmp);
 			area.2.pos <- x.centre.2 + ifelse(!inverted, r2 - ( (2 * r2 - (r1 + r2 - d)) / 2), r1 - ( (2 * r1 - (r2 + r1 - d)) / 2));
 			tmp <- textGrob(
-				label = ifelse(inverted, area1, area2) - cross.area,
+				label = wrapLab(ifelse(inverted, area1, area2) - cross.area),
 				x = area.2.pos,
 				y = 0.5,
 				gp = gpar(
@@ -488,7 +509,7 @@ draw.pairwise.venn <- function(
 				);
 			grob.list <- gList(grob.list, tmp);
 			tmp <- textGrob(
-				label = cross.area,
+				label = wrapLab(cross.area),
 				x = x.centre.1 + (d - ifelse(!inverted, r2, r1)) + (r1 + r2 - d) / 2,
 				y = 0.5,
 				gp = gpar(
@@ -623,7 +644,7 @@ draw.pairwise.venn <- function(
 		# draw area labels in appropriate locations
 		area.2.pos <- 0.5 - offset * (r1 - r2);
 		tmp <- textGrob(
-			label = area2,
+			label = wrapLab(area2),
 			x = area.2.pos,
 			y = 0.5,
 			gp = gpar(
@@ -638,7 +659,7 @@ draw.pairwise.venn <- function(
 		if (!ext.text | !scaled) {
 			area.1.pos <- (1 + r1 + r2 - offset * (r1 - r2)) / 2;
 			tmp <- textGrob(
-				label = area1 - area2,
+				label = wrapLab(area1 - area2),
 				x = area.1.pos,
 				y = 0.5,
 				gp = gpar(
@@ -659,7 +680,7 @@ draw.pairwise.venn <- function(
 				area.1.xpos <- area.pos$x;
 				area.1.ypos <- area.pos$y;
 				tmp <- textGrob(
-					label = area1 - area2,
+					label = wrapLab(area1 - area2),
 					x = area.1.xpos,
 					y = area.1.ypos,
 					gp = gpar(
@@ -684,7 +705,7 @@ draw.pairwise.venn <- function(
 			else {
 				area.1.pos <- (1 + r1 + r2 - offset * (r1 - r2)) / 2;
 				tmp <- textGrob(
-					label = area1 - area2,
+					label = wrapLab(area1 - area2),
 					x = area.1.pos,
 					y = 0.5,
 					gp = gpar(
@@ -775,7 +796,7 @@ draw.pairwise.venn <- function(
 		# draw labels on the same circle
 		area.1.pos <- 0.46;
 		tmp <- textGrob(
-			label = area1,
+			label = wrapLab(area1),
 			x = area.1.pos,
 			y = 0.5,
 			gp = gpar(
@@ -789,7 +810,7 @@ draw.pairwise.venn <- function(
 
 		area.2.pos <- 0.54;
 		tmp <- textGrob(
-			label = area2,
+			label = wrapLab(area2),
 			x = area.2.pos,
 			y = 0.5,
 			gp = gpar(
@@ -923,7 +944,7 @@ draw.pairwise.venn <- function(
 		# draw area and category labels
 		area.1.pos <- x.centre.1;
 		tmp <- textGrob(
-			label = area1,
+			label = wrapLab(area1),
 			x = area.1.pos,
 			y = 0.5,
 			gp = gpar(
@@ -937,7 +958,7 @@ draw.pairwise.venn <- function(
 
 		area.2.pos <- x.centre.2;
 		tmp <- textGrob(
-			label = area2,
+			label = wrapLab(area2),
 			x = area.2.pos,
 			y = 0.5,
 			gp = gpar(
@@ -1048,7 +1069,7 @@ draw.pairwise.venn <- function(
 		grob.list <- gList(grob.list, tmp);
 
 		tmp <- textGrob(
-			label = area1 - cross.area,
+			label = wrapLab(area1 - cross.area),
 			x = 0.3,
 			y = 0.5,
 			gp = gpar(
@@ -1061,7 +1082,7 @@ draw.pairwise.venn <- function(
 		grob.list <- gList(grob.list, tmp);
 
 		tmp <- textGrob(
-			label = area2 - cross.area,
+			label = wrapLab(area2 - cross.area),
 			x = 0.7,
 			y = 0.5,
 			gp = gpar(
@@ -1074,7 +1095,7 @@ draw.pairwise.venn <- function(
 		grob.list <- gList(grob.list, tmp);
 
 		tmp <- textGrob(
-			label = cross.area,
+			label = wrapLab(cross.area),
 			x = 0.5,
 			y = 0.5,
 			gp = gpar(

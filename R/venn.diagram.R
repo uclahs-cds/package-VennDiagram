@@ -90,6 +90,7 @@ venn.diagram <- function(
 			cross.area = length(intersect(x[[1]],x[[2]])),
 			category = category.names,
 			ind = FALSE,
+			percents=percents,
 			...
 			);
 		}
@@ -165,6 +166,7 @@ venn.diagram <- function(
 			n1234 = length(n1234),
 			category = list.names,
 			ind = FALSE,
+			percents=percents,
 			...
 			);
 		}
@@ -243,6 +245,7 @@ venn.diagram <- function(
 			n12345 = length(n12345),
 			category = list.names,
 			ind = FALSE,
+			percents=percents,
 			...
 			);
 		}
