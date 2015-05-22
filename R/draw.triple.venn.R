@@ -129,23 +129,18 @@ draw.triple.venn <- function(
 
 		special.code <- VennDiagram::decide.special.case(areas);
 
-		# and convert into a proper function name
-		function.name <- paste('draw.', special.code, sep = '');
-
 		# did we define a special-case function for this case?
-		if (function.name %in% ls('package:VennDiagram')) {
+		if (special.code %in% c("121AO","100","033","011A","021AA","022AAOO","011O","112AA","122AAOO","010","110","130","001","012AA","120","022AAAO","032","111A","023")) {
 
-			# get the special-case function
-			f1 <- get(function.name);
-
-			# run it
-			####### TO GREATLY IMPROVE THIS CODE #######
-			# all of the draw.'code'.R files have nearly identical structure, so the code is extremely repetitive and redundant
-			# if someone is working to improve the package, it would greatly improve the clarity, brevity, and ease of management to take the time, and try to
-			# combine all of those files into a single function by vectorizing the areas, creating a single 'if bracket' to determine the proper radii, centres, etc,
-			# so that a single change in that function does not need to take place in 19 different files
-			############################################
+			if (special.code %in% c("022AAAO", "022AAOO", "023", "032", "120", "121AO", "122AAOO", "130")) {
+				f1 <- get("draw.sp.case.scaled");
+			}
+			else {
+				f1 <- get("draw.sp.case.preprocess");
+			}
+			
 			rst <- f1(
+				sp.case.name = special.code,
 				a1 = areas[1],
 				a2 = areas[2],
 				a3 = areas[3],

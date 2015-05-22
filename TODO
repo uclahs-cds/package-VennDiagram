@@ -2,7 +2,6 @@ Known Bugs:
 * having an expression in the category names prints, but is left aligned with multiple lines instead of centred
 
 Improvements to make:
-* Refactoring all of the draw.'code'.R files to condense them down into a few select files, or even a single one
 * COMMENT COMMENT COMMENT
 * Structure the various functions so that they have identical parameter structures where possible
 * Move away from scalars for areas and convert everything, where possible, to vectors and lists

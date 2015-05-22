@@ -1,3 +1,9 @@
+VennDiagram 1.6.12 2015-05-22 (David Wang)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
+* Refactored the 19 three categroy special case drawing functions into 2 functions (in two files)
+* Streamlined rotate.sp.R file.
+
 VennDiagram 1.6.11 2015-05-08 (David Wang)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
