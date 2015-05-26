@@ -62,8 +62,9 @@ draw.quintuple.venn <- function(
 	rotation.degree = 0,
 	rotation.centre = c(0.5, 0.5),
 	ind = TRUE,
-        cex.prop=NULL,
-        percents=FALSE,
+	cex.prop=NULL,
+	print.mode = "raw",
+    sigdigs=3,
 	...
 	) {
 
@@ -344,40 +345,37 @@ draw.quintuple.venn <- function(
 	label.matrix[30,] <- c(a30, 0.5220, 0.2730);
 	label.matrix[31,] <- c(a31, 0.5000, 0.5000);
 
-	if(percents){
-		percentLabel <- label.matrix[,'label']/sum(label.matrix[,'label'])*100;
-		for (i in 1:nrow(label.matrix)) {
-			tmp <- textGrob(
-				label = paste(signif(percentLabel[i],digits=4),"%",sep=""),
-				x = label.matrix[i,'x'],
-				y = label.matrix[i,'y'],
-				gp = gpar(
-					col = label.col[i],
-					cex = cex[i],
-					fontface = fontface[i],
-					fontfamily = fontfamily[i]
-					)
-				);
-			grob.list <- gList(grob.list, tmp);
+	processedLabels <- rep("",length(label.matrix[,'label']));
+    if(print.mode[1] == "percent"){
+			processedLabels <- paste(signif(label.matrix[,'label']/sum(label.matrix[,'label'])*100,digits=sigdigs),"%",sep="");
+			if(isTRUE(print.mode[2] == "raw"))
+			{
+				processedLabels <- paste(processedLabels,"\n(",label.matrix[,'label'],")",sep="");
 			}
-	}
-	else{
-		for (i in 1:nrow(label.matrix)) {
-			tmp <- textGrob(
-				label = label.matrix[i,'label'],
-				x = label.matrix[i,'x'],
-				y = label.matrix[i,'y'],
-				gp = gpar(
-					col = label.col[i],
-					cex = cex[i],
-					fontface = fontface[i],
-					fontfamily = fontfamily[i]
-					)
-				);
-			grob.list <- gList(grob.list, tmp);
+		}
+	if(print.mode[1] == "raw"){
+			processedLabels <- label.matrix[,'label'];
+			if(isTRUE(print.mode[2] == "percent"))
+			{
+				processedLabels <- paste(processedLabels,"\n(",paste(signif(label.matrix[,'label']/sum(label.matrix[,'label'])*100,digits=sigdigs),"%)",sep=""),sep="");
 			}
+		}
 
-	}
+	for (i in 1:nrow(label.matrix)) {
+		tmp <- textGrob(
+			label = processedLabels[i],
+			x = label.matrix[i,'x'],
+			y = label.matrix[i,'y'],
+			gp = gpar(
+				col = label.col[i],
+				cex = cex[i],
+				fontface = fontface[i],
+				fontfamily = fontfamily[i]
+				)
+			);
+		grob.list <- gList(grob.list, tmp);
+		}
+
 
 	# find the location and plot all the category names
 	cat.pos.x <- c(0.4555, 0.08, 0.3, 0.79, 0.90);

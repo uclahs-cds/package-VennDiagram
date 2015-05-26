@@ -36,7 +36,8 @@ venn.diagram <- function(
 	sub.just = c(0.5, 1),
 	category.names = names(x),
 	force.unique = TRUE,
-	percents = FALSE,
+	print.mode = "raw",
+	sigdigs = 3,
 	...
 	) {
 
@@ -90,7 +91,8 @@ venn.diagram <- function(
 			cross.area = length(intersect(x[[1]],x[[2]])),
 			category = category.names,
 			ind = FALSE,
-			percents=percents,
+			print.mode=print.mode,
+			sigdigs=sigdigs,
 			...
 			);
 		}
@@ -120,7 +122,8 @@ venn.diagram <- function(
 			category = list.names,
 			ind = FALSE,
 			list.order = 1:3,
-			percents=percents,
+			print.mode=print.mode,
+			sigdigs=sigdigs,
 			...
 			);
 		}
@@ -166,7 +169,8 @@ venn.diagram <- function(
 			n1234 = length(n1234),
 			category = list.names,
 			ind = FALSE,
-			percents=percents,
+			print.mode=print.mode,
+			sigdigs=sigdigs,
 			...
 			);
 		}
@@ -245,7 +249,8 @@ venn.diagram <- function(
 			n12345 = length(n12345),
 			category = list.names,
 			ind = FALSE,
-			percents=percents,
+			print.mode=print.mode,
+			sigdigs=sigdigs,
 			...
 			);
 		}

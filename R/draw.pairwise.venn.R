@@ -49,7 +49,8 @@ draw.pairwise.venn <- function(
 	sep.dist = 0.05,
 	offset = 0,
     cex.prop=NULL,
-    percents=FALSE,
+    print.mode = "raw",
+    sigdigs=3,
 	...
 	) {
 
@@ -218,25 +219,51 @@ draw.pairwise.venn <- function(
 	if (cross.area != 0 & (cross.area == area2 | cross.area == area1)) { special.inclusion <- TRUE; }
 	if (0 == cross.area) { special.exclusion <- TRUE; }
 	
+	denom <- area1+area2-cross.area;
+	
 	wrapLab <- function(num){
-		if(percents)
-		{
-			return(paste(signif(num,digits=4),"%",sep=""));
+		stri = "";
+		if(print.mode[1] == "percent"){
+			stri <- paste(signif(num*100/denom,digits=sigdigs),"%",sep="");
+			if(isTRUE(print.mode[2] == "raw"))
+			{
+				stri <- paste(stri,"\n(",num,")",sep="");
+			}
 		}
-		return(num);
+		if(print.mode[1] == "raw")
+		{
+			stri <- num;
+			if(isTRUE(print.mode[2] == "percent"))
+			{
+				stri <- paste(stri,"\n(",paste(signif(num*100/denom,digits=sigdigs),"%)",sep=""),sep="");
+			}
+		}
+		return(stri);
 	}
 	
-	print(c(area1,area2,cross.area));
+#	print(c(area1,area2,cross.area));
 	
-	if(percents)
-	{
-		denom <- area1+area2-cross.area;
-		area1 <- area1*100/denom;
-		area2 <- area2*100/denom;
-		cross.area <- cross.area*100/denom;
-	}
+#	altCross <- cross.area;
+#	altArea1 <- area1;
+#	altArea2 <- area2;
 	
-	print(c(area1,area2,cross.area));
+#	#Do processing on the areas and the cross.area to turn them into the required numbers for printing
+#	if(print.mode[1] == "percent")
+#	{
+#		denom <- area1+area2-cross.area;
+#		area1 <- area1*100/denom;
+#		area2 <- area2*100/denom;
+#		cross.area <- cross.area*100/denom;
+#	}
+#	else #print.mode[1] == "raw"
+#	{
+#		denom <- area1+area2-cross.area;
+#		altArea1 <- area1*100/denom;
+#		altArea2 <- area2*100/denom;
+#		altCross <- cross.area*100/denom;
+#	}
+	
+#	print(c(area1,area2,cross.area));
 
 	# plot scaled, generic pairwise Venn diagram with or without external texts
 	# ALL OF THE BELOW SECTIONS HAVE A SIMILAR STRUCTURE TO THIS IF BRACKET

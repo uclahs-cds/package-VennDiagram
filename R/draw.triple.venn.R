@@ -47,7 +47,8 @@ draw.triple.venn <- function(
 	sep.dist = 0.05,
 	offset = 0,
     cex.prop=NULL,
-    percents=FALSE,
+    print.mode = "raw",
+    sigdigs=3,
 	...
 	) {
 
@@ -168,7 +169,8 @@ draw.triple.venn <- function(
 				cat.prompts = cat.prompts,
 				fill = fill,
 				alpha = alpha,
-				percents = percents,
+				print.mode = print.mode,
+				sigdigs=sigdigs,
 				...
 				);
 
@@ -458,48 +460,40 @@ draw.triple.venn <- function(
                           i, " is less than or equal to zero"))
             }
         }
-        
-	# create the text labels
-	if(percents)
-	{
-		percentLabel <- cell.labels/sum(cell.labels)*100;
-		for (i in 1:7) {
-			grob.list <- gList(
-				grob.list,
-				textGrob(
-					label = paste(signif(percentLabel[i],digits=4),"%",sep=""),
-					x = cell.x[i],
-					y = cell.y[i],
-					gp = gpar(
-						col = label.col[i],
-						cex = cex[i],
-						fontface = fontface[i],
-						fontfamily = fontfamily[i]
-						)
-					)
-				);
+    
+    processedLabels <- rep("",length(cell.labels));
+    if(print.mode[1] == "percent"){
+			processedLabels <- paste(signif(cell.labels/sum(cell.labels)*100,digits=sigdigs),"%",sep="");
+			if(isTRUE(print.mode[2] == "raw"))
+			{
+				processedLabels <- paste(processedLabels,"\n(",cell.labels,")",sep="");
 			}
 		}
-	else
-	{
-		for (i in 1:7) {
-			grob.list <- gList(
-				grob.list,
-				textGrob(
-					label = cell.labels[i],
-					x = cell.x[i],
-					y = cell.y[i],
-					gp = gpar(
-						col = label.col[i],
-						cex = cex[i],
-						fontface = fontface[i],
-						fontfamily = fontfamily[i]
-						)
-					)
-				);
+	if(print.mode[1] == "raw"){
+			processedLabels <- cell.labels;
+			if(isTRUE(print.mode[2] == "percent"))
+			{
+				processedLabels <- paste(processedLabels,"\n(",paste(signif(cell.labels/sum(cell.labels)*100,digits=sigdigs),"%)",sep=""),sep="");
 			}
 		}
-
+    
+	for (i in 1:7) {
+		grob.list <- gList(
+			grob.list,
+			textGrob(
+				label = processedLabels[i],
+				x = cell.x[i],
+				y = cell.y[i],
+				gp = gpar(
+					col = label.col[i],
+					cex = cex[i],
+					fontface = fontface[i],
+					fontfamily = fontfamily[i]
+					)
+				)
+			);
+		}
+	
 
 	# plot all category names
 	text.location.mapping <- c(1,3,7);

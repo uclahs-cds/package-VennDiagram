@@ -41,7 +41,8 @@ draw.sp.case <- function(
 	cat.prompts = FALSE,
 	fill = NULL,
 	alpha = rep(0.5, 3),
-	percents = percents,
+	print.mode = "raw",
+    sigdigs=3,
 	...
 	) {
 
@@ -87,15 +88,28 @@ draw.sp.case <- function(
 	# add the text labels
 	# make it percents if it is enabled
 	# else give the count number
-	if(percents)
-	{
-		percentLabel <- area.list/sum(area.list)*100;
-		for (i in 1:7) {
+	processedLabels <- rep("",length(area.list));
+    if(print.mode[1] == "percent"){
+			processedLabels <- paste(signif(area.list/sum(area.list)*100,digits=sigdigs),"%",sep="");
+			if(isTRUE(print.mode[2] == "raw"))
+			{
+				processedLabels <- paste(processedLabels,"\n(",area.list,")",sep="");
+			}
+		}
+	if(print.mode[1] == "raw"){
+			processedLabels <- area.list;
+			if(isTRUE(print.mode[2] == "percent"))
+			{
+				processedLabels <- paste(processedLabels,"\n(",paste(signif(area.list/sum(area.list)*100,digits=sigdigs),"%)",sep=""),sep="");
+			}
+		}
+	
+	for (i in 1:7) {
 			if (i %in% enabled.areas) {
 				grob.list <- gList(
 					grob.list,
 					textGrob(
-						label = paste(signif(percentLabel[i],digits=4),"%",sep=""),
+						label = processedLabels[i],
 						x = area.x[i],
 						y = area.y[i],
 						just = c('centre', 'centre'),
@@ -109,29 +123,7 @@ draw.sp.case <- function(
 					);
 				}
 			}
-		}
-	else
-	{
-		for (i in 1:7) {
-			if (i %in% enabled.areas) {
-				grob.list <- gList(
-					grob.list,
-					textGrob(
-						label = area.list[i],
-						x = area.x[i],
-						y = area.y[i],
-						just = c('centre', 'centre'),
-						gp = gpar(
-							col = label.col[i],
-							cex = cex[i],
-							fontface = fontface[i],
-							fontfamily = fontfamily[i]
-							)
-						)
-					);
-				}
-			}
-		}
+		
 
 	# create category labels
 	for (i in 1:3) {

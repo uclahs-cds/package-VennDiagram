@@ -33,7 +33,8 @@ draw.sp.case.preprocess <- function(
 	scaled = TRUE,
 	offset = 0,
 	sep.dist = rep(0.05, 3),
-	percents=FALSE,
+	print.mode="raw",
+	sigdigs=3,
 	...
 	) {
 
@@ -197,7 +198,8 @@ draw.sp.case.preprocess <- function(
 			cat.just = cat.just,
 			fill = fill,
 			alpha = alpha,
-			percents=percents,
+			print.mode=print.mode,
+			sigdigs=sigdigs,
 			...
 			)
 		);
