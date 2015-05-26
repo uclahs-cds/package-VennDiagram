@@ -49,6 +49,8 @@ draw.quad.venn <- function(
     cex.prop=NULL,
     print.mode = "raw",
     sigdigs=3,
+    direct.area = FALSE,
+    area.vector = 0,
 	...
 	) {
 
@@ -104,26 +106,36 @@ draw.quad.venn <- function(
 
 	if (!(class(cat.just) == "list" & length(cat.just) == 4 & length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2 & length(cat.just[[3]]) == 2 & length(cat.just[[4]]) == 2)) { stop("Unexpected parameter format for 'cat.just'"); }
 	cat.pos <- cat.pos + rotation.degree;
+	
+	if(direct.area){
+		areas <- area.vector;
+		#create the variables and assign their values from the area vector
+		for(i in 1:15)
+		{
+			assign(paste("a",i,sep=""),area.vector[i]);
+		}
+	}
+	else {
+		# generate partial areas from given arguments
+		a6  <- n1234;
+		a12 <- n123 - a6;
+		a11 <- n124 - a6;
+		a5  <- n134 - a6;
+		a7  <- n234 - a6;
+		a15 <- n12 - a6 - a11 - a12;
+		a4  <- n13 - a6 - a5 - a12;
+		a10 <- n14 - a6 - a5 - a11;
+		a13 <- n23 - a6 - a7 - a12;
+		a8  <- n24 - a6 - a7 - a11;
+		a2  <- n34 - a6 - a5 - a7;
+		a9  <- area1 - a4 - a5 - a6 - a10 - a11 - a12 - a15;
+		a14 <- area2 - a6 - a7 - a8 - a11 - a12 - a13 - a15;
+		a1  <- area3 - a2 - a4 - a5 - a6 - a7 - a12 - a13;
+		a3  <- area4 - a2 - a5 - a6 - a7 - a8 - a10 - a11;
 
-	# generate partial areas from given arguments
-	a6  <- n1234;
-	a12 <- n123 - a6;
-	a11 <- n124 - a6;
-	a5  <- n134 - a6;
-	a7  <- n234 - a6;
-	a15 <- n12 - a6 - a11 - a12;
-	a4  <- n13 - a6 - a5 - a12;
-	a10 <- n14 - a6 - a5 - a11;
-	a13 <- n23 - a6 - a7 - a12;
-	a8  <- n24 - a6 - a7 - a11;
-	a2  <- n34 - a6 - a5 - a7;
-	a9  <- area1 - a4 - a5 - a6 - a10 - a11 - a12 - a15;
-	a14 <- area2 - a6 - a7 - a8 - a11 - a12 - a13 - a15;
-	a1  <- area3 - a2 - a4 - a5 - a6 - a7 - a12 - a13;
-	a3  <- area4 - a2 - a5 - a6 - a7 - a8 - a10 - a11;
-
-	# check plausibility and 0 partial areas
-	areas <- c(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15);
+		# check plausibility and 0 partial areas
+		areas <- c(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15);
+	}
 	areas.error <- c(
 		"a1  <- area3 - a2 - a4 - a5 - a6 - a7 - a12 - a13",
 		"a2  <- n34 - a6 - a5 - a7",

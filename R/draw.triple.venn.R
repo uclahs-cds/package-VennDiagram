@@ -49,6 +49,8 @@ draw.triple.venn <- function(
     cex.prop=NULL,
     print.mode = "raw",
     sigdigs=3,
+    direct.area=FALSE,
+    area.vector=0,
 	...
 	) {
 
@@ -114,17 +116,26 @@ draw.triple.venn <- function(
 		}
 
 	cat.pos <- cat.pos + rotation.degree;
-
-	# generate partial areas from given arguments
-	a1 <- area1 - n12 - n13 + n123;
-	a2 <- n12 - n123;
-	a3 <- area2 - n12 - n23 + n123;
-	a4 <- n13 - n123;
-	a5 <- n123;
-	a6 <- n23 - n123;
-	a7 <- area3 - n13 - n23 + n123;
-	areas <- c(a1, a2, a3, a4, a5, a6, a7);
-
+	
+	if(direct.area){
+		areas <- area.vector;
+		#create the variables and assign their values from the area vector
+		for(i in 1:7)
+		{
+			assign(paste("a",i,sep=""),area.vector[i]);
+		}
+	}
+	else {
+		# generate partial areas from given arguments
+		a1 <- area1 - n12 - n13 + n123;
+		a2 <- n12 - n123;
+		a3 <- area2 - n12 - n23 + n123;
+		a4 <- n13 - n123;
+		a5 <- n123;
+		a6 <- n23 - n123;
+		a7 <- area3 - n13 - n23 + n123;
+		areas <- c(a1, a2, a3, a4, a5, a6, a7);
+	}
 	# check for special cases and if necessary process them
 	if (euler.d) {
 
