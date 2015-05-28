@@ -65,6 +65,8 @@ draw.quintuple.venn <- function(
 	cex.prop=NULL,
 	print.mode = "raw",
     sigdigs=3,
+    direct.area=FALSE,
+    area.vector=0,
 	...
 	) {
 
