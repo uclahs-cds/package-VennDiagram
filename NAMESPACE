@@ -20,6 +20,7 @@ export(
 	rotate.sp,
 	rotate.venn.degrees,
 	venn.diagram,
-	calculate.overlap
+	calculate.overlap,
+	get.venn.partitions
 	)
 import(grid)
