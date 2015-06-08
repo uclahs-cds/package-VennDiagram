@@ -1,7 +1,7 @@
 Package: VennDiagram
 Version: 1.6.13
 Type: Package
-Title: Generate high-resolution Venn and Euler plots
+Title: Generate high-resolution Venn and Euler Plots
 Date: 2014-06-09
 Author: Hanbo Chen
 Maintainer: Paul Boutros <Paul.Boutros@oicr.on.ca>
