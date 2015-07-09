@@ -400,11 +400,16 @@ draw.sp.case.scaled <- function(
 
 	a.list = c(r1, r2, r3);
 	b.list = c(r1, r2, r3);
-
-	if(sp.case.name == "001" || sp.case.name == "011O")
+    
+    if(sp.case.name == "001" || sp.case.name == "011O")
 	{
-		a.list = c(r1,r2,a.3);
-		b.list = c(r1,r2,b.3);
+		a.list = c(r1,r2,0.25);
+		if(sp.case.name == "001") {
+			b.list = c(r1,r2,0.18);
+		}
+		else {#sp.case.name == "011O"
+			b.list = c(r1,r2,0.2);
+		}
 	}
 	
 	if(!sp.case.name %in% c("011A","022AAAO","023","032","033","111A","121AO"))

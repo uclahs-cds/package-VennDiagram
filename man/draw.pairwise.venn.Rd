@@ -3,19 +3,23 @@
 \title{Draw a Venn Diagram with Two Sets}
 \description{Creates a Venn diagram with two sets.  Creates Euler diagrams when the dataset meets certain conditions.}
 \usage{
-draw.pairwise.venn(area1, area2, cross.area, category = rep("", 2), euler.d = TRUE, 
-	scaled = TRUE, inverted = FALSE, ext.text = TRUE, ext.percent = rep(0.05, 3), 
-	lwd = rep(2, 2), lty = rep("solid", 2), col = rep("black", 2), fill = NULL, 
-	alpha = rep(0.5, 2), label.col = rep("black", 3), cex = rep(1, 3), 
-	fontface = rep("plain", 3), fontfamily = rep("serif", 3), cat.pos = c(-50, 50),
-	cat.dist = rep(0.025, 2), cat.cex = rep(1, 2), cat.col = rep("black", 2), 
-	cat.fontface = rep("plain", 2), cat.fontfamily = rep("serif", 2), 
-	cat.just = rep(list(c(0.5, 0.5)), 2), cat.default.pos = "outer",
-	cat.prompts = FALSE,
-	ext.pos = rep(0, 2), ext.dist = rep(0, 2), ext.line.lty = "solid",
-	ext.length = rep(0.95, 2), ext.line.lwd = 1, rotation.degree = 0,
-	rotation.centre = c(0.5, 0.5), ind = TRUE, sep.dist = 0.05, offset = 0,
-	cex.prop = NULL, ...)
+draw.pairwise.venn(area1, area2, cross.area, category = rep("", 2),
+    euler.d = TRUE, scaled = TRUE, inverted = FALSE,
+    ext.text = TRUE, ext.percent = rep(0.05, 3), lwd =
+    rep(2, 2), lty = rep("solid", 2), col = rep("black",
+    2), fill = NULL, alpha = rep(0.5, 2), label.col =
+    rep("black", 3), cex = rep(1, 3), fontface =
+    rep("plain", 3), fontfamily = rep("serif", 3), cat.pos
+    = c(-50, 50), cat.dist = rep(0.025, 2), cat.cex =
+    rep(1, 2), cat.col = rep("black", 2), cat.fontface =
+    rep("plain", 2), cat.fontfamily = rep("serif", 2),
+    cat.just = rep(list(c(0.5, 0.5)), 2), cat.default.pos
+    = "outer", cat.prompts = FALSE, ext.pos = rep(0, 2),
+    ext.dist = rep(0, 2), ext.line.lty = "solid",
+    ext.length = rep(0.95, 2), ext.line.lwd = 1,
+    rotation.degree = 0, rotation.centre = c(0.5, 0.5),
+    ind = TRUE, sep.dist = 0.05, offset = 0, cex.prop =
+    NULL, print.mode = "raw", sigdigs = 3, ...)
 }
 \arguments{
   \item{area1}{The size of the first set}
@@ -56,6 +60,8 @@ draw.pairwise.venn(area1, area2, cross.area, category = rep("", 2), euler.d = TR
   \item{sep.dist}{Number giving the distance between circles in case of an Euler diagram showing mutually exclusive sets}
   \item{offset}{Number between 0 and 1 giving the amount of offset from the centre in case of an Euler diagram showing inclusive sets}
   \item{cex.prop}{A function or string used to rescale areas}
+    \item{print.mode}{Can be either 'raw' or 'percent'. This is the format that the numbers will be printed in. Can pass in a vector with the second element being printed under the first}
+  \item{sigdigs}{If one of the elements in print.mode is 'percent', then this is how many significant digits will be kept}
   \item{...}{Additional arguments to be passed, including \code{margin}, which indicates amount of whitespace around the final diagram in npc units}
   }
 \details{

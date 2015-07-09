@@ -17,7 +17,7 @@ A data frame with \code{length(x)} logical vector columns and
 Makes a truth table of the inputs.
 }
 \examples{
-make.truth.table(c(a = 1, b = 2, c = 3, d = 4))
+\dontrun{make.truth.table(c(a = 1, b = 2, c = 3, d = 4))}
 }
 \author{
 Richard Cotton

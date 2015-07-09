@@ -3,19 +3,24 @@
 \title{Draw a Venn Diagram with Three Sets}
 \description{Creates a Venn diagram with three sets.  Creates Euler diagrams when the dataset meets certain conditions.}
 \usage{
-draw.triple.venn(area1, area2, area3, n12, n23, n13, n123,
-	category = rep("", 3), rotation = 1, reverse = FALSE, euler.d = TRUE,
-	scaled = TRUE, lwd = rep(2, 3), lty = rep("solid", 3),
-	col = rep("black", 3), fill = NULL, alpha = rep(0.5, 3),
-	label.col = rep("black", 7), cex = rep(1, 7), fontface = rep("plain", 7),
-	fontfamily = rep("serif", 7), cat.pos = c(-40, 40, 180),
-	cat.dist = c(0.05, 0.05, 0.025), cat.col = rep("black", 3),
-	cat.cex = rep(1, 3), cat.fontface = rep("plain", 3),
-	cat.fontfamily = rep("serif", 3),
-	cat.just = list(c(0.5, 1), c(0.5, 1), c(0.5, 0)), cat.default.pos = "outer",
-	cat.prompts = FALSE, rotation.degree = 0, rotation.centre = c(0.5, 0.5),
-	ind = TRUE, sep.dist = 0.05, offset = 0, cex.prop = NULL, ...)
+draw.triple.venn(area1, area2, area3, n12, n23, n13, n123, category =
+    rep("", 3), rotation = 1, reverse = FALSE, euler.d =
+    TRUE, scaled = TRUE, lwd = rep(2, 3), lty =
+    rep("solid", 3), col = rep("black", 3), fill = NULL,
+    alpha = rep(0.5, 3), label.col = rep("black", 7), cex
+    = rep(1, 7), fontface = rep("plain", 7), fontfamily =
+    rep("serif", 7), cat.pos = c(-40, 40, 180), cat.dist =
+    c(0.05, 0.05, 0.025), cat.col = rep("black", 3),
+    cat.cex = rep(1, 3), cat.fontface = rep("plain", 3),
+    cat.fontfamily = rep("serif", 3), cat.just =
+    list(c(0.5, 1), c(0.5, 1), c(0.5, 0)), cat.default.pos
+    = "outer", cat.prompts = FALSE, rotation.degree = 0,
+    rotation.centre = c(0.5, 0.5), ind = TRUE, sep.dist =
+    0.05, offset = 0, cex.prop = NULL, print.mode = "raw",
+    sigdigs = 3, direct.area = FALSE, area.vector = 0,
+    ...)
 }
+
 \arguments{
   \item{area1}{The size of the first set}
   \item{area2}{The size of the second set}
@@ -53,6 +58,10 @@ draw.triple.venn(area1, area2, area3, n12, n23, n13, n123,
   \item{sep.dist}{Number between 0 and 1 giving the distance between circles in certain Euler diagrams with mutually exclusive sets}
   \item{offset}{Number giving the amount of offset from the centre in certain Euler diagrams with inclusive sets}
   \item{cex.prop}{A function or string used to rescale areas}
+    \item{print.mode}{Can be either 'raw' or 'percent'. This is the format that the numbers will be printed in. Can pass in a vector with the second element being printed under the first}
+  \item{sigdigs}{If one of the elements in print.mode is 'percent', then this is how many significant digits will be kept}
+  \item{direct.area}{If this is equal to true, then the vector passed into area.vector will be directly assigned to the areas of the corresponding regions. Only use this if you know which positions in the vector correspond to which regions in the diagram}
+  \item{area.vector}{An argument to be used when direct.area is true. These are the areas of the corresponding regions in the Venn Diagram}
   \item{...}{Additional arguments to be passed, including \code{margin}, which indicates amount of whitespace around the final diagram in npc units}
   }
 \details{

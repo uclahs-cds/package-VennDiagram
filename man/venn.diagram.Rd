@@ -4,12 +4,17 @@
 \description{This function takes a list and creates a publication-quality TIFF Venn 
 Diagram}
 \usage{
-venn.diagram(x, filename, height = 3000, width = 3000, resolution = 500, 
-imagetype = "tiff", units = "px", compression = "lzw", na = "stop", main = "", sub = "", 
-main.pos = c(0.5, 1.05), main.fontface = "plain", main.fontfamily = "serif", 
-main.col = "black", main.cex = 1, main.just = c(0.5, 1), sub.pos = c(0.5, 1.05), 
-sub.fontface = "plain", sub.fontfamily = "serif", sub.col = "black", sub.cex = 1, 
-sub.just = c(0.5, 1), category.names = names(x), force.unique = TRUE, ...);
+venn.diagram(x, filename, height = 3000, width = 3000, resolution =
+    500, imagetype = "tiff", units = "px", compression =
+    "lzw", na = "stop", main = NULL, sub = NULL, main.pos
+    = c(0.5, 1.05), main.fontface = "plain",
+    main.fontfamily = "serif", main.col = "black",
+    main.cex = 1, main.just = c(0.5, 1), sub.pos = c(0.5,
+    1.05), sub.fontface = "plain", sub.fontfamily =
+    "serif", sub.col = "black", sub.cex = 1, sub.just =
+    c(0.5, 1), category.names = names(x), force.unique =
+    TRUE, print.mode = "raw", sigdigs = 3, direct.area =
+    FALSE, area.vector = 0, ...)
 }
 \arguments{
   \item{x}{A list of vectors (e.g., integers, chars), with each component corresponding 
@@ -41,6 +46,10 @@ sub.just = c(0.5, 1), category.names = names(x), force.unique = TRUE, ...);
   \item{category.names}{Allow specification of category names using plotmath syntax}
   \item{force.unique}{Logical specifying whether to use only unique elements in each item
    of the input list or use all elements. Defaults to FALSE}
+     \item{print.mode}{Can be either 'raw' or 'percent'. This is the format that the numbers will be printed in. Can pass in a vector with the second element being printed under the first}
+  \item{sigdigs}{If one of the elements in print.mode is 'percent', then this is how many significant digits will be kept}
+  \item{direct.area}{If this is equal to true, then the vector passed into area.vector will be directly assigned to the areas of the corresponding regions. Only use this if you know which positions in the vector correspond to which regions in the diagram}
+  \item{area.vector}{An argument to be used when direct.area is true. These are the areas of the corresponding regions in the Venn Diagram}
   \item{...}{A series of graphical parameters tweaking the plot. See below for details}
   }
 \details{

@@ -3,16 +3,22 @@
 \title{Draw a Venn Diagram with Five Sets}
 \description{Creates a Venn diagram with five sets.}
 \usage{
-draw.quintuple.venn(area1, area2, area3, area4, area5, n12, n13, n14, n15, n23, n24, n25,
-	n34, n35, n45, n123, n124, n125, n134, n135, n145, n234, n235, n245, n345, n1234,
-	n1235, n1245, n1345, n2345, n12345, category = rep("", 5), lwd = rep(2, 5),
-	lty = rep("solid", 5), col = rep("black", 5), fill = NULL, alpha = rep(0.5, 5),
-	label.col = rep("black", 31), cex = rep(1, 31), fontface = rep("plain", 31),
-	fontfamily = rep("serif", 31), cat.pos = c(0, 287.5, 215, 145, 70),
-	cat.dist = rep(0.2, 5), cat.col = rep("black", 5), cat.cex = rep(1, 5),
-	cat.fontface = rep("plain", 5), cat.fontfamily = rep("serif", 5),
-	cat.just = rep(list(c(0.5, 0.5)), 5), rotation.degree = 0,
-	rotation.centre = c(0.5, 0.5), ind = TRUE, cex.prop = NULL, ...)
+draw.quintuple.venn(area1, area2, area3, area4, area5, n12, n13, n14, n15,
+    n23, n24, n25, n34, n35, n45, n123, n124, n125, n134,
+    n135, n145, n234, n235, n245, n345, n1234, n1235,
+    n1245, n1345, n2345, n12345, category = rep("", 5),
+    lwd = rep(2, 5), lty = rep("solid", 5), col =
+    rep("black", 5), fill = NULL, alpha = rep(0.5, 5),
+    label.col = rep("black", 31), cex = rep(1, 31),
+    fontface = rep("plain", 31), fontfamily = rep("serif",
+    31), cat.pos = c(0, 287.5, 215, 145, 70), cat.dist =
+    rep(0.2, 5), cat.col = rep("black", 5), cat.cex =
+    rep(1, 5), cat.fontface = rep("plain", 5),
+    cat.fontfamily = rep("serif", 5), cat.just =
+    rep(list(c(0.5, 0.5)), 5), rotation.degree = 0,
+    rotation.centre = c(0.5, 0.5), ind = TRUE, cex.prop =
+    NULL, print.mode = "raw", sigdigs = 3, direct.area =
+    FALSE, area.vector = 0, ...)
 }
 \arguments{
   \item{area1}{The size of the first set}
@@ -67,6 +73,10 @@ draw.quintuple.venn(area1, area2, area3, area4, area5, n12, n13, n14, n15, n23, 
   \item{rotation.centre}{A vector (length 2) indicating (x,y) of the rotation centre}
   \item{ind}{Boolean indicating whether the function is to automatically draw the diagram before returning the gList object or not}
   \item{cex.prop}{A function or string used to rescale areas}
+    \item{print.mode}{Can be either 'raw' or 'percent'. This is the format that the numbers will be printed in. Can pass in a vector with the second element being printed under the first}
+  \item{sigdigs}{If one of the elements in print.mode is 'percent', then this is how many significant digits will be kept}
+  \item{direct.area}{If this is equal to true, then the vector passed into area.vector will be directly assigned to the areas of the corresponding regions. Only use this if you know which positions in the vector correspond to which regions in the diagram}
+  \item{area.vector}{An argument to be used when direct.area is true. These are the areas of the corresponding regions in the Venn Diagram}
   \item{...}{Additional arguments to be passed, including \code{margin}, which indicates amount of whitespace around the final diagram in npc units}
   }
 \details{
