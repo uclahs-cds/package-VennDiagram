@@ -38,9 +38,9 @@ Partitions a list into Venn regions.
 
 If force.unique is FALSE, then there are two supported methods of grouping categories with duplicated elements in common.
 If hierarchical is FALSE, then any common elements are gathered into a pool. So if
-\code{x <- list(a = c(1,1,2,2,3,3), b=c(1,2,3,4,4,5), c=c(1,4))} then \code{(b∩c)∖(a)} would contain
-three 4's. Since the 4's are pooled, \code{(b)∖(a∪c)} contains no 4's.
-If hierachical is TRUE, then \code{(b∩c)∖(a)} would contain one 4.Then \code{(b)∖(a∪c)} cotains one 4.
+\code{x <- list(a = c(1,1,2,2,3,3), b=c(1,2,3,4,4,5), c=c(1,4))} then \code{(b intersect c)/(a)} would contain
+three 4's. Since the 4's are pooled, \code{(b)/(a union c)} contains no 4's.
+If hierachical is TRUE, then \code{(b intersect c)/(a)} would contain one 4.Then \code{(b)/(a union c)} cotains one 4.
 }
 \examples{
 # Compare force.unique options
