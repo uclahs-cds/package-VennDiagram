@@ -269,18 +269,18 @@ draw.triple.venn <- function(
 
 	# check category label defaults
 	if (all(cat.default.pos != 'outer', cat.default.pos != 'text', !is.defaults, cat.prompts)) {
-		print("No default location recognized.  Automatically changing to 'outer'");
+		flog.info("No default location recognized.  Automatically changing to 'outer'");
 		cat.default.pos <- "outer";
 		}
 	if (all(cat.default.pos == 'outer', !is.defaults, cat.prompts)) {
-		print("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
-		print(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
-		print(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
+		flog.info("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
+		flog.info(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
+		flog.info(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
 		}
 	if (all(cat.default.pos == 'text', !is.defaults, cat.prompts)) {
-		print("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
-		print(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
-		print(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
+		flog.info("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
+		flog.info(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
+		flog.info(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
 		}
 
 	# initialize gList to hold all Grobs generated

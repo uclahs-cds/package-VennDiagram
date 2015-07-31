@@ -60,18 +60,18 @@ draw.single.venn <- function(
 
 	# check category label defaults
 	if (cat.default.pos != 'outer' & cat.default.pos != 'text' & category != '' & cat.prompts) {
-		print("No default location recognized.  Automatically changing to 'outer'");
+		flog.info("No default location recognized.  Automatically changing to 'outer'");
 		cat.default.pos <- 'outer';
 		}
 	if (cat.default.pos == "outer" & category != "" & cat.prompts) {
-		print("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
-		print(paste("Current 'cat.pos':", cat.pos, 'degrees'));
-		print(paste("Current 'cat.dist':", cat.dist));
+		flog.info("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
+		flog.info(paste("Current 'cat.pos':", cat.pos, 'degrees'));
+		flog.info(paste("Current 'cat.dist':", cat.dist));
 		}
 	if (cat.default.pos == "text" & category != "" & cat.prompts) {
-		print("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
-		print(paste("Current 'cat.pos':", cat.pos, 'degrees'));
-		print(paste("Current 'cat.dist':", cat.dist));
+		flog.info("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
+		flog.info(paste("Current 'cat.pos':", cat.pos, 'degrees'));
+		flog.info(paste("Current 'cat.dist':", cat.dist));
 		}
 
 	max.circle.size = 0.2;

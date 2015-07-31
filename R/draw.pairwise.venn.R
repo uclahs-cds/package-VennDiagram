@@ -138,18 +138,18 @@ draw.pairwise.venn <- function(
 	# check category label defaults
 	if (((cat.default.pos != 'outer') & (cat.default.pos != "text")) & cat.prompts) {
 	# PHH: removed this check from the if, so that code works with expressions: & isTRUE(category != rep("", 2))
-		print("No default location recognized.  Automatically changing to 'outer'");
+		flog.info("No default location recognized.  Automatically changing to 'outer'");
 		cat.default.pos <- 'outer';
 		}
 	if ((cat.default.pos == 'outer') & cat.prompts) {
-		print("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
-		print(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
-		print(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
+		flog.info("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
+		flog.info(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
+		flog.info(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
 		}
 	if ((cat.default.pos == 'text') & cat.prompts) {
-		print("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
-		print(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
-		print(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
+		flog.info("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.");
+		flog.info(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"));
+		flog.info(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]));
 		}
 
 	max.circle.size = 0.2;
@@ -241,7 +241,7 @@ draw.pairwise.venn <- function(
 		return(stri);
 	}
 	
-#	print(c(area1,area2,cross.area));
+#	flog.info(c(area1,area2,cross.area));
 	
 #	altCross <- cross.area;
 #	altArea1 <- area1;
@@ -263,7 +263,7 @@ draw.pairwise.venn <- function(
 #		altCross <- cross.area*100/denom;
 #	}
 	
-#	print(c(area1,area2,cross.area));
+#	flog.info(c(area1,area2,cross.area));
 
 	# plot scaled, generic pairwise Venn diagram with or without external texts
 	# ALL OF THE BELOW SECTIONS HAVE A SIMILAR STRUCTURE TO THIS IF BRACKET
