@@ -38,23 +38,40 @@ draw.single.venn <- function(
 	) {
 
 	# check parameter lengths
-	if (length(category) != 1) { stop("Unexpected parameter length for 'category'"); }
-	if (length(lwd) != 1) { stop("Unexpected parameter length for 'lwd'"); }
-	if (length(lty) != 1) { stop("Unexpected parameter length for 'lty'"); }
-	if (length(col) != 1) { stop("Unexpected parameter length for 'col'"); }
-	if (length(label.col) != 1) { stop("Unexpected parameter length for 'label.col'"); }
-	if (length(cex) != 1) { stop("Unexpected parameter length for 'cex'"); }
-	if (length(fontface) != 1) { stop("Unexpected parameter length for 'fontface'"); }
-	if (length(fontfamily) != 1) { stop("Unexpected parameter length for 'fontfamily'"); }
-	if (length(fill) != 1 & length(fill) != 0) { stop("Unexpected parameter length for 'fill'"); }
-	if (length(alpha) != 1 & length(alpha) != 0) { stop("Unexpected parameter length for 'alpha'"); }
-	if (length(cat.pos) != 1) { stop("Unexpected parameter length for 'cat.pos'"); }
-	if (length(cat.dist) != 1) { stop("Unexpected parameter length for 'cat.dist'"); }
-	if (length(cat.col) != 1) { stop("Unexpected parameter length for 'cat.col'"); }
-	if (length(cat.cex) != 1) { stop("Unexpected parameter length for 'cat.cex'"); }
-	if (length(cat.fontface) != 1) { stop("Unexpected parameter length for 'cat.fontface'"); }
-	if (length(cat.fontfamily) != 1) { stop("Unexpected parameter length for 'cat.fontfamily'"); }
-	if (!(class(cat.just) == "list" & length(cat.just) == 1 & length(cat.just[[1]]) == 2)) { stop("Unexpected parameter format for 'cat.just'"); }
+	if (length(category) != 1) { flog.error("Unexpected parameter length for 'category'")
+stop("Unexpected parameter length for 'category'"); }
+	if (length(lwd) != 1) { flog.error("Unexpected parameter length for 'lwd'")
+stop("Unexpected parameter length for 'lwd'"); }
+	if (length(lty) != 1) { flog.error("Unexpected parameter length for 'lty'")
+stop("Unexpected parameter length for 'lty'"); }
+	if (length(col) != 1) { flog.error("Unexpected parameter length for 'col'")
+stop("Unexpected parameter length for 'col'"); }
+	if (length(label.col) != 1) { flog.error("Unexpected parameter length for 'label.col'")
+stop("Unexpected parameter length for 'label.col'"); }
+	if (length(cex) != 1) { flog.error("Unexpected parameter length for 'cex'")
+stop("Unexpected parameter length for 'cex'"); }
+	if (length(fontface) != 1) { flog.error("Unexpected parameter length for 'fontface'")
+stop("Unexpected parameter length for 'fontface'"); }
+	if (length(fontfamily) != 1) { flog.error("Unexpected parameter length for 'fontfamily'")
+stop("Unexpected parameter length for 'fontfamily'"); }
+	if (length(fill) != 1 & length(fill) != 0) { flog.error("Unexpected parameter length for 'fill'")
+stop("Unexpected parameter length for 'fill'"); }
+	if (length(alpha) != 1 & length(alpha) != 0) { flog.error("Unexpected parameter length for 'alpha'")
+stop("Unexpected parameter length for 'alpha'"); }
+	if (length(cat.pos) != 1) { flog.error("Unexpected parameter length for 'cat.pos'")
+stop("Unexpected parameter length for 'cat.pos'"); }
+	if (length(cat.dist) != 1) { flog.error("Unexpected parameter length for 'cat.dist'")
+stop("Unexpected parameter length for 'cat.dist'"); }
+	if (length(cat.col) != 1) { flog.error("Unexpected parameter length for 'cat.col'")
+stop("Unexpected parameter length for 'cat.col'"); }
+	if (length(cat.cex) != 1) { flog.error("Unexpected parameter length for 'cat.cex'")
+stop("Unexpected parameter length for 'cat.cex'"); }
+	if (length(cat.fontface) != 1) { flog.error("Unexpected parameter length for 'cat.fontface'")
+stop("Unexpected parameter length for 'cat.fontface'"); }
+	if (length(cat.fontfamily) != 1) { flog.error("Unexpected parameter length for 'cat.fontfamily'")
+stop("Unexpected parameter length for 'cat.fontfamily'"); }
+	if (!(class(cat.just) == "list" & length(cat.just) == 1 & length(cat.just[[1]]) == 2)) { flog.error("Unexpected parameter format for 'cat.just'")
+stop("Unexpected parameter format for 'cat.just'"); }
 
 	cat.pos <- cat.pos + rotation.degree;
 

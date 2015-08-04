@@ -1,6 +1,12 @@
 VennDiagram 1.6.13 2015-05-27 (David Wang)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
+* Added futile logger support. Currently outputs logs to console (using root logger). Replaced print()'s with flog.info and appended flog.error after the stop()'s.
+
+
+VennDiagram 1.6.13 2015-05-27 (David Wang)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
 * Can print two fields for each bin. print.mode = c("raw","percent") prints the percent in brackets underneath the raw value. c("percent","raw") makes it print the raw number in brackets underneath the percent.
 * Can specify the number of significant digits in the percent by field sigdigs. Default is 3
 * Can enter area fields directly for the three, four and five category venn diagrams. Need to know which areas correspond to what in order to use this.

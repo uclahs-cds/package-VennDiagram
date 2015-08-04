@@ -173,7 +173,8 @@ venn.diagram <- function(
 			for (i in 1:length(x)) {
 				# stop if there are any NAs in this vector
 				if (any(is.na(x[[i]]))) {
-					stop('NAs in dataset', call. = FALSE);
+					flog.error('NAs in dataset', call. = FALSE)
+stop('NAs in dataset', call. = FALSE);
 					}
 				}
 			}
@@ -181,12 +182,14 @@ venn.diagram <- function(
 			for (i in 1:length(x)) { x[[i]] <- x[[i]][!is.na(x[[i]])]; }
 			}
 		else {
-			stop('Invalid na option: valid options are "none", "stop", and "remove"');
+			flog.error('Invalid na option: valid options are "none", "stop", and "remove"')
+stop('Invalid na option: valid options are "none", "stop", and "remove"');
 			}
 
 		# check the length of the given list
 		if (0 == length(x) | length(x) > 5) {
-			stop('Incorrect number of elements.', call. = FALSE);
+			flog.error('Incorrect number of elements.', call. = FALSE)
+stop('Incorrect number of elements.', call. = FALSE);
 			}
 
 		# draw a single-set Venn diagram
@@ -375,7 +378,8 @@ venn.diagram <- function(
 
 		# this should never happen because of the previous check
 		else {
-			stop('Invalid size of input object');
+			flog.error('Invalid size of input object')
+stop('Invalid size of input object');
 			}
 		}
 		
@@ -451,7 +455,8 @@ venn.diagram <- function(
 		
 		# Invalid imagetype specified
 		else {
-			stop("You have misspelled your 'imagetype', please try again");
+			flog.error("You have misspelled your 'imagetype', please try again")
+stop("You have misspelled your 'imagetype', please try again");
 			}
 
 		grid.draw(grob.list);
@@ -680,6 +685,7 @@ calculate.overlap <- function(x) {
 
 	# this should never happen because of the previous check
 	else {
-		stop('Invalid size of input object');
+		flog.error('Invalid size of input object')
+stop('Invalid size of input object');
 		}
 	}

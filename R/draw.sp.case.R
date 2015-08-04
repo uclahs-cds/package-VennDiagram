@@ -147,7 +147,8 @@ draw.sp.case <- function(
 				);
 			}
 		else {
-			stop('Invalid cat.default.pos setting');
+			flog.error('Invalid cat.default.pos setting')
+stop('Invalid cat.default.pos setting');
 			}
 
 		# create the label
