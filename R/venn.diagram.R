@@ -43,6 +43,23 @@ venn.diagram <- function(
 	...
 	) {
 	
+	#Create a string to capture the date and the time of day
+	time.string = paste(strsplit(as.character(Sys.time())," ")[[1]],collapse="-")
+	
+	#Initialize the logger to output to file
+	if(!is.null(filename)){
+		flog.appender(appender.file(paste0(filename,".",time.string,".log")), name='VennDiagramLogger')
+	}
+	else{
+		flog.appender(appender.file(paste0("VennDiagram",time.string,".log")), name='VennDiagramLogger')
+	}
+	
+	#Log the parameters the function was called with
+	out.list = as.list(sys.call())
+	out.list[[1]] <- NULL
+	out.string = capture.output(out.list)
+	flog.info(out.string,name='VennDiagramLogger')
+	
 	#If the input area.vector correspond directly to a1,a2, etc, then call the function and pass it through directly by a flag
 	if(direct.area){
 		if(1 == length(area.vector)){
@@ -173,7 +190,7 @@ venn.diagram <- function(
 			for (i in 1:length(x)) {
 				# stop if there are any NAs in this vector
 				if (any(is.na(x[[i]]))) {
-					flog.error('NAs in dataset', call. = FALSE)
+					flog.error('NAs in dataset', call. = FALSE,name="VennDiagramLogger")
 stop('NAs in dataset', call. = FALSE);
 					}
 				}
@@ -182,13 +199,13 @@ stop('NAs in dataset', call. = FALSE);
 			for (i in 1:length(x)) { x[[i]] <- x[[i]][!is.na(x[[i]])]; }
 			}
 		else {
-			flog.error('Invalid na option: valid options are "none", "stop", and "remove"')
+			flog.error('Invalid na option: valid options are "none", "stop", and "remove"',name="VennDiagramLogger")
 stop('Invalid na option: valid options are "none", "stop", and "remove"');
 			}
 
 		# check the length of the given list
 		if (0 == length(x) | length(x) > 5) {
-			flog.error('Incorrect number of elements.', call. = FALSE)
+			flog.error('Incorrect number of elements.', call. = FALSE,name="VennDiagramLogger")
 stop('Incorrect number of elements.', call. = FALSE);
 			}
 
@@ -378,7 +395,7 @@ stop('Incorrect number of elements.', call. = FALSE);
 
 		# this should never happen because of the previous check
 		else {
-			flog.error('Invalid size of input object')
+			flog.error('Invalid size of input object',name="VennDiagramLogger")
 stop('Invalid size of input object');
 			}
 		}
@@ -455,7 +472,7 @@ stop('Invalid size of input object');
 		
 		# Invalid imagetype specified
 		else {
-			flog.error("You have misspelled your 'imagetype', please try again")
+			flog.error("You have misspelled your 'imagetype', please try again",name="VennDiagramLogger")
 stop("You have misspelled your 'imagetype', please try again");
 			}
 
@@ -685,7 +702,7 @@ calculate.overlap <- function(x) {
 
 	# this should never happen because of the previous check
 	else {
-		flog.error('Invalid size of input object')
+		flog.error('Invalid size of input object',name="VennDiagramLogger")
 stop('Invalid size of input object');
 		}
 	}

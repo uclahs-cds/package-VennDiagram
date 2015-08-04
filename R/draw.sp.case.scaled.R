@@ -395,7 +395,7 @@ draw.sp.case.scaled <- function(
 		a7.y.pos <- y.centre.3;
 		
 	} else {
-		flog.info(paste0("The special case is not in the scaled cases: ",sp.case.name));
+		flog.info(paste0("The special case is not in the scaled cases: ",sp.case.name),name="VennDiagramLogger");
 	}
 
 	a.list = c(r1, r2, r3);

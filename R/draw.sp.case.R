@@ -147,7 +147,7 @@ draw.sp.case <- function(
 				);
 			}
 		else {
-			flog.error('Invalid cat.default.pos setting')
+			flog.error('Invalid cat.default.pos setting',name="VennDiagramLogger")
 stop('Invalid cat.default.pos setting');
 			}
 
