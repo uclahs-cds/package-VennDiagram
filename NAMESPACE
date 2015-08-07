@@ -23,4 +23,6 @@ export(
 	calculate.overlap,
 	get.venn.partitions
 	)
-import(grid)
+import(grid,
+      futile.logger
+)

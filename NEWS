@@ -1,4 +1,4 @@
-VennDiagram 1.6.13 2015-05-27 (David Wang)
+VennDiagram 1.6.14 2015-05-27 (David Wang)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
 * Added futile logger support. Currently outputs logs to console (using root logger). Replaced print()'s with flog.info and appended flog.error after the stop()'s.
