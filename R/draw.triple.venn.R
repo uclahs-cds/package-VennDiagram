@@ -165,10 +165,10 @@ stop("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to ac
 		if (special.code %in% c("121AO","100","033","011A","021AA","022AAOO","011O","112AA","122AAOO","010","110","130","001","012AA","120","022AAAO","032","111A","023")) {
 
 			if (special.code %in% c("022AAAO", "022AAOO", "023", "032", "120", "121AO", "122AAOO", "130")) {
-				f1 <- get("draw.sp.case.scaled");
+				f1 <- VennDiagram::draw.sp.case.scaled;
 			}
 			else {
-				f1 <- get("draw.sp.case.preprocess");
+				f1 <- VennDiagram::draw.sp.case.preprocess;
 			}
 			
 			rst <- f1(
