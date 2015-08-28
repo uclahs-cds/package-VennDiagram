@@ -1,3 +1,8 @@
+VennDiagram 1.6.15 2015-08-25 (Christopher Lalansingh)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
+* Changed import calls to fix undefined globals due to new CRAN policies.
+
 VennDiagram 1.6.14 2015-05-27 (David Wang)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
