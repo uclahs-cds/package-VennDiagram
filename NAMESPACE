@@ -23,6 +23,9 @@ export(
 	calculate.overlap,
 	get.venn.partitions
 	)
+importFrom("grDevices", "dev.off", "png", "svg", "tiff")
+importFrom("stats", "aggregate", "setNames")
+importFrom("utils", "capture.output", "combn")
 import(grid,
       futile.logger
 )
