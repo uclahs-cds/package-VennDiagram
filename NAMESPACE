@@ -21,6 +21,7 @@ export(
 	rotate.venn.degrees,
 	venn.diagram,
 	calculate.overlap,
+	calculate.overlap.and.pvalue,
 	get.venn.partitions
 	)
 importFrom("grDevices", "dev.off", "png", "svg", "tiff")
