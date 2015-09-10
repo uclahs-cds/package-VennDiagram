@@ -1,3 +1,8 @@
+VennDiagram 1.6.16 2015-09-09 (Christopher Lalansingh)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
+* Changed the appended datetime string for log files to substitute spaces and colons correctly.
+
 VennDiagram 1.6.15 2015-08-25 (Christopher Lalansingh)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES

@@ -46,7 +46,7 @@ venn.diagram <- function(
 	) {
 	
 	#Create a string to capture the date and the time of day
-	time.string = paste(strsplit(as.character(Sys.time())," ")[[1]],collapse="-")
+	time.string = gsub(":", "-", gsub(" ", "_", as.character(Sys.time())))
 	
 	#Initialize the logger to output to file
 	if(!is.null(filename)){
