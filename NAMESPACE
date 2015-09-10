@@ -21,11 +21,10 @@ export(
 	rotate.venn.degrees,
 	venn.diagram,
 	calculate.overlap,
-	calculate.overlap.and.pvalue,
 	get.venn.partitions
 	)
 importFrom("grDevices", "dev.off", "png", "svg", "tiff")
-importFrom("stats", "aggregate", "setNames")
+importFrom("stats", "aggregate", "setNames", "phyper")
 importFrom("utils", "capture.output", "combn")
 import(grid,
       futile.logger
