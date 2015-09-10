@@ -6,8 +6,13 @@ is_identical_without_name <- function(y,maxLength=5){
 	function(x){
 		list.x <- unlist(x);
 		list.y <- unlist(y);
-		raw.x <- list.x[!names(list.x) %in% c("name")];
-		raw.y <- list.y[!names(list.y) %in% c("name")];
+		raw.x <- as.list(list.x[!names(list.x) %in% c("name")]);
+		raw.y <- as.list(list.y[!names(list.y) %in% c("name")]);
+
+		raw.x$"x" <- as.numeric(raw.x$"x");
+		raw.x$"y" <- as.numeric(raw.x$"y");
+		raw.y$"x" <- as.numeric(raw.y$"x");
+		raw.y$"y" <- as.numeric(raw.y$"y");
 		
 		ret <- isTRUE(all.equal(raw.x,raw.y));
 		retStr <- "";#Initialize the return string for later processing if ret isn't true
