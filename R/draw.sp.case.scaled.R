@@ -65,8 +65,8 @@ draw.sp.case.scaled <- function(
 			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[5] & 0 == tmp$areas[6]) { break; }
 		}
 	} else if(sp.case.name == "022AAAO"){#Need to make sure reverse = FALSE
-		for (i in 1:3) {
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse = FALSE);
+		for (i in 1:6) {
+			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = i>3);
 			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[6] & 0 == tmp$areas[7]) { break; }
 		}
 	} else {#Normal rotations
