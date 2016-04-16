@@ -1,3 +1,9 @@
+VennDiagram 1.6.17 2016-04-16 (Christopher Lalansingh)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
+* Updated tests for compatibility with testthat v1.0
+* Exposed the lower.tail argument of the hypergeometric test in the venn.diagram function (still defaults to TRUE)
+
 VennDiagram 1.6.16 2015-09-09 (Christopher Lalansingh)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
