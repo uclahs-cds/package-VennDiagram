@@ -42,6 +42,7 @@ venn.diagram <- function(
 	area.vector = 0,
 	hyper.test = FALSE,
 	total.population = NULL,
+	lower.tail = TRUE,
 	...
 	) {
 	
@@ -406,7 +407,7 @@ stop('Invalid size of input object');
 	#p value always shown with 2 sig digs. Add another parameter for this later if you want to control the sig digs
 	
 	if (length(x) == 2 & !is.null(total.population) & hyper.test){
-		val.p = calculate.overlap.and.pvalue(x[[1]],x[[2]],total.population)
+		val.p = calculate.overlap.and.pvalue(x[[1]],x[[2]],total.population, lower.tail = lower.tail);
 		if(is.null(sub)){
 			sub = paste0("p = ",signif(val.p[3],digits=2))
 		}else{

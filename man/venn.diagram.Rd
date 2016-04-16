@@ -14,7 +14,8 @@ venn.diagram(x, filename, height = 3000, width = 3000, resolution =
     "serif", sub.col = "black", sub.cex = 1, sub.just =
     c(0.5, 1), category.names = names(x), force.unique =
     TRUE, print.mode = "raw", sigdigs = 3, direct.area =
-    FALSE, area.vector = 0, hyper.test = FALSE, total.population = NULL, ...)
+    FALSE, area.vector = 0, hyper.test = FALSE, total.population = NULL, 
+    lower.tail = TRUE, ...)
 }
 \arguments{
   \item{x}{A list of vectors (e.g., integers, chars), with each component corresponding 
@@ -52,6 +53,7 @@ venn.diagram(x, filename, height = 3000, width = 3000, resolution =
   \item{area.vector}{An argument to be used when direct.area is true. These are the areas of the corresponding regions in the Venn Diagram}
   \item{hyper.test}{If there are only two categories in the venn diagram and total.population is not NULL, then perform the hypergeometric test and add it to the sub title.}
   \item{total.population}{An argument to be used when hyper.test is true. This is the total population size}
+  \item{lower.tail}{logical; if TRUE (default), probabilities are P[X <= x], otherwise, P[X > x]}
   \item{...}{A series of graphical parameters tweaking the plot. See below for details}
   }
 \details{
