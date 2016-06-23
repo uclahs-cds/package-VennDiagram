@@ -102,6 +102,9 @@ venn.diagram(x, filename, height = 3000, width = 3000, resolution =
   \code{cat.default.pos}\tab 1,2,3               \tab \var{character} 
   \tab One of c('outer', 'text') to specify the default location of category names 
   (cat.pos and cat.dist are handled differently)\cr
+  \code{cat.prompts}   \tab 2                   \tab \var{numeric}   
+  \tab Boolean indicating whether to display help text on category name positioning 
+  or not\cr
   \code{margin}         \tab 1,2,3,4,5           \tab \var{numeric}   
   \tab Number giving the amount of whitespace around the diagram in grid units\cr
   \code{rotation.degree}\tab 1,2,3,4,5           \tab \var{numeric}   
@@ -136,8 +139,14 @@ venn.diagram(x, filename, height = 3000, width = 3000, resolution =
   smaller than to trigger external text placement.  The elements allow for individual 
   control of the areas in the order of the first area, second area and intersection 
   area.\cr
+  \code{ext.pos}   \tab 2                   \tab \var{numeric}   
+  \tab A vector (length 1 or 2) giving the positions (in degrees) of the external 
+  area labels along the circles, with 0 (default) at 12 o'clock\cr
   \code{ext.line.lwd}   \tab 2                   \tab \var{numeric}   
-  \tab lwd of line connecting to \code{ext.text}\cr
+  \tab Width of line connecting to \code{ext.text}\cr
+  \code{ext.line.lty}   \tab 2                   \tab \var{numeric}   
+  \tab The dash pattern of the lines connecting the external area labels to their 
+  anchor points.\cr
   \code{ext.dist}       \tab 2                   \tab \var{numeric}   
   \tab Vector of length 1 or 2 indicating length of external line (use negative values 
   to shorten the line )\cr
