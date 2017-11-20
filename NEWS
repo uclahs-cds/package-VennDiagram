@@ -2,6 +2,7 @@ VennDiagram 1.6.18 2017-11-20 (Jeffrey Green)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
 * fixed issues with calculate.overlap where doing -which with an empty charcter vector gave wrong results
+* fixed colour/border mismatch in quad venn
 
 VennDiagram 1.6.17 2016-04-16 (Christopher Lalansingh)
 ---------------------------------------------------------------------------------------------------

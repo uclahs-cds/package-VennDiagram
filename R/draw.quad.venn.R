@@ -215,10 +215,10 @@ stop(paste0("Unknown value passed to cex.prop: ", cex.prop))
 		);
 	colnames(ellipse.positions) <- c('x', 'y', 'a', 'b', 'rotation', 'fill.mapping', 'line.mapping');
 
-	ellipse.positions[1,] <- c(0.65, 0.47, 0.35, 0.20,  45, 2, 4);
+	ellipse.positions[1,] <- c(0.65, 0.47, 0.35, 0.20,  45, 2, 2);
 	ellipse.positions[2,] <- c(0.35, 0.47, 0.35, 0.20, 135, 1, 1);
-	ellipse.positions[3,] <- c(0.50, 0.57, 0.33, 0.15,  45, 4, 3);
-	ellipse.positions[4,] <- c(0.50, 0.57, 0.35, 0.15, 135, 3, 2);
+	ellipse.positions[3,] <- c(0.50, 0.57, 0.33, 0.15,  45, 4, 4);
+	ellipse.positions[4,] <- c(0.50, 0.57, 0.35, 0.15, 135, 3, 3);
 
 	# draw the ellipses themselves
 	for (i in 1:4) {
