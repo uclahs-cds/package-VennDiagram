@@ -361,8 +361,10 @@ stop("Impossible: cross section area too large."); }
                 ## rescaling area labels to be proportional to area
                 if(length(cex.prop) > 0){
 
-                    if(length(cex.prop) != 1) flog.error("Value passed to cex.prop is not length 1",name="VennDiagramLogger")
-stop("Value passed to cex.prop is not length 1")
+                    if(length(cex.prop) != 1){ 
+                        flog.error("Value passed to cex.prop is not length 1",name="VennDiagramLogger")
+                        stop("Value passed to cex.prop is not length 1")
+			}
 
                     ## figure out what function to use
                     func = cex.prop
