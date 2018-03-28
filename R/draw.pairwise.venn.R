@@ -528,7 +528,7 @@ stop(paste0("Unknown value passed to cex.prop: ", cex.prop))
 					x = c(cross.area.pos + ext.length[2] * (cross.area.xpos - cross.area.pos), cross.area.pos),
 					y = c(0.5 + ext.length[2] * (cross.area.ypos - 0.5), 0.5),
 					gp = gpar(
-						col = label.col[1],
+						col = label.col[2],
 						lwd = ext.line.lwd,
 						lty = ext.line.lty
 						)
