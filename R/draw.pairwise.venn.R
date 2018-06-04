@@ -224,13 +224,13 @@ stop("Impossible: cross section area too large."); }
 		cex <- rev(cex);
 		fontface <- rev(fontface);
 		fontfamily <- rev(fontfamily);
-		cat.pos <- rev(cat.pos);
-		cat.dist <- rev(cat.dist);
+		#cat.pos <- rev(cat.pos);
+		#cat.dist <- rev(cat.dist);
 		cat.col <- rev(cat.col);
-		cat.cex <- rev(cat.cex);
-		cat.fontface <- rev(cat.fontface);
-		cat.fontfamily <- rev(cat.fontfamily);
-		cat.just <- rev(cat.just);
+		#cat.cex <- rev(cat.cex);
+		#cat.fontface <- rev(cat.fontface);
+		#cat.fontfamily <- rev(cat.fontfamily);
+		#cat.just <- rev(cat.just);
 		ext.pos <- rev(ext.pos);
 		#ext.dist <- rev(ext.dist); # ext.dist intentionally not swapped
 		ext.length <- rev(ext.length);
