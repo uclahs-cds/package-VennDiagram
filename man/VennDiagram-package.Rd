@@ -15,7 +15,7 @@ LazyLoad: \tab yes\cr
 }
 }
 \author{
-Author: Hanbo Chen <Hanbert.Chen@mail.utoronto.ca>\\
+Author: Hanbo Chen <Hanbert.Chen@mail.utoronto.ca>\cr
 Maintainer: Dr. Paul C. Boutros <Paul.Boutros@utoronto.ca>
 }
 \keyword{ package }

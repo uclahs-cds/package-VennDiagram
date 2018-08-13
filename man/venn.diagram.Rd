@@ -71,23 +71,23 @@ venn.diagram(x, filename, height = 3000, width = 3000, resolution =
   \code{alpha}          \tab 1,2,3,4,5           \tab \var{numeric}   
   \tab Vector giving the alpha transparency of each circle's area\cr
   \code{label.col}      \tab 1,2,3,4,5           \tab \var{character} 
-  \tab Vector giving the colour for each area label (length = 1/3/7/15 based on 
-  set-number)\cr
+  \tab Vector giving the colour for each area label (length = \cr \tab \tab \tab
+  1/3/7/15 based on set-number)\cr
   \code{cex}            \tab 1,2,3,4,5           \tab \var{numeric}   
-  \tab Vector giving the size for each area label (length = 1/3/7/15 based on 
-  set-number)\cr
+  \tab Vector giving the size for each area label (length = \cr \tab \tab \tab
+  1/3/7/15 based on set-number)\cr
   \code{fontface}       \tab 1,2,3,4,5           \tab \var{character} 
-  \tab Vector giving the fontface for each area label (length = 1/3/7/15 based on 
-  set-number)\cr
+  \tab Vector giving the fontface for each area label (length = \cr \tab \tab \tab
+  1/3/7/15 based on set-number)\cr
   \code{fontfamily}     \tab 1,2,3,4,5           \tab \var{character} 
-  \tab Vector giving the fontfamily for each area label (length = 1/3/7/15 based on 
-  set-number)\cr
+  \tab Vector giving the fontfamily for each area label (length = \cr \tab \tab \tab
+  1/3/7/15 based on set-number)\cr
   \code{cat.pos}        \tab 1,2,3,4,5           \tab \var{numeric}   
-  \tab Vector giving the position (in degrees) of each category name along the circle, 
-  with 0 at 12 o'clock\cr
+  \tab Vector giving the position (in degrees) of each category \cr \tab \tab \tab
+  name along the circle, with 0 at 12 o'clock\cr
   \code{cat.dist}       \tab 1,2,3,4,5           \tab \var{numeric}   
-  \tab Vector giving the distance (in npc units) of each category name from the edge of 
-  the circle (can be negative)\cr
+  \tab Vector giving the distance (in npc units) of each category\cr \tab \tab \tab
+   name from the edge of the circle (can be negative)\cr
   \code{cat.cex}        \tab 1,2,3,4,5           \tab \var{numeric}   
   \tab Vector giving the size for each category name\cr
   \code{cat.col}        \tab 1,2,3,4,5           \tab \var{character} 
@@ -97,62 +97,65 @@ venn.diagram(x, filename, height = 3000, width = 3000, resolution =
   \code{cat.fontfamily} \tab 1,2,3,4,5           \tab \var{character} 
   \tab Vector giving the fontfamily for each category name\cr
   \code{cat.just}       \tab 1,2,3,4,5           \tab \var{numeric}   
-  \tab List (length = 1/2/3/4 based on set number) of Vectors of length 2 indicating 
-  horizontal and vertical justification for each category name\cr
+  \tab List (length = 1/2/3/4 based on set number) of Vectors\cr \tab \tab \tab
+   of length 2 indicating horizontal and vertical justification\cr \tab \tab \tab
+   for each category name\cr
   \code{cat.default.pos}\tab 1,2,3               \tab \var{character} 
-  \tab One of c('outer', 'text') to specify the default location of category names 
-  (cat.pos and cat.dist are handled differently)\cr
+  \tab One of c('outer', 'text') to specify the default location\cr \tab \tab \tab
+   of category names (cat.pos and cat.dist are handled differently)\cr
   \code{cat.prompts}   \tab 2                   \tab \var{numeric}   
-  \tab Boolean indicating whether to display help text on category name positioning 
-  or not\cr
+  \tab Boolean indicating whether to display help text on category\cr \tab \tab \tab
+   name positioning or not\cr
   \code{margin}         \tab 1,2,3,4,5           \tab \var{numeric}   
-  \tab Number giving the amount of whitespace around the diagram in grid units\cr
-  \code{rotation.degree}\tab 1,2,3,4,5           \tab \var{numeric}   
+  \tab Number giving the amount of whitespace around the diagram\cr \tab \tab \tab
+   in grid units\cr\code{rotation.degree}\tab 1,2,3,4,5           \tab \var{numeric}   
   \tab Number of degrees to rotate the entire diagram\cr
   \code{rotation.centre}\tab 1,2,3,4,5           \tab \var{numeric}   
-  \tab Vector of length 2 indicating (x,y) of the rotation centre\cr
-  \code{rotation}       \tab 3                   \tab \var{numeric}   
-  \tab Number giving the clockwise rotation of a three-set Venn diagram (1, 2, or 3)\cr
+  \tab Vector of length 2 indicating (x,y) of the rotation\cr \tab \tab \tab
+   centre\cr\code{rotation}       \tab 3                   \tab \var{numeric}   
+  \tab Number giving the clockwise rotation of a three-set Venn\cr \tab \tab \tab
+  diagram (1, 2, or 3)\cr
   \code{reverse}        \tab 3                   \tab \var{logical}   
-  \tab Reflect the three-set Venn diagram along its central vertical axis of symmetry.  
-  Use in combination with \code{rotation} to generate all possible set orders\cr
-  \code{euler.d}        \tab 2, 3                \tab \var{logical}   
-  \tab Enable Euler diagrams for two-set and three-set Venn diagrams 
-  (Venn Diagrams with moveable circles)\cr
+  \tab Reflect the three-set Venn diagram along its central\cr \tab \tab \tab
+   vertical axis of symmetry.  Use in combination with \code{rotation}\cr \tab \tab \tab
+   to generate all possible set orders\cr\code{euler.d} \tab 2, 3 \tab \var{logical}   
+  \tab Enable Euler diagrams for two-set and three-set Venn\cr \tab \tab \tab
+   diagrams (Venn Diagrams with moveable circles)\cr
   \code{scaled}         \tab 2, 3                \tab \var{logical}   
-  \tab Enable scaling for two-set and certain three-set Euler diagrams. 
-  (euler.d must be true to enable this)\cr
+  \tab Enable scaling for two-set and certain three-set Euler\cr \tab \tab \tab
+   diagrams. (euler.d must be true to enable this)\cr
   \code{sep.dist}       \tab 2, 3                \tab \var{numeric}   
-  \tab Controls the separation between distinct circles in certain two-set or three-set 
-  Euler diagrams.\cr
+  \tab Controls the separation between distinct circles in\cr \tab \tab \tab
+   certain two-set or three-set Euler diagrams.\cr
   \code{offset}         \tab 2, 3                \tab \var{numeric}   
-  \tab Number between 0 and 1 giving the amount to offset the smaller circle by in the 
-  inclusion type of two-set Euler diagram and certain similar three-set Euler 
-  diagrams.\cr
+  \tab Number between 0 and 1 giving the amount to offset the\cr \tab \tab \tab
+   smaller circle by in the inclusion type of two-set Euler\cr \tab \tab \tab
+   diagram and certain similar three-set Euler diagrams.\cr
   \code{inverted}       \tab 2                   \tab \var{logical}   
-  \tab Flip the two-set Venn diagram along its vertical axis (distinguished from 
-  \code{reverse})\cr
+  \tab Flip the two-set Venn diagram along its vertical\cr \tab \tab \tab
+   axis (distinguished from \code{reverse})\cr
   \code{ext.text}       \tab 2                   \tab \var{logical}   
   \tab Allow external text labels when areas are small\cr
   \code{ext.percent}    \tab 2                   \tab \var{numeric}   
-  \tab A vector (length 3) indicating the proportion that a partial area has to be 
-  smaller than to trigger external text placement.  The elements allow for individual 
-  control of the areas in the order of the first area, second area and intersection 
-  area.\cr
+  \tab A vector (length 3) indicating the proportion that\cr \tab \tab \tab
+   a partial area has to be smaller than to trigger externa\cr \tab \tab \tab
+   l text placement.  The elements allow for individual\cr \tab \tab \tab
+   control of the areas in the order of the first area,\cr \tab \tab \tab
+   second area and intersection area.\cr
   \code{ext.pos}   \tab 2                   \tab \var{numeric}   
-  \tab A vector (length 1 or 2) giving the positions (in degrees) of the external 
-  area labels along the circles, with 0 (default) at 12 o'clock\cr
-  \code{ext.line.lwd}   \tab 2                   \tab \var{numeric}   
+  \tab A vector (length 1 or 2) giving the positions (in degrees)\cr \tab \tab \tab
+   of the external area labels along the\cr \tab \tab \tab
+   circles, with 0 (default) at 12 o'clock\cr\code{ext.line.lwd}   \tab 2                   \tab \var{numeric}   
   \tab Width of line connecting to \code{ext.text}\cr
   \code{ext.line.lty}   \tab 2                   \tab \var{numeric}   
-  \tab The dash pattern of the lines connecting the external area labels to their 
-  anchor points.\cr
+  \tab The dash pattern of the lines connecting the external\cr \tab \tab \tab
+   area labels to their anchor points.\cr
   \code{ext.dist}       \tab 2                   \tab \var{numeric}   
-  \tab Vector of length 1 or 2 indicating length of external line (use negative values 
-  to shorten the line )\cr
+  \tab Vector of length 1 or 2 indicating length of external\cr \tab \tab \tab
+   line (use negative values to shorten the line )\cr
   \code{ext.length}     \tab 2                   \tab \var{numeric}   
-  \tab Vector of length 1 or 2 indicating the proportion of the external line that is 
-  drawn from the anchor to the text\cr
+  \tab Vector of length 1 or 2 indicating the proportion of\cr \tab \tab \tab
+   the external line that is drawn from the anchor to the text\cr
   }
 }
 \value{Plots a figure to the file given by the \var{filename} argument.}

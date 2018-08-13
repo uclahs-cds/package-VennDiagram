@@ -1,3 +1,8 @@
+VennDiagram 1.6.22 2018-08-13 (Christopher Lalansingh)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
+* A table in the latex documentation was poorly formatted and extended beyond the width of the page, now resolved
+
 VennDiagram 1.6.21 2018-06-04 (Jeffrey Green)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
