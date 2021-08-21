@@ -1,0 +1,8 @@
+---
+Category: 'tool'
+Description: 'A set of functions to generate high-resolution Venn and Euler plots. Includes handling for several special cases, including two-case scaling, and extensive customization of plot shape and structure.'
+Maintainers: ['pboutros@mednet.ucla.edu']
+Contributors: ['Paul C. Boutros']
+Languages: ['R']
+Dependencies: ['R (>= 2.14.1)', 'grid (>= 2.14.1)', 'futile.logger']
+References: ''  # is the tool/dependencies published, is there a confluence page
