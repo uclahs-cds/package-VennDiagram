@@ -56,110 +56,52 @@ draw.pairwise.venn <- function(
 
 	# area1 > area2 OR area1 < area2 plots the same Venn diagram.  Invert using the "inverted" argument.
 	# check parameter lengths and plausibility of Venn diagram
-	if (length(category) == 1) { category <- rep(category, 2); }
-	else if (length(category) != 2) { flog.error("Unexpected parameter length for 'category'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'category'"); }
-
-	if (length(ext.percent) == 1) { ext.percent <- rep(ext.percent, 3); }
-	else if (length(ext.percent) != 3) { flog.error("Unexpected parameter length for 'ext.percent'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'ext.percent'"); }
-
-	if (length(ext.pos) == 1) { ext.pos <- rep(ext.pos, 2); }
-	else if (length(ext.pos) != 2) { flog.error("Unexpected parameter length for 'ext.pos'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'ext.pos'"); }
-
-	if (length(ext.dist) == 1) { ext.dist <- rep(ext.dist, 2); }
-	else if (length(ext.dist) != 2) { flog.error("Unexpected parameter length for 'ext.dist'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'ext.dist'"); }
-
-	if (length(ext.length) == 1) { ext.length <- rep(ext.length, 2); }
-	else if (length(ext.length) != 2) { flog.error("Unexpected parameter length for 'ext.length'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'ext.length'"); }
-
-	if (length(lwd) == 1) { lwd <- rep(lwd, 2); }
-	else if (length(lwd) != 2) { flog.error("Unexpected parameter length for 'lwd'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lwd'"); }
-
-	if (length(lty) == 1) { lty <- rep(lty, 2); }
-	else if (length(lty) != 2) { flog.error("Unexpected parameter length for 'lty'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lty'"); }
-
-	if (length(col) == 1) { col <- rep(col, 2); }
-	else if (length(col) != 2) { flog.error("Unexpected parameter length for 'col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'col'"); }
-
-	if (length(label.col) == 1) { label.col <- rep(label.col, 3); }
-	else if (length(label.col) != 3) { flog.error("Unexpected parameter length for 'label.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'label.col'"); }
-
-	if (length(cex) == 1) { cex <- rep(cex, 3); }
-	else if (length(cex) != 3) { flog.error("Unexpected parameter length for 'cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cex'"); }
-
-	if (length(fontface) == 1) { fontface <- rep(fontface, 3); }
-	else if (length(fontface) != 3) { flog.error("Unexpected parameter length for 'fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontface'"); }
-
-	if (length(fontfamily) == 1) { fontfamily <- rep(fontfamily, 3); }
-	else if (length(fontfamily) != 3) { flog.error("Unexpected parameter length for 'fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontfamily'"); }
-
-	if (length(fill) == 1) { fill <- rep(fill, 2); }
-	else if (length(fill) != 2 & length(fill) != 0) { flog.error("Unexpected parameter length for 'fill'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fill'"); }
-
-	if (length(alpha) == 1) { alpha <- rep(alpha, 2); }
-	else if (length(alpha) != 2 & length(alpha) != 0) { flog.error("Unexpected parameter length for 'alpha'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'alpha'"); }
-
-	if (length(ext.line.lwd) != 1) { flog.error("Unexpected parameter length for 'ext.line.lwd'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'ext.line.lwd'"); }
-
-	if (length(cat.pos) == 1) { cat.pos <- rep(cat.pos, 2); }
-	else if (length(cat.pos) != 2) { flog.error("Unexpected parameter length for 'cat.pos'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.pos'"); }
-
-	if (length(cat.dist) == 1) { cat.dist <- rep(cat.dist, 2); }
-	else if (length(cat.dist) != 2) { flog.error("Unexpected parameter length for 'cat.dist'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.dist'"); }
-
-	if (length(cat.col) == 1) { cat.col <- rep(cat.col, 2); }
-	else if (length(cat.col) != 2) { flog.error("Unexpected parameter length for 'cat.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.col'"); }
-
-	if (length(cat.cex) == 1) { cat.cex <- rep(cat.cex, 2); }
-	else if (length(cat.cex) != 2) { flog.error("Unexpected parameter length for 'cat.cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.cex'"); }
-
-	if (length(cat.fontface) == 1) { cat.fontface <- rep(cat.fontface, 2); }
-	else if (length(cat.fontface) != 2) { flog.error("Unexpected parameter length for 'cat.fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontface'"); }
-
-	if (length(cat.fontfamily) == 1) { cat.fontfamily <- rep(cat.fontfamily, 2); }
-	else if (length(cat.fontfamily) != 2) { flog.error("Unexpected parameter length for 'cat.fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontfamily'"); }
-
-	if (length(offset) != 1) { flog.error("Unexpected parameter length for 'offset'. Try using 'rotation.degree' to achieve non-vertical offsets",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'offset'. Try using 'rotation.degree' to achieve non-vertical offsets"); }
-
-	if (!(class(cat.just) == "list" & length(cat.just) == 2 & length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2)) {
-		flog.error("Unexpected parameter format for 'cat.just'",name="VennDiagramLogger")
-stop("Unexpected parameter format for 'cat.just'");
-		}
-
-	# check uninterpretable parameters
-	if (!euler.d & scaled) {
-		flog.error("Uninterpretable parameter combination\nPlease set both euler.d = FALSE and scaled = FALSE to force Venn diagrams.",name="VennDiagramLogger")
-stop("Uninterpretable parameter combination\nPlease set both euler.d = FALSE and scaled = FALSE to force Venn diagrams.");
-		}
-	if (offset > 1 | offset < 0) {
-		flog.error("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to achieve offsets in the opposite direction.",name="VennDiagramLogger")
-stop("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to achieve offsets in the opposite direction.");
-		}
-
-	if (cross.area > area1 | cross.area > area2) { flog.error("Impossible: cross section area too large.",name="VennDiagramLogger")
-stop("Impossible: cross section area too large."); }
-	cat.pos <- cat.pos + rotation.degree;
+    category <- check.parameter.length(category, expected.length = 2, parameter.name = 'category');
+    ext.percent <- check.parameter.length(ext.percent, expected.length = 3, parameter.name = 'ext.percent');
+    ext.pos <- check.parameter.length(ext.pos, expected.length = 2, parameter.name = 'ext.pos');
+    ext.dist <- check.parameter.length(ext.dist, expected.length = 2, parameter.name = 'ext.dist');
+    ext.length <- check.parameter.length(ext.length, expected.length = 2, parameter.name = 'ext.length');
+    lwd <- check.parameter.length(lwd, expected.length = 2, parameter.name = 'lwd');
+    lty <- check.parameter.length(lty, expected.length = 2, parameter.name = 'lty');
+    col <- check.parameter.length(col, expected.length = 2, parameter.name = 'col');
+    label.col <- check.parameter.length(label.col, expected.length = 3, parameter.name = 'label.col');
+    cex <- check.parameter.length(cex, expected.length = 3, parameter.name = 'cex');
+    fontface <- check.parameter.length(fontface, expected.length = 3, parameter.name = 'fontface');
+    fontfamily <- check.parameter.length(fontfamily, expected.length = 3, parameter.name = 'fontfamily');
+    fill <- check.parameter.length(fill, expected.length = 2, parameter.name = 'fill', empty.valid = TRUE);
+    alpha <- check.parameter.length(alpha, expected.length = 2, parameter.name = 'alpha', empty.valid = TRUE);
+    
+    if (length(ext.line.lwd) != 1) {
+        raise.error('Unexpected parameter length for "ext.line.lwd"');
+    }
+    
+    cat.pos <- check.parameter.length(cat.pos, expected.length = 2, parameter.name = 'cat.pos');
+    cat.dist <- check.parameter.length(cat.dist, expected.length = 2, parameter.name = 'cat.dist');
+    cat.col <- check.parameter.length(cat.col, expected.length = 2, parameter.name = 'cat.col');
+    cat.cex <- check.parameter.length(cat.cex, expected.length = 2, parameter.name = 'cat.cex');
+    cat.fontface <- check.parameter.length(cat.fontface, expected.length = 2, parameter.name = 'cat.fontface');
+    cat.fontfamily <- check.parameter.length(cat.fontfamily, expected.length = 2, parameter.name = 'cat.fontfamily');
+    
+    if (length(offset) != 1) {
+        raise.error('Unexpected parameter length for "offset". Try using "rotation.degree" to achieve non-vertical offsets');
+        }
+    
+    check.list.parameter(cat.just, expected.list.length = 2, expected.value.length = 2, parameter.name = 'cat.just');
+    
+    # check uninterpretable parameters
+    if (!euler.d & scaled) {
+        raise.error('Uninterpretable parameter combination\nPlease set both euler.d = FALSE and scaled = FALSE to force Venn diagrams.');
+        }
+    
+    if (offset > 1 | offset < 0) {
+        raise.error('"Offset" must be between 0 and 1.  Try using "rotation.degree = 180" to achieve offsets in the opposite direction.');
+        }
+    
+    if (cross.area > area1 | cross.area > area2) {
+        raise.error('Impossible: cross section area too large.');
+        }
+	
+    cat.pos <- cat.pos + rotation.degree;
 
 	# check category label defaults
 	if (((cat.default.pos != 'outer') & (cat.default.pos != "text")) & cat.prompts) {

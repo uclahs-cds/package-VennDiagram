@@ -72,73 +72,30 @@ draw.quintuple.venn <- function(
 
 	#area1 > area2 > area3 > area4 > area5
 	# check parameter lengths
-	if (length(category) == 1) { cat <- rep(category, 5); }
-	else if (length(category) != 5) { flog.error("Unexpected parameter length for 'category'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'category'"); }
-
-	if (length(lwd) == 1) { lwd <- rep(lwd, 5); }
-	else if (length(lwd) != 5) { flog.error("Unexpected parameter length for 'lwd'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lwd'"); }
-
-	if (length(lty) == 1) { lty <- rep(lty, 5); }
-	else if (length(lty) != 5) { flog.error("Unexpected parameter length for 'lty'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lty'"); }
-
-	if (length(col) == 1) { col <- rep(col, 5); }
-	else if (length(col) != 5) { flog.error("Unexpected parameter length for 'col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'col'"); }
-
-	if (length(label.col) == 1) { label.col <- rep(label.col, 31); }
-	else if (length(label.col) != 31) { flog.error("Unexpected parameter length for 'label.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'label.col'"); }
-
-	if (length(cex) == 1) { cex <- rep(cex, 31); }
-	else if (length(cex) != 31) { flog.error("Unexpected parameter length for 'cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cex'"); }
-
-	if (length(fontface) == 1) { fontface <- rep(fontface, 31); }
-	else if (length(fontface) != 31) { flog.error("Unexpected parameter length for 'fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontface'"); }
-
-	if (length(fontfamily) == 1) { fontfamily <- rep(fontfamily, 31); }
-	else if (length(fontfamily) != 31) { flog.error("Unexpected parameter length for 'fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontfamily'"); }
-
-	if (length(fill) == 1) { fill <- rep(fill, 5); }
-	else if (length(fill) != 5 & length(fill) != 0) { flog.error("Unexpected parameter length for 'fill'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fill'"); }
-
-	if (length(alpha) == 1) { alpha <- rep(alpha, 5); }
-	else if (length(alpha) != 5 & length(alpha) != 0) { flog.error("Unexpected parameter length for 'alpha'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'alpha'"); }
-
-	if (length(cat.pos) == 1) { cat.pos <- rep(cat.pos, 5); }
-	else if (length(cat.pos) != 5) { flog.error("Unexpected parameter length for 'cat.pos'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.pos'"); }
-
-	if (length(cat.dist) == 1) { cat.dist <- rep(cat.dist, 5); }
-	else if (length(cat.dist) != 5) { flog.error("Unexpected parameter length for 'cat.dist'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.dist'"); }
-
-	if (length(cat.col) == 1) { cat.col <- rep(cat.col, 5); }
-	else if (length(cat.col) != 5) { flog.error("Unexpected parameter length for 'cat.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.col'"); }
-
-	if (length(cat.cex) == 1) { cat.cex <- rep(cat.cex, 5); }
-	else if (length(cat.cex) != 5) { flog.error("Unexpected parameter length for 'cat.cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.cex'"); }
-
-	if (length(cat.fontface) == 1) { cat.fontface <- rep(cat.fontface, 5); }
-	else if (length(cat.fontface) != 5) { flog.error("Unexpected parameter length for 'cat.fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontface'"); }
-
-	if (length(cat.fontfamily) == 1) { cat.fontfamily <- rep(cat.fontfamily, 5); }
-	else if (length(cat.fontfamily) != 5) { flog.error("Unexpected parameter length for 'cat.fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontfamily'"); }
-
-	if (!(class(cat.just) == "list" & length(cat.just) == 5 & length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2 & length(cat.just[[3]]) == 2 & length(cat.just[[4]]) == 2 & length(cat.just[[5]]) == 2)) { flog.error("Unexpected parameter format for 'cat.just'",name="VennDiagramLogger")
-stop("Unexpected parameter format for 'cat.just'"); }
-	cat.pos <- cat.pos + rotation.degree;
+    cat <- check.parameter.length(category, expected.length = 5, parameter.name = 'category');
+    lwd <- check.parameter.length(lwd, expected.length = 5, parameter.name = 'lwd');
+    lty <- check.parameter.length(lty, expected.length = 5, parameter.name = 'lty');
+    col <- check.parameter.length(col, expected.length = 5, parameter.name = 'col');
+    label.col <- check.parameter.length(label.col, expected.length = 31, parameter.name = 'label.col');
+    cex <- check.parameter.length(cex, expected.length = 31, parameter.name = 'cex');
+    fontface <- check.parameter.length(fontface, expected.length = 31, parameter.name = 'fontface');
+    fontfamily <- check.parameter.length(fontfamily, expected.length = 31, parameter.name = 'fontfamily');
+    fill <- check.parameter.length(fill, expected.length = 5, parameter.name = 'fill');
+    alpha <- check.parameter.length(alpha, expected.length = 5, parameter.name = 'alpha', empty.valid = TRUE);
+    cat.pos <- check.parameter.length(cat.pos, expected.length = 5, parameter.name = 'cat.pos');
+    cat.dist <- check.parameter.length(cat.dist, expected.length = 5, parameter.name = 'cat.dist');
+    cat.col <- check.parameter.length(cat.col, expected.length = 5, parameter.name = 'cat.col');
+    cat.cex <- check.parameter.length(cat.cex, expected.length = 5, parameter.name = 'cat.cex');
+    cat.fontface <- check.parameter.length(cat.fontface, expected.length = 5, parameter.name = 'cat.fontface');
+    cat.fontfamily <- check.parameter.length(cat.fontfamily, expected.length = 5, parameter.name = 'cat.fontfamily');
+    check.list.parameter(
+        cat.just,
+        expected.list.length = 5,
+        expected.value.length = 2,
+        parameter.name = 'cat.just'
+        );
+	
+    cat.pos <- cat.pos + rotation.degree;
 	
 	if(direct.area){
 		areas <- area.vector;
