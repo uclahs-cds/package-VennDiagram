@@ -50,34 +50,55 @@ draw.sp.case.scaled <- function(
 	######################Rotations
 	
 	#Need to check certain special rotations
-	if(sp.case.name == "111A" || sp.case.name == "011A"){
-		for(i in 1:3){
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
-			if (tmp$areas[7] == 0 & tmp$areas[4] == 0) { break; }
-			if (tmp$areas[7] == 0 & tmp$areas[6] == 0) { 
-				tmp <- VennDiagram::rotate.sp(tmp$areas, 1, reverse = TRUE);
-				break;
-			}
-		}
-	} else if(sp.case.name == "121AO"){ #Need to check all possible rotations
-		for (i in 1:6) {
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = (i>3));
-			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[5] & 0 == tmp$areas[6]) { break; }
-		}
-	} else if(sp.case.name == "022AAAO"){#Need to make sure reverse = FALSE
-		for (i in 1:6) {
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = i>3);
-			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[6] & 0 == tmp$areas[7]) { break; }
-		}
-	} else {#Normal rotations
-		break.ind <- c(2,4,5,6);#Break if these tmp$areas are equal to zero
-		#Get the break.ind by indexing a list by the sp.case.name
-		break.ind <- area.zeroes[[sp.case.name]];
-		for (i in 1:3) {
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
-			if (all(tmp$areas[break.ind]==0)) { break; }
-		}
-	}
+	switch(
+	    sp.case.name,
+	    "111A" = , "011A" = {
+    		for(i in 1:3) {
+    			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
+    			if (tmp$areas[7] == 0 & tmp$areas[4] == 0) {
+    			    break;
+    			    }
+    			
+    			if (tmp$areas[7] == 0 & tmp$areas[6] == 0) { 
+    				tmp <- VennDiagram::rotate.sp(tmp$areas, 1, reverse = TRUE);
+    				break;
+    			    }
+    		    }
+	        },
+	    "121AO" = {
+	        #Need to check all possible rotations
+	        for (i in 1:6) {
+	            tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = (i>3));
+	            
+	            if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[5] & 0 == tmp$areas[6]) {
+	                break;
+	                }
+	            }
+	        },
+	    "022AAAO" = {
+	        #Need to make sure reverse = FALSE
+	        for (i in 1:6) {
+	            tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = i>3);
+	            
+	            if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[6] & 0 == tmp$areas[7]) {
+	                break;
+	                }
+	            }
+	        },
+	    # Normal rotations
+	    {
+	        break.ind <- c(2,4,5,6);#Break if these tmp$areas are equal to zero
+	        #Get the break.ind by indexing a list by the sp.case.name
+	        break.ind <- area.zeroes[[sp.case.name]];
+	        
+	        for (i in 1:3) {
+	            tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
+	            if (all(tmp$areas[break.ind]==0)) {
+	                break;
+	                }
+	            }
+	        }
+	    );
 
 	a1 <- tmp$areas[1];
 	a2 <- tmp$areas[2];
@@ -125,278 +146,278 @@ draw.sp.case.scaled <- function(
 	########### Calculations of [xy].centre[1-3] and a[1-7].[xy].pos
 	########### Calculate the areas, radii and positions for each case seperately
 	
-	if (sp.case.name == "022AAAO"){
-		if (scaled) {
-			r1 <- sqrt((a1 + a2 + a5) / pi);
-			r2 <- sqrt((a2 + a5) / pi);
-			r3 <- sqrt(a5 / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-		}
-		else {
-			r1 <- 0.4;
-			r2 <- 0.25;
-			r3 <- 0.1;
-			}
+	switch(
+	    sp.case.name,
+	    "022AAAO" = {
+    		if (scaled) {
+    			r1 <- sqrt((a1 + a2 + a5) / pi);
+    			r2 <- sqrt((a2 + a5) / pi);
+    			r3 <- sqrt(a5 / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    		} else {
+    			r1 <- 0.4;
+    			r2 <- 0.25;
+    			r3 <- 0.1;
+    			}
 		
-		x.centre.1 <- 0.5;
-		y.centre.1 <- 0.5;
-		x.centre.2 <- 0.5 - offset * (r1 - r2);
-		y.centre.2 <- 0.5;
-		x.centre.3 <- 0.5 - offset * (r1 - r3);
-		y.centre.3 <- 0.5;
+    		x.centre.1 <- 0.5;
+    		y.centre.1 <- 0.5;
+    		x.centre.2 <- 0.5 - offset * (r1 - r2);
+    		y.centre.2 <- 0.5;
+    		x.centre.3 <- 0.5 - offset * (r1 - r3);
+    		y.centre.3 <- 0.5;
+    		
+    		a1.x.pos <- (1 + r2 - offset * (r1 - r2) + r1) / 2;
+    		a1.y.pos <- 0.5;
+    		a2.x.pos <- (1 + r3 - offset * (r1 - r3) + r2 - offset * (r1 - r2)) / 2;
+    		a2.y.pos <- 0.5;
+    		a5.x.pos <- x.centre.3;
+    		a5.y.pos <- 0.5;
+	        },
+	    "022AAOO" = {
+    		if (scaled) {
+    			if (a2 >= a7) {
+    			    d <- find.dist((a2 + a5), (a7 + a5), a5);
+    			    } else { 
+    			        d <- find.dist((a7 + a5), (a2 + a5), a5);
+    			        }
+    			
+    		    r1 <- sqrt((a2 + a5) / pi);
+    			r2 <- sqrt((a2 + a5) / pi);
+    			r3 <- sqrt((a5 + a7) / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    			d <- d * shrink.factor;
+    			} else {
+        			r1 <- 0.2;
+        			r2 <- 0.2;
+        			r3 <- 0.2;
+        			d <- 0.2;
+        			}
+
+    		x.centre.1 <- (1 + r1 - r2 - d) / 2;
+    		y.centre.1 <- 0.5;
+    		x.centre.2 <- x.centre.1;
+    		y.centre.2 <- 0.5;
+    		x.centre.3 <- x.centre.1 + d;
+    		y.centre.3 <- 0.5;
+    		
+    		a2.x.pos <- (x.centre.1 + x.centre.3 - r1 - r3) / 2;
+    		a2.y.pos <- 0.5;
+    		a5.x.pos <- (x.centre.1 + x.centre.3 + r1 - r3) / 2;
+    		a5.y.pos <- 0.5;
+    		a7.x.pos <- (x.centre.1 + x.centre.3 + r1 + r3) / 2;
+    		a7.y.pos <- 0.5;
+            },
+	    "023" = {
+    		if (scaled) {
+    			r1 <- sqrt((a2 + a5) / pi);
+    			r2 <- sqrt(a5 / pi);
+    			r3 <- sqrt((a2 + a5) / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    			} else {
+        			r1 <- 0.4;
+        			r2 <- 0.2;
+        			r3 <- 0.4;
+        			}
+
+    		x.centre.1 <- 0.5;
+    		y.centre.1 <- 0.5;
+    		x.centre.2 <- 0.5 - offset * (r1 - r2);
+    		y.centre.2 <- 0.5;
+    		x.centre.3 <- 0.5;
+    		y.centre.3 <- 0.5;
+    
+    		a2.x.pos <- (x.centre.1 + x.centre.2 + r1 + r2) / 2;
+    		a2.y.pos <- 0.5;
+    		a5.x.pos <- x.centre.2;
+    		a5.y.pos <- 0.5;
+	        },
+	    "032" = {
+    		if (scaled) {
+    			r1 <- sqrt((a1 + a5) / pi);
+    			r2 <- sqrt(a5 / pi);
+    			r3 <- sqrt(a5 / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    			} else {
+        			r1 <- 0.4;
+        			r2 <- 0.2;
+        			r3 <- 0.2;
+        			}
+        		
+    		x.centre.1 <- 0.5;
+    		y.centre.1 <- 0.5;
+    		x.centre.2 <- 0.5 - offset * (r1 - r2);
+    		y.centre.2 <- 0.5;
+    		x.centre.3 <- 0.5 - offset * (r1 - r3);
+    		y.centre.3 <- 0.5;
+    
+    		a1.x.pos <- (x.centre.1 + x.centre.2 + r1 + r2) / 2;
+    		a1.y.pos <- 0.5;
+    		a5.x.pos <- x.centre.2;
+    		a5.y.pos <- 0.5;
+	        }, 
+	    "120" = {
+    		if (scaled) {
+    			if (a1 >= a3) {
+    			    d <- find.dist(a1 + a2, a3 + a2, a2);
+    			    } else {
+        		        d <- find.dist(a3 + a2, a1 + a2, a2);
+        		        }
+    			
+    		    r1 <- sqrt((a1 + a2) / pi);
+    			r2 <- sqrt((a3 + a2) / pi);
+    			r3 <- sqrt(a7 / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    			d <- d * shrink.factor;
+    			} else {
+        			r1 <- 0.2;
+        			r2 <- 0.2;
+        			r3 <- 0.2;
+        			d <- 0.2;
+        			}
+
+    		upper.y <- 0.66;
+    		lower.x <- 0.5;
+    
+    		x.centre.1 <- (1 + r1 - r2 - d) / 2;
+    		x.centre.2 <- x.centre.1 + d;
+    		y.centre.1 <- upper.y;
+    		y.centre.2 <- upper.y;
+    		x.centre.3 <- lower.x;
+
+    		if (scaled) {
+    			if (a1 >= a3) {
+    				y.centre.3 <- y.centre.1 - sqrt(((r1 + r3) * (1 + sep.dist))^ 2 - (x.centre.1 - x.centre.3) ^2);
+    				} else {
+    				    y.centre.3 <- y.centre.2 - sqrt(((r2 + r3) * (1 + sep.dist)) ^ 2 - (x.centre.2 - x.centre.3) ^2);
+    				    }
+    			} else {
+        			if (a1 >= a3) {
+        				y.centre.3 <- y.centre.1 - sqrt((r1 + r3 + 0.03) ^ 2 - (x.centre.1 - x.centre.3) ^2);
+        				} else {
+            				y.centre.3 <- y.centre.2 - sqrt((r2 + r3 + 0.03) ^ 2 - (x.centre.2 - x.centre.3) ^2);
+            				}
+        			}
+
+    		a1.x.pos <- (x.centre.1 + x.centre.2 - r1 - r2) / 2;
+    		a1.y.pos <- upper.y;
+    		a3.x.pos <- (x.centre.1 + x.centre.2 + r1 + r2) / 2;
+    		a3.y.pos <- upper.y;
+    		a2.x.pos <- (x.centre.1 + x.centre.2 + r1 - r2) / 2;
+    		a2.y.pos <- upper.y;
+    		a7.x.pos <- x.centre.3;
+    		a7.y.pos <- y.centre.3;
+	        },
+	    "121AO" = {
+    		if (scaled) {
+    			r1 <- sqrt((a1 + a2) / pi);
+    			r2 <- sqrt(a2 / pi);
+    			r3 <- sqrt(a7 / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    			} else {
+        			r1 <- 0.2;
+        			r2 <- 0.1;
+        			r3 <- 0.2;
+        			}
+
+    		x.centre.1 <- r1;
+    		y.centre.1 <- 0.5;
+    		x.centre.2 <- x.centre.1 - offset * (r1 - r2);
+    		y.centre.2 <- 0.5;
+    		x.centre.3 <- x.centre.1 + (1 + sep.dist) * (r1 + r3);
+    		y.centre.3 <- 0.5;
+    
+    		a1.x.pos <- ((x.centre.1 - r1) + (x.centre.2 - r2)) / 2;
+    		a1.y.pos <- 0.5;
+    		a2.x.pos <- x.centre.1;
+    		a2.y.pos <- 0.5;
+    		a7.x.pos <- x.centre.3;
+    		a7.y.pos <- 0.5;
+	        },
+	    "122AAOO" = {
+    		if (scaled) {
+    			r1 <- sqrt(a2 / pi);
+    			r2 <- sqrt(a2 / pi);
+    			r3 <- sqrt(a7 / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    			} else {
+        			r1 <- 0.2;
+        			r2 <- 0.2;
+        			r3 <- 0.2;
+        			}
 		
-		a1.x.pos <- (1 + r2 - offset * (r1 - r2) + r1) / 2;
-		a1.y.pos <- 0.5;
-		a2.x.pos <- (1 + r3 - offset * (r1 - r3) + r2 - offset * (r1 - r2)) / 2;
-		a2.y.pos <- 0.5;
-		a5.x.pos <- x.centre.3;
-		a5.y.pos <- 0.5;
-		
-	} else if (sp.case.name == "022AAOO"){
-		if (scaled) {
-			if (a2 >= a7) { d <- find.dist((a2 + a5), (a7 + a5), a5) }
-			else  { d <- find.dist((a7 + a5), (a2 + a5), a5) }
-			r1 <- sqrt((a2 + a5) / pi);
-			r2 <- sqrt((a2 + a5) / pi);
-			r3 <- sqrt((a5 + a7) / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-			d <- d * shrink.factor;
-			}
-		else {
-			r1 <- 0.2;
-			r2 <- 0.2;
-			r3 <- 0.2;
-			d <- 0.2;
-			}
+    		x.centre.1 <- r1;
+    		y.centre.1 <- 0.5;
+    		x.centre.2 <- r1;
+    		y.centre.2 <- 0.5;
+    		x.centre.3 <- r1 + (1 + sep.dist) * (r1 + r3);
+    		y.centre.3 <- 0.5;
+    
+    		a2.x.pos <- x.centre.1;
+    		a2.y.pos <- 0.5;
+    		a7.x.pos <- x.centre.3;
+    		a7.y.pos <- 0.5;
+	        },
+	    "130" = {
+    		if (scaled) {
+    			r1 <- sqrt(a1 / pi);
+    			r2 <- sqrt(a3 / pi);
+    			r3 <- sqrt(a7 / pi);
+    			shrink.factor <- 0.2 / max(r1, r2, r3);
+    			r1 <- r1 * shrink.factor;
+    			r2 <- r2 * shrink.factor;
+    			r3 <- r3 * shrink.factor;
+    			} else {
+        			r1 <- 0.18;
+        			r2 <- 0.18;
+        			r3 <- 0.18;
+        			}
 
-		x.centre.1 <- (1 + r1 - r2 - d) / 2;
-		y.centre.1 <- 0.5;
-		x.centre.2 <- x.centre.1;
-		y.centre.2 <- 0.5;
-		x.centre.3 <- x.centre.1 + d;
-		y.centre.3 <- 0.5;
-		
-		a2.x.pos <- (x.centre.1 + x.centre.3 - r1 - r3) / 2;
-		a2.y.pos <- 0.5;
-		a5.x.pos <- (x.centre.1 + x.centre.3 + r1 - r3) / 2;
-		a5.y.pos <- 0.5;
-		a7.x.pos <- (x.centre.1 + x.centre.3 + r1 + r3) / 2;
-		a7.y.pos <- 0.5;
-		
-	} else if (sp.case.name == "023"){
-		if (scaled) {
-			r1 <- sqrt((a2 + a5) / pi);
-			r2 <- sqrt(a5 / pi);
-			r3 <- sqrt((a2 + a5) / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-			}
-		else {
-			r1 <- 0.4;
-			r2 <- 0.2;
-			r3 <- 0.4;
-			}
-
-		x.centre.1 <- 0.5;
-		y.centre.1 <- 0.5;
-		x.centre.2 <- 0.5 - offset * (r1 - r2);
-		y.centre.2 <- 0.5;
-		x.centre.3 <- 0.5;
-		y.centre.3 <- 0.5;
-
-		a2.x.pos <- (x.centre.1 + x.centre.2 + r1 + r2) / 2;
-		a2.y.pos <- 0.5;
-		a5.x.pos <- x.centre.2;
-		a5.y.pos <- 0.5;
-		
-	} else if (sp.case.name == "032"){
-		if (scaled) {
-			r1 <- sqrt((a1 + a5) / pi);
-			r2 <- sqrt(a5 / pi);
-			r3 <- sqrt(a5 / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-			}
-		else {
-			r1 <- 0.4;
-			r2 <- 0.2;
-			r3 <- 0.2;
-			}
-		
-		x.centre.1 <- 0.5;
-		y.centre.1 <- 0.5;
-		x.centre.2 <- 0.5 - offset * (r1 - r2);
-		y.centre.2 <- 0.5;
-		x.centre.3 <- 0.5 - offset * (r1 - r3);
-		y.centre.3 <- 0.5;
-
-		a1.x.pos <- (x.centre.1 + x.centre.2 + r1 + r2) / 2;
-		a1.y.pos <- 0.5;
-		a5.x.pos <- x.centre.2;
-		a5.y.pos <- 0.5;
-		
-	} else if (sp.case.name == "120"){
-		if (scaled) {
-			if (a1 >= a3) {	d <- find.dist(a1 + a2, a3 + a2, a2); }
-			if (a1 < a3)  { d <- find.dist(a3 + a2, a1 + a2, a2); }
-			r1 <- sqrt((a1 + a2) / pi);
-			r2 <- sqrt((a3 + a2) / pi);
-			r3 <- sqrt(a7 / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-			d <- d * shrink.factor;
-			}
-		else {
-			r1 <- 0.2;
-			r2 <- 0.2;
-			r3 <- 0.2;
-			d <- 0.2;
-			}
-
-		upper.y <- 0.66;
-		lower.x <- 0.5;
-
-		x.centre.1 <- (1 + r1 - r2 - d) / 2;
-		x.centre.2 <- x.centre.1 + d;
-		y.centre.1 <- upper.y;
-		y.centre.2 <- upper.y;
-		x.centre.3 <- lower.x;
-
-		if (scaled) {
-			if (a1 >= a3) {
-				y.centre.3 <- y.centre.1 - sqrt(((r1 + r3) * (1 + sep.dist))^ 2 - (x.centre.1 - x.centre.3) ^2);
-				}
-			if (a1 < a3) {
-				y.centre.3 <- y.centre.2 - sqrt(((r2 + r3) * (1 + sep.dist)) ^ 2 - (x.centre.2 - x.centre.3) ^2);
-				}
-			}
-		else {
-			if (a1 >= a3) {
-				y.centre.3 <- y.centre.1 - sqrt((r1 + r3 + 0.03) ^ 2 - (x.centre.1 - x.centre.3) ^2);
-				}
-			if (a1 < a3) {
-				y.centre.3 <- y.centre.2 - sqrt((r2 + r3 + 0.03) ^ 2 - (x.centre.2 - x.centre.3) ^2);
-				}
-			}
-
-		a1.x.pos <- (x.centre.1 + x.centre.2 - r1 - r2) / 2;
-		a1.y.pos <- upper.y;
-		a3.x.pos <- (x.centre.1 + x.centre.2 + r1 + r2) / 2;
-		a3.y.pos <- upper.y;
-		a2.x.pos <- (x.centre.1 + x.centre.2 + r1 - r2) / 2;
-		a2.y.pos <- upper.y;
-		a7.x.pos <- x.centre.3;
-		a7.y.pos <- y.centre.3;
-		
-	} else if (sp.case.name == "121AO"){
-		if (scaled) {
-			r1 <- sqrt((a1 + a2) / pi);
-			r2 <- sqrt(a2 / pi);
-			r3 <- sqrt(a7 / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-			}
-		else {
-			r1 <- 0.2;
-			r2 <- 0.1;
-			r3 <- 0.2;
-			}
-
-		x.centre.1 <- r1;
-		y.centre.1 <- 0.5;
-		x.centre.2 <- x.centre.1 - offset * (r1 - r2);
-		y.centre.2 <- 0.5;
-		x.centre.3 <- x.centre.1 + (1 + sep.dist) * (r1 + r3);
-		y.centre.3 <- 0.5;
-
-		a1.x.pos <- ((x.centre.1 - r1) + (x.centre.2 - r2)) / 2;
-		a1.y.pos <- 0.5;
-		a2.x.pos <- x.centre.1;
-		a2.y.pos <- 0.5;
-		a7.x.pos <- x.centre.3;
-		a7.y.pos <- 0.5;
-		
-	} else if (sp.case.name == "122AAOO"){
-		if (scaled) {
-			r1 <- sqrt(a2 / pi);
-			r2 <- sqrt(a2 / pi);
-			r3 <- sqrt(a7 / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-			}
-		else {
-			r1 <- 0.2;
-			r2 <- 0.2;
-			r3 <- 0.2;
-			}
-		
-		x.centre.1 <- r1;
-		y.centre.1 <- 0.5;
-		x.centre.2 <- r1;
-		y.centre.2 <- 0.5;
-		x.centre.3 <- r1 + (1 + sep.dist) * (r1 + r3);
-		y.centre.3 <- 0.5;
-
-		a2.x.pos <- x.centre.1;
-		a2.y.pos <- 0.5;
-		a7.x.pos <- x.centre.3;
-		a7.y.pos <- 0.5;
-		
-	} else if (sp.case.name == "130"){
-		if (scaled) {
-			r1 <- sqrt(a1 / pi);
-			r2 <- sqrt(a3 / pi);
-			r3 <- sqrt(a7 / pi);
-			shrink.factor <- 0.2 / max(r1, r2, r3);
-			r1 <- r1 * shrink.factor;
-			r2 <- r2 * shrink.factor;
-			r3 <- r3 * shrink.factor;
-			}
-		else {
-			r1 <- 0.18;
-			r2 <- 0.18;
-			r3 <- 0.18;
-			}
-
-		a <- (r1 + r2) * (1 + sep.dist[1]);
-		b <- (r2 + r3) * (1 + sep.dist[2]);
-		c <- (r1 + r3) * (1 + sep.dist[3]);
-
-		beta <- (a^2 + c^2 - b^2) / (2 * a * c);
-		gamma <- sqrt(1 - beta^2);
-		x.centre.1 <- (r1 - r2 - a + 1) / 2;
-		x.centre.3 <- x.centre.1 + c * beta;
-		y.centre.3 <- (r3 - r1 + 1 - c * gamma) / 2;
-		y.centre.1 <- y.centre.3 + c * gamma;
-		x.centre.2 <- x.centre.1 + a;
-		y.centre.2 <- y.centre.1;
-
-		a1.x.pos <- x.centre.1;
-		a1.y.pos <- y.centre.1;
-		a3.x.pos <- x.centre.2;
-		a3.y.pos <- y.centre.2;
-		a7.x.pos <- x.centre.3;
-		a7.y.pos <- y.centre.3;
-		
-	} else {
-		flog.info(paste0("The special case is not in the scaled cases: ",sp.case.name),name="VennDiagramLogger");
-	}
+    		a <- (r1 + r2) * (1 + sep.dist[1]);
+    		b <- (r2 + r3) * (1 + sep.dist[2]);
+    		c <- (r1 + r3) * (1 + sep.dist[3]);
+    
+    		beta <- (a^2 + c^2 - b^2) / (2 * a * c);
+    		gamma <- sqrt(1 - beta^2);
+    		x.centre.1 <- (r1 - r2 - a + 1) / 2;
+    		x.centre.3 <- x.centre.1 + c * beta;
+    		y.centre.3 <- (r3 - r1 + 1 - c * gamma) / 2;
+    		y.centre.1 <- y.centre.3 + c * gamma;
+    		x.centre.2 <- x.centre.1 + a;
+    		y.centre.2 <- y.centre.1;
+    
+    		a1.x.pos <- x.centre.1;
+    		a1.y.pos <- y.centre.1;
+    		a3.x.pos <- x.centre.2;
+    		a3.y.pos <- y.centre.2;
+    		a7.x.pos <- x.centre.3;
+    		a7.y.pos <- y.centre.3;
+	        }, 
+	    {
+	        flog.info(paste0("The special case is not in the scaled cases: ",sp.case.name),name="VennDiagramLogger");
+	        }
+	    );
 
 	a.list = c(r1, r2, r3);
 	b.list = c(r1, r2, r3);
@@ -412,14 +433,14 @@ draw.sp.case.scaled <- function(
 		}
 	}
 	
-	if(!sp.case.name %in% c("011A","022AAAO","023","032","033","111A","121AO"))
+	if(!sp.case.name %in% c("011A", "022AAAO", "023", "032", "033", "111A", "121AO"))
 	{
 		reverse = FALSE;
 	}
 	
 	straight.reverse = FALSE;
 	
-	if(!sp.case.name %in% c("011A","022AAAO","022AAOO","111A","120","121AO","122AAOO"))
+	if(!sp.case.name %in% c("011A", "022AAAO", "022AAOO", "111A", "120", "121AO", "122AAOO"))
 	{
 		straight.reverse = TRUE;
 	}

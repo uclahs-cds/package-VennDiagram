@@ -59,37 +59,56 @@ draw.sp.case.preprocess <- function(
 
 
 	######################Rotations
-	
-	#Need to check certain special rotations
-	if(sp.case.name == "111A" || sp.case.name == "011A"){
-		for(i in 1:3){
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
-			if (tmp$areas[7] == 0 & tmp$areas[4] == 0) { break; }
-			if (tmp$areas[7] == 0 & tmp$areas[6] == 0) { 
-				tmp <- VennDiagram::rotate.sp(tmp$areas, 1, reverse = TRUE,additional.rot = TRUE,additional.o7=tmp$o7,additional.o3=tmp$o3);
-				break;
-			}
-		}
-	} else if(sp.case.name == "121AO"){ #Need to check all possible rotations
-		for (i in 1:6) {
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = (i>3));
-			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[5] & 0 == tmp$areas[6]) { break; }
-		}
-	} else if(sp.case.name == "022AAAO"){#Need to make sure reverse = FALSE
-		for (i in 1:3) {
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse = FALSE);
-			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[6] & 0 == tmp$areas[7]) { break; }
-		}
-	} else {#Normal rotations
-		break.ind <- c(2,4,5,6);#Break if these tmp$areas are equal to zero
-		#Get the break.ind by indexing a list by the sp.case.name
-		break.ind <- area.zeroes[[sp.case.name]];
-		for (i in 1:3) {
-			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
-			if (all(tmp$areas[break.ind]==0)) { break; }
-		}
-	}
 
+	#Need to check certain special rotations
+	switch(
+	    sp.case.name,
+	    "111A" = , "011A" = {
+    		for(i in 1:3){
+    			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
+    			if (tmp$areas[7] == 0 & tmp$areas[4] == 0) {
+    			    break;
+    			    }
+    			
+    			if (tmp$areas[7] == 0 & tmp$areas[6] == 0) { 
+    				tmp <- VennDiagram::rotate.sp(tmp$areas, 1, reverse = TRUE,additional.rot = TRUE,additional.o7=tmp$o7,additional.o3=tmp$o3);
+    				break;
+    			    }
+    		    }
+	        },
+	    
+    	"121AO" = { 
+    	    #Need to check all possible rotations
+    		for (i in 1:6) {
+    			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), (i-1) %% 3 + 1, reverse = (i>3));
+    			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[5] & 0 == tmp$areas[6]) {
+    			    break;
+    			    }
+    		    }
+    	    },
+    	"022AAAO" = {
+    	    #Need to make sure reverse = FALSE
+    		for (i in 1:3) {
+    			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse = FALSE);
+    			if (0 == tmp$areas[3] & 0 == tmp$areas[4] & 0 == tmp$areas[6] & 0 == tmp$areas[7]) {
+    			    break;
+    			    }
+    		    }
+    	    },
+    	{
+    	    #Normal rotations
+    		break.ind <- c(2,4,5,6);#Break if these tmp$areas are equal to zero
+    		#Get the break.ind by indexing a list by the sp.case.name
+    		break.ind <- area.zeroes[[sp.case.name]];
+    		for (i in 1:3) {
+    			tmp <- VennDiagram::rotate.sp(c(a1, a2, a3, a4, a5, a6, a7), i, reverse);
+    			if (all(tmp$areas[break.ind]==0)) {
+    			    break;
+    			    }
+    		    }
+    	    }
+    	);
+	
 	a1 <- tmp$areas[1];
 	a2 <- tmp$areas[2];
 	a3 <- tmp$areas[3];
