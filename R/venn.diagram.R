@@ -59,7 +59,7 @@ venn.diagram <- function(
         	    name = 'VennDiagramLogger'
         	    );
     	    }
-	
+
 	# flog.threshold(if (disable.logging) WARN else INFO, name = 'VennDiagramLogger');
 
 	#Log the parameters the function was called with

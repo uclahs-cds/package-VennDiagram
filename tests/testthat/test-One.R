@@ -15,7 +15,7 @@ venn.test <- list();
 
 #Simple
 
-venn.test <- c(venn.test,list(draw.single.venn(100, 'First')));
+venn.test <- c(venn.test, list(draw.single.venn(100, 'First')));
 
 #Colour and Labeled
 
