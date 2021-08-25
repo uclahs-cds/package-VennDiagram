@@ -4,8 +4,8 @@
 \description{This function takes a list and creates a publication-quality TIFF Venn 
 Diagram}
 \usage{
-venn.diagram(x, filename, height = 3000, width = 3000, resolution =
-    500, imagetype = "tiff", units = "px", compression =
+venn.diagram(x, filename, disable.logging = FALSE, height = 3000, width = 3000, 
+    resolution = , imagetype = "tiff", units = "px", compression =
     "lzw", na = "stop", main = NULL, sub = NULL, main.pos
     = c(0.5, 1.05), main.fontface = "plain",
     main.fontfamily = "serif", main.col = "black",
@@ -21,6 +21,7 @@ venn.diagram(x, filename, height = 3000, width = 3000, resolution =
   \item{x}{A list of vectors (e.g., integers, chars), with each component corresponding 
   to a separate circle in the Venn diagram}
   \item{filename}{Filename for image output, or if NULL returns the grid object itself}
+  \item{disable.logging}{Boolean to disable log file output and print to console instead}
   \item{height}{Integer giving the height of the output figure in units}
   \item{width}{Integer giving the width of the output figure in units}
   \item{resolution}{Resolution of the final figure in DPI}
