@@ -38,4 +38,3 @@ rotate.venn.degrees <- function(gList1, angle = 90, x.centre = 0.5, y.centre = 0
 
 	return(gList1);
 	}
-

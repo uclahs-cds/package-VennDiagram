@@ -10,7 +10,7 @@
 # credit be given to OICR scientists, as scientifically appropriate.
 
 #This function performs the hypergeometric test on the two categories. Taken from package BoutrosLab.statistics.general
-calculate.overlap.and.pvalue = function(list1, list2, total.size, lower.tail = TRUE, adjust = FALSE) {
+calculate.overlap.and.pvalue <- function(list1, list2, total.size, lower.tail = TRUE, adjust = FALSE) {
 
         # calculate actual overlap
         actual.overlap <- length(intersect(list1, list2));
@@ -37,7 +37,5 @@ calculate.overlap.and.pvalue = function(list1, list2, total.size, lower.tail = T
                 );
 
         # return values
-        return( c(actual.overlap, expected.overlap, overlap.pvalue) );
-
+        return(c(actual.overlap, expected.overlap, overlap.pvalue));
         }
-

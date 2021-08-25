@@ -12,26 +12,25 @@
 ### ROTATION WITHOUT NEED OF OTHER ARGUMENTS ######################################################
 rotate.sp <- function(area.vector, rotation, reverse, additional.rot = FALSE, additional.o7 = 1:7, additional.o3 = 1:3) {
 
-	rot.f.7 <- list(1:7,c(3,6,7,2,5,4,1),c(7,4,1,6,5,2,3));
-	rot.f.3 <- list(1:3,c(2,3,1),c(3,1,2));
-	rot.r.7 <- list(c(3,2,1,6,5,4,7),c(7,6,3,4,5,2,1),c(1,4,7,2,5,6,3));
-	rot.r.3 <- list(c(2,1,3),3:1,c(1,3,2));
-	
+	rot.f.7 <- list(1:7, c(3,6,7,2,5,4,1), c(7,4,1,6,5,2,3));
+	rot.f.3 <- list(1:3, c(2,3,1), c(3,1,2));
+	rot.r.7 <- list(c(3,2,1,6,5,4,7), c(7,6,3,4,5,2,1), c(1,4,7,2,5,6,3));
+	rot.r.3 <- list(c(2,1,3),3:1, c(1,3,2));
+
 	#Add an additional rotation to the orders but not the areas for cases 011A and 111A
 	#Permutations are associative, so this allows for the chaining of the permutations (think of boxes with pointers above indicating the permutation)
-	if(additional.rot)
-	{
+	if (additional.rot) {
 		if (reverse) {
 			area.rot <- rot.r.7[[rotation]];
 			order.7 <- additional.o7[rot.r.7[[rotation]]];
 			order.3 <- additional.o3[rot.r.3[[rotation]]];
-		}
-		else {
-			area.rot <- rot.f.7[[rotation]];
-			order.7 <- additional.o7[rot.f.7[[rotation]]];
-			order.3 <- additional.o3[rot.f.3[[rotation]]];
-		}
-		return(
+		} else {
+    			area.rot <- rot.f.7[[rotation]];
+    			order.7 <- additional.o7[rot.f.7[[rotation]]];
+    			order.3 <- additional.o3[rot.f.3[[rotation]]];
+    		}
+
+	    return(
 			list(
 				areas = area.vector[area.rot],
 				o7 = order.7,
@@ -39,17 +38,16 @@ rotate.sp <- function(area.vector, rotation, reverse, additional.rot = FALSE, ad
 				)
 			);
 		}
-	
+
 	#If not adding an additional rotation to only the orders but not the areas, then continue as usual
 
 	if (reverse) {
 			order.7 <- rot.r.7[[rotation]];
 			order.3 <- rot.r.3[[rotation]];
-		}
-	else {
+		} else {
 			order.7 <- rot.f.7[[rotation]];
 			order.3 <- rot.f.3[[rotation]];
-		}
+		    }
 
 	return(
 		list(

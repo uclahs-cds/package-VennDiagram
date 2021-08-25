@@ -21,7 +21,7 @@ raise.length.error <- function(parameter.name) {
     }
 
 check.parameter.length <- function(
-    value, 
+    value,
     expected.length,
     parameter.name,
     condition = NULL,
@@ -29,12 +29,12 @@ check.parameter.length <- function(
     ) {
 
     result <- value;
-    
+
     if (is.null(condition)) {
         is.valid <- length(value) == expected.length | (empty.valid & length(value) == 0);
         } else {
             is.valid <- condition(value);
-        }
+            }
 
     if (length(value) == 1) {
         result <- rep(value, expected.length);
@@ -49,15 +49,15 @@ check.list.parameter <- function(
     values,
     expected.list.length,
     expected.value.length,
-    parameter.name                             
+    parameter.name
     ) {
-    
+
     error.message <- paste0('Unexpected parameter format for "', parameter.name, '"');
-    
+
     if (!(is.list(values) && length(values) == expected.list.length)) {
         raise.error(error.message);
         }
-    
+
     for (v in values) {
         if (length(v) != expected.value.length) {
             raise.error(error.message);
