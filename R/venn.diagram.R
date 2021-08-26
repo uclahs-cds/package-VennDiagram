@@ -13,6 +13,7 @@
 venn.diagram <- function(
 	x,
 	filename,
+	disable.logging = FALSE,
 	height = 3000,
 	width = 3000,
 	resolution = 500,
@@ -50,12 +51,14 @@ venn.diagram <- function(
 	time.string = gsub(":", "-", gsub(" ", "_", as.character(Sys.time())))
 	
 	#Initialize the logger to output to file
-	if(!is.null(filename)){
-		flog.appender(appender.file(paste0(filename,".",time.string,".log")), name='VennDiagramLogger')
-	}
-	else{
-		flog.appender(appender.file(paste0("VennDiagram",time.string,".log")), name='VennDiagramLogger')
-	}
+	if (disable.logging) {
+	    flog.appender(appender.console(), name = 'VennDiagramLogger');
+    	} else {
+    	    flog.appender(appender.file(
+    	        paste0(if (!is.null(filename)) filename else 'VennDiagram', '.', time.string, '.log')),
+    	        name = 'VennDiagramLogger'
+    	    );
+    	}
 	
 	#Log the parameters the function was called with
 	out.list = as.list(sys.call())
