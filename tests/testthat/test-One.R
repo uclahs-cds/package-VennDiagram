@@ -63,6 +63,3 @@ for (i in 1:length(venn.test)) {
     	    }
     	);
     }
-
-#Reaches here only if error is not thrown beforehand
-print("One category tests complete. No discrepancies found");

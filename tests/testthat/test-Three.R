@@ -408,6 +408,3 @@ for (i in 1:length(venn.plot)) {
 	        }
         );
     }
-
-#Reaches here only if error is not thrown beforehand
-print("Three category tests complete. No discrepancies found");

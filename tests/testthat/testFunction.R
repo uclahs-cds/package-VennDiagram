@@ -14,7 +14,6 @@ is_identical_without_name <- function(x, y,maxLength=5){
 	raw.y$"y" <- as.numeric(raw.y$"y");
 	
 	ret <- isTRUE(all.equal(raw.x,raw.y));
-	retStr <- "";#Initialize the return string for later processing if ret isn't true
 	
 	if(!ret)#If there are differences between them, then print them out
 	{
@@ -42,8 +41,9 @@ is_identical_without_name <- function(x, y,maxLength=5){
 		retStr <- paste("has different (",diffNameStr,") in",x);
 		retStr <- paste(retStr,"\n\tTotal:",totalDiff,"| Numeric:",numericDiff,"| Character:",characterDiff);
 		retStr <- paste(retStr,"\n\tThe values are (",diffStrX,") compared to (",diffStrY,")");
+		
+		print(retStr);
 	}
-	
-	print(retStr);
+
 	return(ret);
 	}
