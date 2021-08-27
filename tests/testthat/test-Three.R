@@ -394,14 +394,20 @@ for(i in 1:length(venn.test)){
 }
 
 #Loop over all of the test cases
-for(i in 1:length(venn.plot)){
-	test_that(paste("Case",testNames[i],"of three categories"),
-	{
-		for(j in 1:length(venn.plot[[i]])){
-			expect_that(venn.test[[i]][[j]],is_identical_without_name(venn.plot[[i]][[j]]));
-		}
-	})
-}
+for (i in 1:length(venn.plot)) {
+	test_that(
+	    paste("Case",testNames[i],"of three categories"), {
+    		for(j in 1:length(venn.plot[[i]])) {
+    			expect_true(
+    			    is_identical_without_name(
+    			        venn.test[[i]][[j]],
+    			        venn.plot[[i]][[j]]
+    			        )
+    			    );
+    		    }
+	        }
+        );
+    }
 
 #Reaches here only if error is not thrown beforehand
 print("Three category tests complete. No discrepancies found");
