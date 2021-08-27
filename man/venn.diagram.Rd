@@ -4,10 +4,10 @@
 \description{This function takes a list and creates a publication-quality TIFF Venn 
 Diagram}
 \usage{
-venn.diagram(x, filename, disable.logging = FALSE, height = 3000, width = 3000, 
-    resolution = , imagetype = "tiff", units = "px", compression =
-    "lzw", na = "stop", main = NULL, sub = NULL, main.pos
-    = c(0.5, 1.05), main.fontface = "plain",
+venn.diagram(x, filename, disable.logging = FALSE, height = 3000, 
+    width = 3000, resolution = 500, imagetype = "tiff", 
+    units = "px", compression = "lzw", na = "stop", main = NULL, 
+    sub = NULL, main.pos = c(0.5, 1.05), main.fontface = "plain",
     main.fontfamily = "serif", main.col = "black",
     main.cex = 1, main.just = c(0.5, 1), sub.pos = c(0.5,
     1.05), sub.fontface = "plain", sub.fontfamily =
