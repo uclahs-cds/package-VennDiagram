@@ -8,7 +8,7 @@ source("testFunction.R");
 load("data/plotsOne.rda");
 
 #Suppress plotting for sanity
-options(device=pdf());
+options(device=pdf(file = NULL));
 
 #initialize the testing list of venn diagrams
 venn.test <- list();
