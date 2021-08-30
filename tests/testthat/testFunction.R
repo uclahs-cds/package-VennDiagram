@@ -12,12 +12,16 @@ is_identical_without_name <- function(x, y,maxLength=5){
 	raw.x$"y" <- as.numeric(raw.x$"y");
 	raw.y$"x" <- as.numeric(raw.y$"x");
 	raw.y$"y" <- as.numeric(raw.y$"y");
-	
+
 	ret <- isTRUE(all.equal(raw.x,raw.y));
-	
+
 	if(!ret)#If there are differences between them, then print them out
 	{
-		diffInd <- which(raw.x!=raw.y);
+		diffInd <- c(
+		    which(!(raw.x %in% raw.y)),
+		    if (length(raw.y) > length(raw.x)) (length(raw.x) + 1):length(raw.y) else c()
+		    );
+		
 		diffNames <- names(raw.x)[diffInd];#Get the name of the differences
 		diffValuesX <- raw.x[diffInd];
 		diffValuesY <- raw.y[diffInd];
@@ -43,7 +47,7 @@ is_identical_without_name <- function(x, y,maxLength=5){
 		retStr <- paste(retStr,"\n\tThe values are (",diffStrX,") compared to (",diffStrY,")");
 		
 		print(retStr);
-	}
-
+	    }
+	
 	return(ret);
 	}
