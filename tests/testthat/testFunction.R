@@ -17,7 +17,7 @@ is_identical_without_name <- function(x, y,maxLength=5){
 
 	if(!ret)#If there are differences between them, then print them out
 	{
-		diffInd <- c(
+	    diffInd <- c(
 		    which(!(raw.x %in% raw.y)),
 		    if (length(raw.y) > length(raw.x)) (length(raw.x) + 1):length(raw.y) else c()
 		    );
@@ -42,11 +42,9 @@ is_identical_without_name <- function(x, y,maxLength=5){
 			diffStrY <- toString(diffValuesY);
 		}
 		
-		retStr <- paste("has different (",diffNameStr,") in",x);
-		retStr <- paste(retStr,"\n\tTotal:",totalDiff,"| Numeric:",numericDiff,"| Character:",characterDiff);
-		retStr <- paste(retStr,"\n\tThe values are (",diffStrX,") compared to (",diffStrY,")");
-		
-		print(retStr);
+		print(paste("has different", paste0('(', diffNameStr, ')'), "in", x));
+		print(paste("Total:", totalDiff, "| Numeric:", numericDiff, "| Character:", characterDiff));
+		print(paste("The values are", paste0('(', diffStrX, ')'), "compared to", paste0('(', diffStrY, ')')));
 	    }
 	
 	return(ret);
