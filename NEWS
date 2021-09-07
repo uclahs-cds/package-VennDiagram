@@ -1,3 +1,8 @@
+VennDiagram 1.6.23 2021-08-27 (Dan Knight)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATES
+* Added option to disable .log file output and print to console instead
+
 VennDiagram 1.6.22 2018-08-13 (Christopher Lalansingh)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
