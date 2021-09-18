@@ -12,24 +12,24 @@
 ### FUNCTION TO DRAW VENN DIAGRAM WITH A SINGLE SET ###############################################
 draw.single.venn <- function(
 	area,
-	category = "",
+	category = '',
 	lwd = 2,
-	lty = "solid",
-	col = "black",
+	lty = 'solid',
+	col = 'black',
 	fill = NULL,
 	alpha = 0.5,
-	label.col = "black",
+	label.col = 'black',
 	cex = 1,
-	fontface = "plain",
-	fontfamily = "serif",
+	fontface = 'plain',
+	fontfamily = 'serif',
 	cat.pos = 0,
 	cat.dist = 0.025,
 	cat.cex = 1,
-	cat.col = "black",
-	cat.fontface = "plain",
-	cat.fontfamily = "serif",
+	cat.col = 'black',
+	cat.fontface = 'plain',
+	cat.fontfamily = 'serif',
 	cat.just = list(c(0.5, 0.5)),
-	cat.default.pos = "outer",
+	cat.default.pos = 'outer',
 	cat.prompts = FALSE,
 	rotation.degree = 0,
 	rotation.centre = c(0.5, 0.5),
@@ -38,57 +38,57 @@ draw.single.venn <- function(
 	) {
 
 	# check parameter lengths
-	if (length(category) != 1) { flog.error("Unexpected parameter length for 'category'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'category'"); }
-	if (length(lwd) != 1) { flog.error("Unexpected parameter length for 'lwd'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lwd'"); }
-	if (length(lty) != 1) { flog.error("Unexpected parameter length for 'lty'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lty'"); }
-	if (length(col) != 1) { flog.error("Unexpected parameter length for 'col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'col'"); }
-	if (length(label.col) != 1) { flog.error("Unexpected parameter length for 'label.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'label.col'"); }
-	if (length(cex) != 1) { flog.error("Unexpected parameter length for 'cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cex'"); }
-	if (length(fontface) != 1) { flog.error("Unexpected parameter length for 'fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontface'"); }
-	if (length(fontfamily) != 1) { flog.error("Unexpected parameter length for 'fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontfamily'"); }
-	if (length(fill) != 1 & length(fill) != 0) { flog.error("Unexpected parameter length for 'fill'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fill'"); }
-	if (length(alpha) != 1 & length(alpha) != 0) { flog.error("Unexpected parameter length for 'alpha'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'alpha'"); }
-	if (length(cat.pos) != 1) { flog.error("Unexpected parameter length for 'cat.pos'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.pos'"); }
-	if (length(cat.dist) != 1) { flog.error("Unexpected parameter length for 'cat.dist'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.dist'"); }
-	if (length(cat.col) != 1) { flog.error("Unexpected parameter length for 'cat.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.col'"); }
-	if (length(cat.cex) != 1) { flog.error("Unexpected parameter length for 'cat.cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.cex'"); }
-	if (length(cat.fontface) != 1) { flog.error("Unexpected parameter length for 'cat.fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontface'"); }
-	if (length(cat.fontfamily) != 1) { flog.error("Unexpected parameter length for 'cat.fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontfamily'"); }
-	if (!(class(cat.just) == "list" & length(cat.just) == 1 & length(cat.just[[1]]) == 2)) { flog.error("Unexpected parameter format for 'cat.just'",name="VennDiagramLogger")
-stop("Unexpected parameter format for 'cat.just'"); }
+	if (length(category) != 1) { flog.error('Unexpected parameter length for "category"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "category"'); }
+	if (length(lwd) != 1) { flog.error('Unexpected parameter length for "lwd"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "lwd"'); }
+	if (length(lty) != 1) { flog.error('Unexpected parameter length for "lty"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "lty"'); }
+	if (length(col) != 1) { flog.error('Unexpected parameter length for "col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "col"'); }
+	if (length(label.col) != 1) { flog.error('Unexpected parameter length for "label.col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "label.col"'); }
+	if (length(cex) != 1) { flog.error('Unexpected parameter length for "cex"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cex"'); }
+	if (length(fontface) != 1) { flog.error('Unexpected parameter length for "fontface"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fontface"'); }
+	if (length(fontfamily) != 1) { flog.error('Unexpected parameter length for "fontfamily"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fontfamily"'); }
+	if (length(fill) != 1 & length(fill) != 0) { flog.error('Unexpected parameter length for "fill"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fill"'); }
+	if (length(alpha) != 1 & length(alpha) != 0) { flog.error('Unexpected parameter length for "alpha"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "alpha"'); }
+	if (length(cat.pos) != 1) { flog.error('Unexpected parameter length for "cat.pos"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.pos"'); }
+	if (length(cat.dist) != 1) { flog.error('Unexpected parameter length for "cat.dist"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.dist"'); }
+	if (length(cat.col) != 1) { flog.error('Unexpected parameter length for "cat.col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.col"'); }
+	if (length(cat.cex) != 1) { flog.error('Unexpected parameter length for "cat.cex"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.cex"'); }
+	if (length(cat.fontface) != 1) { flog.error('Unexpected parameter length for "cat.fontface"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.fontface"'); }
+	if (length(cat.fontfamily) != 1) { flog.error('Unexpected parameter length for "cat.fontfamily"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.fontfamily"'); }
+	if (!(class(cat.just) == 'list' & length(cat.just) == 1 & length(cat.just[[1]]) == 2)) { flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
+stop('Unexpected parameter format for "cat.just"'); }
 
 	cat.pos <- cat.pos + rotation.degree;
 
 	# check category label defaults
 	if (cat.default.pos != 'outer' & cat.default.pos != 'text' & category != '' & cat.prompts) {
-		flog.info("No default location recognized.  Automatically changing to 'outer'",name="VennDiagramLogger");
+		flog.info('No default location recognized.  Automatically changing to "outer"',name='VennDiagramLogger');
 		cat.default.pos <- 'outer';
 		}
-	if (cat.default.pos == "outer" & category != "" & cat.prompts) {
-		flog.info("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.",name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.pos':", cat.pos, 'degrees'),name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.dist':", cat.dist),name="VennDiagramLogger");
+	if (cat.default.pos == 'outer' & category != '' & cat.prompts) {
+		flog.info('Placing category labels at default outer locations.  Use "cat.pos" and "cat.dist" to modify location.',name='VennDiagramLogger');
+		flog.info(paste('Current "cat.pos":', cat.pos, 'degrees'),name='VennDiagramLogger');
+		flog.info(paste('Current "cat.dist":', cat.dist),name='VennDiagramLogger');
 		}
-	if (cat.default.pos == "text" & category != "" & cat.prompts) {
-		flog.info("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.",name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.pos':", cat.pos, 'degrees'),name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.dist':", cat.dist),name="VennDiagramLogger");
+	if (cat.default.pos == 'text' & category != '' & cat.prompts) {
+		flog.info('Placing category labels at default text locations.  Use "cat.pos" and "cat.dist" to modify location.',name='VennDiagramLogger');
+		flog.info(paste('Current "cat.pos":', cat.pos, 'degrees'),name='VennDiagramLogger');
+		flog.info(paste('Current "cat.dist":', cat.dist),name='VennDiagramLogger');
 		}
 
 	max.circle.size = 0.2;

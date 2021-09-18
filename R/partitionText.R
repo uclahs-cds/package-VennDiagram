@@ -12,9 +12,9 @@
 make.truth.table <- function(x)
 {
   #Fix missing or duplicated names
-  if(is.null(names(x)) || any(c(NA,"") %in% names(x)) || (length(unique(names(x))) != length(names(x))))
+  if(is.null(names(x)) || any(c(NA,'') %in% names(x)) || (length(unique(names(x))) != length(names(x))))
   {
-    warning("fixing missing, empty or duplicated names.")
+    warning('fixing missing, empty or duplicated names.')
     nx <- if(is.null(names(x))) seq_along(x) else names(x)
     names(x) <- make.names(nx, unique = TRUE)
   }  
@@ -77,13 +77,13 @@ make.truth.table <- function(x)
 get.venn.partitions <- function(x, force.unique = TRUE, keep.elements = TRUE, hierarchical=FALSE)
 {
 	#Check typing of arguments
-  stopifnot(typeof(x)=="list");
-  stopifnot(typeof(force.unique)=="logical");
+  stopifnot(typeof(x)=='list');
+  stopifnot(typeof(force.unique)=='logical');
   
   #Check for empty entries in the list
   emptyInds <- unlist(lapply(x,is.null));
   if(any(emptyInds)){
-	warning("removing NULL elements in list.");
+	warning('removing NULL elements in list.');
 	x <- x[!emptyInds];
   }
   
@@ -101,7 +101,7 @@ get.venn.partitions <- function(x, force.unique = TRUE, keep.elements = TRUE, hi
     x <- lapply(x, function(xRow){
 		ret <- data.frame(x=xRow)
 		ret <- cbind(ret,1);#For aggregating into a count by summing
-		colnames(ret) <- c("x","n");
+		colnames(ret) <- c('x','n');
 		ret <- aggregate(ret,by=list(ret$x),FUN=sum);
 		ret$x <- ret$Group.1;
 		ret$Group.1 <- NULL;
@@ -119,14 +119,14 @@ get.venn.partitions <- function(x, force.unique = TRUE, keep.elements = TRUE, hi
       1,
       function(categories)
       {  
-        include <- paste(names(x)[categories], collapse = "\u2229") # \u2229 = Unicode intersection
+        include <- paste(names(x)[categories], collapse = '\u2229') # \u2229 = Unicode intersection
         if(all(categories))
         {
           return(include)
         }
-        include <- paste0("(",include,")");
-        exclude <- paste0("(",paste(names(x)[!categories], collapse = "\u222a"),")"); # \u222a = Unicode union
-        paste(include, exclude, sep = "\u2216") # \u2216 = Unicode set difference
+        include <- paste0('(',include,')');
+        exclude <- paste0('(',paste(names(x)[!categories], collapse = '\u222a'),')'); # \u222a = Unicode union
+        paste(include, exclude, sep = '\u2216') # \u2216 = Unicode set difference
       }
   );
   
@@ -221,7 +221,7 @@ get.venn.partitions <- function(x, force.unique = TRUE, keep.elements = TRUE, hi
   out <- cbind(out,setEle);
   out <- cbind(out,setNum);
   
-  colnames(out)[(ncol(out)-2):(ncol(out))] <- c("..set..","..values..","..count..");
+  colnames(out)[(ncol(out)-2):(ncol(out))] <- c('..set..','..values..','..count..');
   
   #If the actual elements of the sets are not to be printed, remove them
   if(!keep.elements){
@@ -231,7 +231,7 @@ get.venn.partitions <- function(x, force.unique = TRUE, keep.elements = TRUE, hi
   #Make the output of the set a character vector instead of a factor so you can encode the output
   out$..set.. <- as.character(out$..set..);
   
-  Encoding(out$..set..) <- "UTF-8"
+  Encoding(out$..set..) <- 'UTF-8'
   return(out)
 }
 

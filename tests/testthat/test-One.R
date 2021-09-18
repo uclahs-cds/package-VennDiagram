@@ -2,10 +2,10 @@
 library(testthat)
 
 #Get the testing function applied to compare the two venn diagram objects
-source("testFunction.R");
+source('testFunction.R');
 
 #load in the reference plot data
-load("data/plotsOne.rda");
+load('data/plotsOne.rda');
 
 #Suppress plotting for sanity
 options(device=pdf(file = NULL));
@@ -15,22 +15,22 @@ venn.test <- list();
 
 #Simple
 
-venn.test <- c(venn.test,list(draw.single.venn(100, "First")))
+venn.test <- c(venn.test,list(draw.single.venn(100, 'First')))
 
 #Colour and Labeled
 
 venn.test <- c(venn.test,list(draw.single.venn(
     area = 365,
-    category = "All\nDays",
+    category = 'All\nDays',
     lwd = 5,
-    lty = "blank",
+    lty = 'blank',
     cex = 3,
-    label.col = "orange",
+    label.col = 'orange',
     cat.cex = 4,
     cat.pos = 180,
     cat.dist = -0.20,
-    cat.col = "white",
-    fill = "red",
+    cat.col = 'white',
+    fill = 'red',
     alpha = 0.15
     )))
 
@@ -40,7 +40,7 @@ testNames <- c('simple','colour');
 
 for(i in 1:length(venn.test)){
 	for(j in 1:length(venn.test[[i]])){
-		if(class(venn.test[[i]][[j]])[1] == "polygon"){
+		if(class(venn.test[[i]][[j]])[1] == 'polygon'){
 			venn.test[[i]][[j]]$x <- NULL;
 			venn.test[[i]][[j]]$y <- NULL;
 		}
@@ -50,7 +50,7 @@ for(i in 1:length(venn.test)){
 #Loop over all of the test cases
 for (i in 1:length(venn.test)) {
 	test_that(
-	    paste("Case", testNames[i], "of one category"), {
+	    paste('Case', testNames[i], 'of one category'), {
     		for (j in 1:length(venn.test[[i]])) {
     			expect_true(
     			    is_identical_without_name(

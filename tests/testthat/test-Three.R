@@ -2,10 +2,10 @@
 library(testthat)
 
 #Get the testing function applied to compare the two venn diagram objects
-source("testFunction.R");
+source('testFunction.R');
 
 #load in the reference plot data
-load("data/plotsThree.rda");
+load('data/plotsThree.rda');
 
 #Suppress plotting for sanity
 options(device=pdf(file = NULL));
@@ -16,7 +16,7 @@ venn.test <- list();
 #Default
 
 venn.test <- c(venn.test,list(draw.triple.venn(65, 75, 85,
- 35, 15, 25, 5, c("First", "Second", "Third"))))
+ 35, 15, 25, 5, c('First', 'Second', 'Third'))))
 
 #Default and Colour
 
@@ -28,12 +28,12 @@ venn.test <- c(venn.test,list(draw.triple.venn(
     n23 = 15,
     n13 = 25,
     n123 = 5,
-    category = c("First", "Second", "Third"),
-    fill = c("blue", "red", "green"),
-    lty = "blank",
+    category = c('First', 'Second', 'Third'),
+    fill = c('blue', 'red', 'green'),
+    lty = 'blank',
     cex = 2,
     cat.cex = 2,
-    cat.col = c("blue", "red", "green")
+    cat.col = c('blue', 'red', 'green')
     )))
 
 #001
@@ -386,7 +386,7 @@ testNames <- c('default','colour-default','001','010','011A','011O','012AA','021
 
 for(i in 1:length(venn.test)){
 	for(j in 1:length(venn.test[[i]])){
-		if(class(venn.test[[i]][[j]])[1] == "polygon"){
+		if(class(venn.test[[i]][[j]])[1] == 'polygon'){
 			venn.test[[i]][[j]]$x <- NULL;
 			venn.test[[i]][[j]]$y <- NULL;
 		}
@@ -396,7 +396,7 @@ for(i in 1:length(venn.test)){
 #Loop over all of the test cases
 for (i in 1:length(venn.plot)) {
 	test_that(
-	    paste("Case",testNames[i],"of three categories"), {
+	    paste('Case',testNames[i],'of three categories'), {
     		for(j in 1:length(venn.plot[[i]])) {
     			expect_true(
     			    is_identical_without_name(
