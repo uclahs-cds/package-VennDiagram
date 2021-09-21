@@ -18,28 +18,28 @@ draw.triple.venn <- function(
 	n23,
 	n13,
 	n123,
-	category = rep("", 3),
+	category = rep('', 3),
 	rotation = 1,
 	reverse = FALSE,
 	euler.d = TRUE,
 	scaled = TRUE,
 	lwd = rep(2, 3),
-	lty = rep("solid", 3),
-	col = rep("black", 3),
+	lty = rep('solid', 3),
+	col = rep('black', 3),
 	fill = NULL,
 	alpha = rep(0.5, 3),
-	label.col = rep("black", 7),
+	label.col = rep('black', 7),
 	cex = rep(1, 7),
-	fontface = rep("plain", 7),
-	fontfamily = rep("serif", 7),
+	fontface = rep('plain', 7),
+	fontfamily = rep('serif', 7),
 	cat.pos = c(-40, 40, 180),
 	cat.dist = c(0.05, 0.05, 0.025),
-	cat.col = rep("black", 3),
+	cat.col = rep('black', 3),
 	cat.cex = rep(1, 3),
-	cat.fontface = rep("plain", 3),
-	cat.fontfamily = rep("serif", 3),
+	cat.fontface = rep('plain', 3),
+	cat.fontfamily = rep('serif', 3),
 	cat.just = list(c(0.5, 1), c(0.5, 1), c(0.5, 0)),
-	cat.default.pos = "outer",
+	cat.default.pos = 'outer',
 	cat.prompts = FALSE,
 	rotation.degree = 0,
 	rotation.centre = c(0.5, 0.5),
@@ -47,7 +47,7 @@ draw.triple.venn <- function(
 	sep.dist = 0.05,
 	offset = 0,
     cex.prop=NULL,
-    print.mode = "raw",
+    print.mode = 'raw',
     sigdigs=3,
     direct.area=FALSE,
     area.vector=0,
@@ -57,82 +57,82 @@ draw.triple.venn <- function(
 	# area1 must be greater than area2, which must be greater than area3
 	# check parameter lengths
 	if (length(category) == 1) {cat <- rep(category, 3); }
-	else if (length(category) != 3) { flog.error("Unexpected parameter length for 'category'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'category'"); }
+	else if (length(category) != 3) { flog.error('Unexpected parameter length for "category"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "category"'); }
 
 	if (length(lwd) == 1) { lwd <- rep(lwd, 3); }
-	else if (length(lwd) != 3) { flog.error("Unexpected parameter length for 'lwd'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lwd'"); }
+	else if (length(lwd) != 3) { flog.error('Unexpected parameter length for "lwd"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "lwd"'); }
 
 	if (length(lty) == 1) { lty <- rep(lty, 3); }
-	else if (length(lty) != 3) { flog.error("Unexpected parameter length for 'lty'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lty'"); }
+	else if (length(lty) != 3) { flog.error('Unexpected parameter length for "lty"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "lty"'); }
 
 	if (length(col) == 1) { col <- rep(col, 3); }
-	else if (length(col) != 3) { flog.error("Unexpected parameter length for 'col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'col'"); }
+	else if (length(col) != 3) { flog.error('Unexpected parameter length for "col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "col"'); }
 
 	if (length(label.col) == 1) { label.col <- rep(label.col, 7); }
-	else if (length(label.col) != 7) { flog.error("Unexpected parameter length for 'label.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'label.col'"); }
+	else if (length(label.col) != 7) { flog.error('Unexpected parameter length for "label.col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "label.col"'); }
 
 	if (length(cex) == 1) { cex <- rep(cex, 7); }
-	else if (length(cex) != 7) { flog.error("Unexpected parameter length for 'cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cex'"); }
+	else if (length(cex) != 7) { flog.error('Unexpected parameter length for "cex"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cex"'); }
 
 	if (length(fontface) == 1) { fontface <- rep(fontface, 7); }
-	else if (length(fontface) != 7) { flog.error("Unexpected parameter length for 'fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontface'"); }
+	else if (length(fontface) != 7) { flog.error('Unexpected parameter length for "fontface"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fontface"'); }
 
 	if (length(fontfamily) == 1) { fontfamily <- rep(fontfamily, 7); }
-	else if (length(fontfamily) != 7) { flog.error("Unexpected parameter length for 'fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontfamily'"); }
+	else if (length(fontfamily) != 7) { flog.error('Unexpected parameter length for "fontfamily"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fontfamily"'); }
 
 	if (length(fill) == 1) { fill <- rep(fill, 3); }
-	else if (length(fill) != 3 & length(fill) != 0) { flog.error("Unexpected parameter length for 'fill'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fill'"); }
+	else if (length(fill) != 3 & length(fill) != 0) { flog.error('Unexpected parameter length for "fill"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fill"'); }
 
 	if (length(alpha) == 1) { alpha <- rep(alpha, 3); }
-	else if (length(alpha) != 3 & length(alpha) != 0) { flog.error("Unexpected parameter length for 'alpha'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'alpha'"); }
+	else if (length(alpha) != 3 & length(alpha) != 0) { flog.error('Unexpected parameter length for "alpha"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "alpha"'); }
 
 	if (length(cat.pos) == 1) { cat.pos <- rep(cat.pos, 3); }
-	else if (length(cat.pos) != 3) { flog.error("Unexpected parameter length for 'cat.pos'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.pos'"); }
+	else if (length(cat.pos) != 3) { flog.error('Unexpected parameter length for "cat.pos"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.pos"'); }
 
 	if (length(cat.dist) == 1) { cat.dist <- rep(cat.dist, 3); }
-	else if (length(cat.dist) != 3) { flog.error("Unexpected parameter length for 'cat.dist'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.dist'"); }
+	else if (length(cat.dist) != 3) { flog.error('Unexpected parameter length for "cat.dist"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.dist"'); }
 
 	if (length(cat.col) == 1) { cat.col <- rep(cat.col, 3); }
-	else if (length(cat.col) != 3) { flog.error("Unexpected parameter length for 'cat.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.col'"); }
+	else if (length(cat.col) != 3) { flog.error('Unexpected parameter length for "cat.col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.col"'); }
 
 	if (length(cat.cex) == 1) { cat.cex <- rep(cat.cex, 3); }
-	else if (length(cat.cex) != 3) { flog.error("Unexpected parameter length for 'cat.cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.cex'"); }
+	else if (length(cat.cex) != 3) { flog.error('Unexpected parameter length for "cat.cex"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.cex"'); }
 
 	if (length(cat.fontface) == 1) { cat.fontface <- rep(cat.fontface, 3); }
-	else if (length(cat.fontface) != 3) { flog.error("Unexpected parameter length for 'cat.fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontface'"); }
+	else if (length(cat.fontface) != 3) { flog.error('Unexpected parameter length for "cat.fontface"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.fontface"'); }
 
 	if (length(cat.fontfamily) == 1) { cat.fontfamily <- rep(cat.fontfamily, 3); }
-	else if (length(cat.fontfamily) != 3) { flog.error("Unexpected parameter length for 'cat.fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontfamily'"); }
+	else if (length(cat.fontfamily) != 3) { flog.error('Unexpected parameter length for "cat.fontfamily"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.fontfamily"'); }
 
-	if (!(class(cat.just) == "list" & length(cat.just) == 3)) { flog.error("Unexpected parameter format for 'cat.just'",name="VennDiagramLogger")
-stop("Unexpected parameter format for 'cat.just'"); }
-	else if (!(length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2 & length(cat.just[[3]]) == 2)) { flog.error("Unexpected parameter format for 'cat.just'",name="VennDiagramLogger")
-stop("Unexpected parameter format for 'cat.just'"); }
+	if (!(class(cat.just) == 'list' & length(cat.just) == 3)) { flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
+stop('Unexpected parameter format for "cat.just"'); }
+	else if (!(length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2 & length(cat.just[[3]]) == 2)) { flog.error('Unexpected parameter format for "cat.just',name='VennDiagramLogger')
+stop('Unexpected parameter format for "cat.just"'); }
 
 	# check uninterpretable parameter combination
 	if (euler.d == FALSE & scaled == TRUE) {
-		flog.error("Uninterpretable parameter combination\nPlease set both euler.d = FALSE and scaled = FALSE to force Venn diagrams.",name="VennDiagramLogger")
-stop("Uninterpretable parameter combination\nPlease set both euler.d = FALSE and scaled = FALSE to force Venn diagrams.");
+		flog.error('Uninterpretable parameter combination\nPlease set both euler.d = FALSE and scaled = FALSE to force Venn diagrams.',name='VennDiagramLogger')
+stop('Uninterpretable parameter combination\nPlease set both euler.d = FALSE and scaled = FALSE to force Venn diagrams.');
 		}
 	if (offset > 1 | offset < 0) {
-		flog.error("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to achieve offsets in the opposite direction.",name="VennDiagramLogger")
-stop("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to achieve offsets in the opposite direction.");
+		flog.error('Offset must be between 0 and 1.  Try using "rotation.degree = 180" to achieve offsets in the opposite direction.',name='VennDiagramLogger')
+stop('Offset must be between 0 and 1.  Try using "rotation.degree = 180" to achieve offsets in the opposite direction.');
 		}
 
 	cat.pos <- cat.pos + rotation.degree;
@@ -142,7 +142,7 @@ stop("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to ac
 		#create the variables and assign their values from the area vector
 		for(i in 1:7)
 		{
-			assign(paste("a",i,sep=""),area.vector[i]);
+			assign(paste('a',i,sep=''),area.vector[i]);
 		}
 	}
 	else {
@@ -162,9 +162,9 @@ stop("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to ac
 		special.code <- VennDiagram::decide.special.case(areas);
 
 		# did we define a special-case function for this case?
-		if (special.code %in% c("121AO","100","033","011A","021AA","022AAOO","011O","112AA","122AAOO","010","110","130","001","012AA","120","022AAAO","032","111A","023")) {
+		if (special.code %in% c('121AO','100','033','011A','021AA','022AAOO','011O','112AA','122AAOO','010','110','130','001','012AA','120','022AAAO','032','111A','023')) {
 
-			if (special.code %in% c("022AAAO", "022AAOO", "023", "032", "120", "121AO", "122AAOO", "130")) {
+			if (special.code %in% c('022AAAO', '022AAOO', '023', '032', '120', '121AO', '122AAOO', '130')) {
 				f1 <- VennDiagram::draw.sp.case.scaled;
 			}
 			else {
@@ -264,18 +264,18 @@ stop("'Offset' must be between 0 and 1.  Try using 'rotation.degree = 180' to ac
 
 	# check plausibility and 0 partial areas
 	areas.error <- c(
-		"a1 <- area1 - n12 - n13 + n123",
-		"a2 <- n12 - n123",
-		"a3 <- area2 - n12 - n23 + n123",
-		"a4 <- n13 - n123",
-		"a5 <- n123",
-		"a6 <- n23 - n123",
-		"a7 <- area3 - n13 - n23 + n123"
+		'a1 <- area1 - n12 - n13 + n123',
+		'a2 <- n12 - n123',
+		'a3 <- area2 - n12 - n23 + n123',
+		'a4 <- n13 - n123',
+		'a5 <- n123',
+		'a6 <- n23 - n123',
+		'a7 <- area3 - n13 - n23 + n123'
 		);
 	for (i in 1:length(areas)) {
 		if (areas[i] < 0) {
-			flog.error(paste("Impossible:", areas.error[i], "produces negative area"),name="VennDiagramLogger")
-stop(paste("Impossible:", areas.error[i], "produces negative area"));
+			flog.error(paste('Impossible:', areas.error[i], 'produces negative area'),name='VennDiagramLogger')
+stop(paste('Impossible:', areas.error[i], 'produces negative area'));
 			}
 		}
 	for (i in 1:length(areas)) {
@@ -290,18 +290,18 @@ stop(paste("Impossible:", areas.error[i], "produces negative area"));
 
 	# check category label defaults
 	if (all(cat.default.pos != 'outer', cat.default.pos != 'text', !is.defaults, cat.prompts)) {
-		flog.info("No default location recognized.  Automatically changing to 'outer'",name="VennDiagramLogger");
-		cat.default.pos <- "outer";
+		flog.info('No default location recognized.  Automatically changing to "outer"',name='VennDiagramLogger');
+		cat.default.pos <- 'outer';
 		}
 	if (all(cat.default.pos == 'outer', !is.defaults, cat.prompts)) {
-		flog.info("Placing category labels at default outer locations.  Use 'cat.pos' and 'cat.dist' to modify location.",name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"),name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]),name="VennDiagramLogger");
+		flog.info('Placing category labels at default outer locations.  Use "cat.pos" and "cat.dist" to modify location.',name='VennDiagramLogger');
+		flog.info(paste('Current "cat.pos":', cat.pos[1], 'degrees,', cat.pos[2], 'degrees'),name='VennDiagramLogger');
+		flog.info(paste('Current "cat.dist":', cat.dist[1], ',', cat.dist[2]),name='VennDiagramLogger');
 		}
 	if (all(cat.default.pos == 'text', !is.defaults, cat.prompts)) {
-		flog.info("Placing category labels at default text locations.  Use 'cat.pos' and 'cat.dist' to modify location.",name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.pos':", cat.pos[1], "degrees,", cat.pos[2], "degrees"),name="VennDiagramLogger");
-		flog.info(paste("Current 'cat.dist':", cat.dist[1], ",", cat.dist[2]),name="VennDiagramLogger");
+		flog.info('Placing category labels at default text locations.  Use "cat.pos" and "cat.dist" to modify location.',name='VennDiagramLogger');
+		flog.info(paste('Current "cat.pos":', cat.pos[1], 'degrees,', cat.pos[2], 'degrees'),name='VennDiagramLogger');
+		flog.info(paste('Current "cat.dist":', cat.dist[1], ',', cat.dist[2]),name='VennDiagramLogger');
 		}
 
 	# initialize gList to hold all Grobs generated
@@ -471,45 +471,45 @@ stop(paste("Impossible:", areas.error[i], "produces negative area"));
         if(length(cex.prop) > 0){
 
             if(length(cex.prop) != 1) {
-		flog.error("Value passed to cex.prop is not length 1",name="VennDiagramLogger")
-		stop("Value passed to cex.prop is not length 1")
+		flog.error('Value passed to cex.prop is not length 1',name='VennDiagramLogger')
+		stop('Value passed to cex.prop is not length 1')
 		}
 
             ## figure out what function to use
             func = cex.prop
-            if(class(cex.prop) != "function"){
-                if(cex.prop == "lin"){
+            if(class(cex.prop) != 'function'){
+                if(cex.prop == 'lin'){
                     func = function(x) x
                 }
-                else if(cex.prop == "log10"){
+                else if(cex.prop == 'log10'){
                     func = log10
                 }
-                else flog.error(paste0("Unknown value passed to cex.prop: ", cex.prop),name="VennDiagramLogger")
-stop(paste0("Unknown value passed to cex.prop: ", cex.prop))
+                else flog.error(paste0('Unknown value passed to cex.prop: ', cex.prop),name='VennDiagramLogger')
+stop(paste0('Unknown value passed to cex.prop: ', cex.prop))
             }
 
             ## rescale areas
             maxArea = max(areas)            
             for(i in 1:length(areas)){                
                 cex[i] = cex[i] * func(areas[i]) / func(maxArea)
-                if(cex[i] <= 0) stop(paste0("Error in rescaling of area labels: the label of area ",
-                          i, " is less than or equal to zero"))
+                if(cex[i] <= 0) stop(paste0('Error in rescaling of area labels: the label of area ',
+                          i, ' is less than or equal to zero'))
             }
         }
     
-    processedLabels <- rep("",length(cell.labels));
-    if(print.mode[1] == "percent"){
-			processedLabels <- paste(signif(cell.labels/sum(cell.labels)*100,digits=sigdigs),"%",sep="");
-			if(isTRUE(print.mode[2] == "raw"))
+    processedLabels <- rep('',length(cell.labels));
+    if(print.mode[1] == 'percent'){
+			processedLabels <- paste(signif(cell.labels/sum(cell.labels)*100,digits=sigdigs),'%',sep='');
+			if(isTRUE(print.mode[2] == 'raw'))
 			{
-				processedLabels <- paste(processedLabels,"\n(",cell.labels,")",sep="");
+				processedLabels <- paste(processedLabels,'\n(',cell.labels,')',sep='');
 			}
 		}
-	if(print.mode[1] == "raw"){
+	if(print.mode[1] == 'raw'){
 			processedLabels <- cell.labels;
-			if(isTRUE(print.mode[2] == "percent"))
+			if(isTRUE(print.mode[2] == 'percent'))
 			{
-				processedLabels <- paste(processedLabels,"\n(",paste(signif(cell.labels/sum(cell.labels)*100,digits=sigdigs),"%)",sep=""),sep="");
+				processedLabels <- paste(processedLabels,'\n(',paste(signif(cell.labels/sum(cell.labels)*100,digits=sigdigs),'%)',sep=''),sep='');
 			}
 		}
     
@@ -555,7 +555,7 @@ stop(paste0("Unknown value passed to cex.prop: ", cex.prop))
 				);
 			}
 		else {
-			flog.error('Invalid setting of cat.default.pos',name="VennDiagramLogger")
+			flog.error('Invalid setting of cat.default.pos',name='VennDiagramLogger')
 stop('Invalid setting of cat.default.pos');
 			}
 

@@ -5,13 +5,13 @@ library(testthat);
 is_identical_without_name <- function(x, y,maxLength=5){
 	list.x <- unlist(x);
 	list.y <- unlist(y);
-	raw.x <- as.list(list.x[!names(list.x) %in% c("name")]);
-	raw.y <- as.list(list.y[!names(list.y) %in% c("name")]);
+	raw.x <- as.list(list.x[!names(list.x) %in% c('name')]);
+	raw.y <- as.list(list.y[!names(list.y) %in% c('name')]);
 
-	raw.x$"x" <- as.numeric(raw.x$"x");
-	raw.x$"y" <- as.numeric(raw.x$"y");
-	raw.y$"x" <- as.numeric(raw.y$"x");
-	raw.y$"y" <- as.numeric(raw.y$"y");
+	raw.x$'x' <- as.numeric(raw.x$'x');
+	raw.x$'y' <- as.numeric(raw.x$'y');
+	raw.y$'x' <- as.numeric(raw.y$'x');
+	raw.y$'y' <- as.numeric(raw.y$'y');
 
 	ret <- isTRUE(all.equal(raw.x,raw.y));
 
@@ -32,9 +32,9 @@ is_identical_without_name <- function(x, y,maxLength=5){
 		
 		#If there are more than maxLength values to print, only print the first maxLength differences
 		if (length(diffInd) > maxLength){
-			diffNameStr <- paste0(toString(diffNames[1:maxLength]),"...");
-			diffStrX <- paste0(toString(diffValuesX[1:maxLength]),"...");
-			diffStrY <- paste0(toString(diffValuesY[1:maxLength]),"...");
+			diffNameStr <- paste0(toString(diffNames[1:maxLength]),'...');
+			diffStrX <- paste0(toString(diffValuesX[1:maxLength]),'...');
+			diffStrY <- paste0(toString(diffValuesY[1:maxLength]),'...');
 		}
 		else{
 			diffNameStr <- toString(diffNames);
@@ -42,9 +42,9 @@ is_identical_without_name <- function(x, y,maxLength=5){
 			diffStrY <- toString(diffValuesY);
 		}
 		
-		print(paste("has different", paste0('(', diffNameStr, ')'), "in", x));
-		print(paste("Total:", totalDiff, "| Numeric:", numericDiff, "| Character:", characterDiff));
-		print(paste("The values are", paste0('(', diffStrX, ')'), "compared to", paste0('(', diffStrY, ')')));
+		print(paste('has different', paste0('(', diffNameStr, ')'), 'in', x));
+		print(paste('Total:', totalDiff, '| Numeric:', numericDiff, '| Character:', characterDiff));
+		print(paste('The values are', paste0('(', diffStrX, ')'), 'compared to', paste0('(', diffStrY, ')')));
 	    }
 	
 	return(ret);

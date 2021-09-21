@@ -56,7 +56,7 @@ decide.special.case <- function(areas) {
 	fourth.vector <- sort(fourth.vector);
 	accum <- '';
 
-	# add A's or O's to accum to specify what draw."rst".R function should be called
+	# add A's or O's to accum to specify what draw.'rst'.R function should be called
 	for (i in 1:length(fourth.vector)) {
 		accum <- paste(accum, fourth.vector[i], sep = '');
 		}

@@ -39,7 +39,7 @@ flip.venn <- function(gList1, axis = 'v') {
 		return(gList1);
 		}
 	else {
-		flog.error('Unknown axis type',name="VennDiagramLogger")
+		flog.error('Unknown axis type',name='VennDiagramLogger')
 stop('Unknown axis type');
 		}
 	}

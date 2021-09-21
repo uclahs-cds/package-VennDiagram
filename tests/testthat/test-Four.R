@@ -2,10 +2,10 @@
 library(testthat)
 
 #Get the testing function applied to compare the two venn diagram objects
-source("testFunction.R");
+source('testFunction.R');
 
 #load in the reference plot data
-load("data/plotsFour.rda");
+load('data/plotsFour.rda');
 
 #Suppress plotting for sanity
 options(device=pdf(file = NULL));
@@ -31,12 +31,12 @@ venn.test <- c(venn.test,list(draw.quad.venn(
     n134 = 11,
     n234 = 13,
     n1234 = 6,
-    category = c("First", "Second", "Third", "Fourth"),
-    fill = c("orange", "red", "green", "blue"),
-    lty = "dashed",
+    category = c('First', 'Second', 'Third', 'Fourth'),
+    fill = c('orange', 'red', 'green', 'blue'),
+    lty = 'dashed',
     cex = 2,
     cat.cex = 2,
-    cat.col = c("orange", "red", "green", "blue")
+    cat.col = c('orange', 'red', 'green', 'blue')
     )))
 
 testNames <- c('colour');
@@ -45,7 +45,7 @@ testNames <- c('colour');
 
 for(i in 1:length(venn.test)){
 	for(j in 1:length(venn.test[[i]])){
-		if(class(venn.test[[i]][[j]])[1] == "polygon"){
+		if(class(venn.test[[i]][[j]])[1] == 'polygon'){
 			venn.test[[i]][[j]]$x <- NULL;
 			venn.test[[i]][[j]]$y <- NULL;
 		}
@@ -55,7 +55,7 @@ for(i in 1:length(venn.test)){
 #Loop over all of the test cases
 for (i in 1:length(venn.test)) {
 	test_that(
-	    paste("Case",testNames[i],"of four categories"), {
+	    paste('Case',testNames[i],'of four categories'), {
     		for (j in 1:length(venn.test[[i]])) {
     			expect_true(
     			    is_identical_without_name(

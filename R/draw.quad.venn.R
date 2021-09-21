@@ -26,28 +26,28 @@ draw.quad.venn <- function(
 	n134,
 	n234,
 	n1234,
-	category = rep("", 4),
+	category = rep('', 4),
 	lwd = rep(2, 4),
-	lty = rep("solid", 4),
-	col = rep("black", 4),
+	lty = rep('solid', 4),
+	col = rep('black', 4),
 	fill = NULL,
 	alpha = rep(0.5, 4),
-	label.col = rep("black", 15),
+	label.col = rep('black', 15),
 	cex = rep(1, 15),
-	fontface = rep("plain", 15),
-	fontfamily = rep("serif", 15),
+	fontface = rep('plain', 15),
+	fontfamily = rep('serif', 15),
 	cat.pos = c(-15, 15, 0, 0),
 	cat.dist = c(0.22, 0.22, 0.11, 0.11),
-	cat.col = rep("black", 4),
+	cat.col = rep('black', 4),
 	cat.cex = rep(1, 4),
-	cat.fontface = rep("plain", 4),
-	cat.fontfamily = rep("serif", 4),
+	cat.fontface = rep('plain', 4),
+	cat.fontfamily = rep('serif', 4),
 	cat.just = rep(list(c(0.5, 0.5)), 4),
 	rotation.degree = 0,
 	rotation.centre = c(0.5, 0.5),
 	ind = TRUE,
     cex.prop=NULL,
-    print.mode = "raw",
+    print.mode = 'raw',
     sigdigs=3,
     direct.area = FALSE,
     area.vector = 0,
@@ -57,71 +57,71 @@ draw.quad.venn <- function(
 	#area1 > area2 > area3 > area4
 	# check parameter lengths
 	if (length(category) == 1) { cat <- rep(category, 4); }
-	else if (length(category) != 4) { flog.error("Unexpected parameter length for 'category'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'category'"); }
+	else if (length(category) != 4) { flog.error('Unexpected parameter length for "category"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "category"'); }
 
 	if (length(lwd) == 1) { lwd <- rep(lwd, 4); }
-	else if (length(lwd) != 4) { flog.error("Unexpected parameter length for 'lwd'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lwd'"); }
+	else if (length(lwd) != 4) { flog.error('Unexpected parameter length for "lwd"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "lwd"'); }
 
 	if (length(lty) == 1) { lty <- rep(lty, 4); }
-	else if (length(lty) != 4) { flog.error("Unexpected parameter length for 'lty'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'lty'"); }
+	else if (length(lty) != 4) { flog.error('Unexpected parameter length for "lty"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "lty"'); }
 
 	if (length(col) == 1) { col <- rep(col, 4); }
-	else if (length(col) != 4) { flog.error("Unexpected parameter length for 'col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'col'"); }
+	else if (length(col) != 4) { flog.error('Unexpected parameter length for "col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "col"'); }
 
 	if (length(label.col) == 1) { label.col <- rep(label.col, 15); }
-	else if (length(label.col) != 15) { flog.error("Unexpected parameter length for 'label.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'label.col'"); }
+	else if (length(label.col) != 15) { flog.error('Unexpected parameter length for "label.col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "label.col"'); }
 
 	if (length(cex) == 1) { cex <- rep(cex, 15); }
-	else if (length(cex) != 15) { flog.error("Unexpected parameter length for 'cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cex'"); }
+	else if (length(cex) != 15) { flog.error('Unexpected parameter length for "cex"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cex"'); }
 
 	if (length(fontface) == 1) { fontface <- rep(fontface, 15); }
-	else if (length(fontface) != 15) { flog.error("Unexpected parameter length for 'fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontface'"); }
+	else if (length(fontface) != 15) { flog.error('Unexpected parameter length for "fontface"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fontface"'); }
 
 	if (length(fontfamily) == 1) { fontfamily <- rep(fontfamily, 15); }
-	else if (length(fontfamily) != 15) { flog.error("Unexpected parameter length for 'fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fontfamily'"); }
+	else if (length(fontfamily) != 15) { flog.error('Unexpected parameter length for "fontfamily"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fontfamily"'); }
 
 	if (length(fill) == 1) { fill <- rep(fill, 4); }
-	else if (length(fill) != 4 & length(fill) != 0) { flog.error("Unexpected parameter length for 'fill'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'fill'"); }
+	else if (length(fill) != 4 & length(fill) != 0) { flog.error('Unexpected parameter length for "fill"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "fill"'); }
 
 	if (length(alpha) == 1) { alpha <- rep(alpha, 4); }
-	else if (length(alpha) != 4 & length(alpha) != 0) { flog.error("Unexpected parameter length for 'alpha'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'alpha'"); }
+	else if (length(alpha) != 4 & length(alpha) != 0) { flog.error('Unexpected parameter length for "alpha"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "alpha"'); }
 
 	if (length(cat.pos) == 1) { cat.pos <- rep(cat.pos, 4); }
-	else if (length(cat.pos) != 4) { flog.error("Unexpected parameter length for 'cat.pos'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.pos'"); }
+	else if (length(cat.pos) != 4) { flog.error('Unexpected parameter length for "cat.pos"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.pos"'); }
 
 	if (length(cat.dist) == 1) { cat.dist <- rep(cat.dist, 4); }
-	else if (length(cat.dist) != 4) { flog.error("Unexpected parameter length for 'cat.dist'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.dist'"); }
+	else if (length(cat.dist) != 4) { flog.error('Unexpected parameter length for "cat.dist"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.dist"'); }
 
 	if (length(cat.col) == 1) { cat.col <- rep(cat.col, 4); }
-	else if (length(cat.col) != 4) { flog.error("Unexpected parameter length for 'cat.col'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.col'"); }
+	else if (length(cat.col) != 4) { flog.error('Unexpected parameter length for "cat.col"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.col"'); }
 
 	if (length(cat.cex) == 1) { cat.cex <- rep(cat.cex, 4); }
-	else if (length(cat.cex) != 4) { flog.error("Unexpected parameter length for 'cat.cex'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.cex'"); }
+	else if (length(cat.cex) != 4) { flog.error('Unexpected parameter length for "cat.cex"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.cex"'); }
 
 	if (length(cat.fontface) == 1) { cat.fontface <- rep(cat.fontface, 4); }
-	else if (length(cat.fontface) != 4) { flog.error("Unexpected parameter length for 'cat.fontface'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontface'"); }
+	else if (length(cat.fontface) != 4) { flog.error('Unexpected parameter length for "cat.fontface"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.fontface"'); }
 
 	if (length(cat.fontfamily) == 1) { cat.fontfamily <- rep(cat.fontfamily, 4); }
-	else if (length(cat.fontfamily) != 4) { flog.error("Unexpected parameter length for 'cat.fontfamily'",name="VennDiagramLogger")
-stop("Unexpected parameter length for 'cat.fontfamily'"); }
+	else if (length(cat.fontfamily) != 4) { flog.error('Unexpected parameter length for "cat.fontfamily"',name='VennDiagramLogger')
+stop('Unexpected parameter length for "cat.fontfamily"'); }
 
-	if (!(class(cat.just) == "list" & length(cat.just) == 4 & length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2 & length(cat.just[[3]]) == 2 & length(cat.just[[4]]) == 2)) { flog.error("Unexpected parameter format for 'cat.just'",name="VennDiagramLogger")
-stop("Unexpected parameter format for 'cat.just'"); }
+	if (!(class(cat.just) == 'list' & length(cat.just) == 4 & length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2 & length(cat.just[[3]]) == 2 & length(cat.just[[4]]) == 2)) { flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
+stop('Unexpected parameter format for "cat.just"'); }
 	cat.pos <- cat.pos + rotation.degree;
 	
 	if(direct.area){
@@ -129,7 +129,7 @@ stop("Unexpected parameter format for 'cat.just'"); }
 		#create the variables and assign their values from the area vector
 		for(i in 1:15)
 		{
-			assign(paste("a",i,sep=""),area.vector[i]);
+			assign(paste('a',i,sep=''),area.vector[i]);
 		}
 	}
 	else {
@@ -154,26 +154,26 @@ stop("Unexpected parameter format for 'cat.just'"); }
 		areas <- c(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15);
 	}
 	areas.error <- c(
-		"a1  <- area3 - a2 - a4 - a5 - a6 - a7 - a12 - a13",
-		"a2  <- n34 - a6 - a5 - a7",
-		"a3  <- area4 - a2 - a5 - a6 - a7 - a8 - a10 - a11",
-		"a4  <- n13 - a6 - a5 - a12",
-		"a5  <- n134 - a6",
-		"a6  <- n1234",
-		"a7  <- n234 - a6",
-		"a8  <- n24 - a6 - a7 - a11",
-		"a9  <- area1 - a4 - a5 - a6 - a10 - a11 - a12 - a15",
-		"a10 <- n14 - a6 - a5 - a11",
-		"a11 <- n124 - a6",
-		"a12 <- n123 - a6",
-		"a15 <- n12 - a6 - a11 - a12",
-		"a13 <- n23 - a6 - a7 - a12",
-		"a14 <- area2 - a6 - a7 - a8 - a11 - a12 - a13 - a15"
+		'a1  <- area3 - a2 - a4 - a5 - a6 - a7 - a12 - a13',
+		'a2  <- n34 - a6 - a5 - a7',
+		'a3  <- area4 - a2 - a5 - a6 - a7 - a8 - a10 - a11',
+		'a4  <- n13 - a6 - a5 - a12',
+		'a5  <- n134 - a6',
+		'a6  <- n1234',
+		'a7  <- n234 - a6',
+		'a8  <- n24 - a6 - a7 - a11',
+		'a9  <- area1 - a4 - a5 - a6 - a10 - a11 - a12 - a15',
+		'a10 <- n14 - a6 - a5 - a11',
+		'a11 <- n124 - a6',
+		'a12 <- n123 - a6',
+		'a15 <- n12 - a6 - a11 - a12',
+		'a13 <- n23 - a6 - a7 - a12',
+		'a14 <- area2 - a6 - a7 - a8 - a11 - a12 - a13 - a15'
 		);
 	for (i in 1:length(areas)) {
 		if (areas[i] < 0) {
-			flog.error(paste("Impossible:", areas.error[i], "produces negative area"),name="VennDiagramLogger")
-stop(paste("Impossible:", areas.error[i], "produces negative area"));
+			flog.error(paste('Impossible:', areas.error[i], 'produces negative area'),name='VennDiagramLogger')
+stop(paste('Impossible:', areas.error[i], 'produces negative area'));
 			}
 		}
 
@@ -181,29 +181,29 @@ stop(paste("Impossible:", areas.error[i], "produces negative area"));
         if(length(cex.prop) > 0){
 
             if(length(cex.prop) != 1) {
-		flog.error("Value passed to cex.prop is not length 1",name="VennDiagramLogger")
-		stop("Value passed to cex.prop is not length 1")
+		flog.error('Value passed to cex.prop is not length 1',name='VennDiagramLogger')
+		stop('Value passed to cex.prop is not length 1')
 		}
 
             ## figure out what function to use
             func = cex.prop
-            if(class(cex.prop) != "function"){
-                if(cex.prop == "lin"){
+            if(class(cex.prop) != 'function'){
+                if(cex.prop == 'lin'){
                     func = function(x) x
                 }
-                else if(cex.prop == "log10"){
+                else if(cex.prop == 'log10'){
                     func = log10
                 }
-                else flog.error(paste0("Unknown value passed to cex.prop: ", cex.prop),name="VennDiagramLogger")
-stop(paste0("Unknown value passed to cex.prop: ", cex.prop))
+                else flog.error(paste0('Unknown value passed to cex.prop: ', cex.prop),name='VennDiagramLogger')
+stop(paste0('Unknown value passed to cex.prop: ', cex.prop))
             }
 
             ## rescale areas
             maxArea = max(areas)            
             for(i in 1:length(areas)){                
                 cex[i] = cex[i] * func(areas[i]) / func(maxArea)
-                if(cex[i] <= 0) stop(paste0("Error in rescaling of area labels: the label of area ",
-                          i, " is less than or equal to zero"))
+                if(cex[i] <= 0) stop(paste0('Error in rescaling of area labels: the label of area ',
+                          i, ' is less than or equal to zero'))
             }
         }
 
@@ -284,19 +284,19 @@ stop(paste0("Unknown value passed to cex.prop: ", cex.prop))
 	label.matrix[14,] <- c(a14, 0.820, 0.58);
 	label.matrix[15,] <- c(a15, 0.500, 0.28);
 
-	processedLabels <- rep("",length(label.matrix[,'label']));
-    if(print.mode[1] == "percent"){
-			processedLabels <- paste(signif(label.matrix[,'label']/sum(label.matrix[,'label'])*100,digits=sigdigs),"%",sep="");
-			if(isTRUE(print.mode[2] == "raw"))
+	processedLabels <- rep('',length(label.matrix[,'label']));
+    if(print.mode[1] == 'percent'){
+			processedLabels <- paste(signif(label.matrix[,'label']/sum(label.matrix[,'label'])*100,digits=sigdigs),'%',sep='');
+			if(isTRUE(print.mode[2] == 'raw'))
 			{
-				processedLabels <- paste(processedLabels,"\n(",label.matrix[,'label'],")",sep="");
+				processedLabels <- paste(processedLabels,'\n(',label.matrix[,'label'],')',sep='');
 			}
 		}
-	if(print.mode[1] == "raw"){
+	if(print.mode[1] == 'raw'){
 			processedLabels <- label.matrix[,'label'];
-			if(isTRUE(print.mode[2] == "percent"))
+			if(isTRUE(print.mode[2] == 'percent'))
 			{
-				processedLabels <- paste(processedLabels,"\n(",paste(signif(label.matrix[,'label']/sum(label.matrix[,'label'])*100,digits=sigdigs),"%)",sep=""),sep="");
+				processedLabels <- paste(processedLabels,'\n(',paste(signif(label.matrix[,'label']/sum(label.matrix[,'label'])*100,digits=sigdigs),'%)',sep=''),sep='');
 			}
 		}
     

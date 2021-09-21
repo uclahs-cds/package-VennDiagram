@@ -2,10 +2,10 @@
 library(testthat)
 
 #Get the testing function applied to compare the two venn diagram objects
-source("testFunction.R");
+source('testFunction.R');
 
 #load in the reference plot data
-load("data/plotsTwo.rda");
+load('data/plotsTwo.rda');
 
 #Suppress plotting for sanity
 options(device=pdf(file = NULL));
@@ -15,11 +15,11 @@ venn.test <- list();
 
 #Scaled
 
-venn.test <- c(venn.test,list(draw.pairwise.venn(100, 70, 30, c("First", "Second"))))
+venn.test <- c(venn.test,list(draw.pairwise.venn(100, 70, 30, c('First', 'Second'))))
 
 #Not scaled
 
-venn.test <- c(venn.test,list(draw.pairwise.venn(100, 70, 30, c("First", "Second"), scaled = FALSE)))
+venn.test <- c(venn.test,list(draw.pairwise.venn(100, 70, 30, c('First', 'Second'), scaled = FALSE)))
 
 #Area Labels
 
@@ -28,10 +28,10 @@ venn.test <- c(venn.test,list(draw.pairwise.venn(
     area1 = 100,
     area2 = 70,
     cross.area = 68,
-    category = c("First", "Second"),
-    #fill = c("green", "red"),
-    fill = c("blue", "red"),
-    lty = "blank",
+    category = c('First', 'Second'),
+    #fill = c('green', 'red'),
+    fill = c('blue', 'red'),
+    lty = 'blank',
     cex = 2,
     cat.cex = 2,
     cat.pos = c(285, 105),
@@ -41,7 +41,7 @@ venn.test <- c(venn.test,list(draw.pairwise.venn(
     ext.dist = -0.05,
     ext.length = 0.85,
     ext.line.lwd = 2,
-    ext.line.lty = "dashed"
+    ext.line.lty = 'dashed'
     )))
 
 #No intersect
@@ -49,7 +49,7 @@ venn.test <- c(venn.test,list(draw.pairwise.venn(
     area1 = 100,
     area2 = 70,
     cross.area = 0,
-    category = c("First", "Second"),
+    category = c('First', 'Second'),
     cat.pos = c(0, 180),
     euler.d = TRUE,
     sep.dist = 0.03,
@@ -62,7 +62,7 @@ testNames <- c('scaled','not-scaled','area-labels','no-intersect');
 
 for(i in 1:length(venn.test)){
 	for(j in 1:length(venn.test[[i]])){
-		if(class(venn.test[[i]][[j]])[1] == "polygon"){
+		if(class(venn.test[[i]][[j]])[1] == 'polygon'){
 			venn.test[[i]][[j]]$x <- NULL;
 			venn.test[[i]][[j]]$y <- NULL;
 		}
@@ -72,7 +72,7 @@ for(i in 1:length(venn.test)){
 #Loop over all of the test cases
 for(i in 1:length(venn.test)){
 	test_that(
-	    paste( "Case", testNames[i], "of two categories"), {
+	    paste( 'Case', testNames[i], 'of two categories'), {
     		for (j in 1:length(venn.test[[i]])) {
     			expect_true(
     			    is_identical_without_name(
