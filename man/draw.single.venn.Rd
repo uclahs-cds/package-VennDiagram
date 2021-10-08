@@ -71,7 +71,14 @@ grid.draw(venn.plot);
 grid.newpage();
 
 # Writing to file
-tiff(filename = "Single_Venn_diagram.tiff", compression = "lzw");
+tiff(
+    filename = tempfile(
+        pattern = 'Single_Venn_diagram',
+        fileext = '.tiff'
+        ),
+    compression = "lzw"
+    );
+    
 venn.plot <- draw.single.venn(100, "First", ind = FALSE);
 grid.draw(venn.plot);
 dev.off();
