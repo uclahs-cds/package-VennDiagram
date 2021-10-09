@@ -381,7 +381,8 @@ venn.plot <- venn.diagram(
 			sample1 = c(1:40),
 			sample2 = c(30:60)
 			),
-		filename = NULL
+		filename = NULL,
+		disable.logging = TRUE
 		);
 
 # Save picture to non-TIFF file type
@@ -391,7 +392,8 @@ venn.plot <- venn.diagram(
 		A = 1:10,
 		B = 6:25
 		),
-	filename = NULL
+	filename = NULL,
+	disable.logging = TRUE
 	);
 
 jpeg(tempfile(pattern = 'venn_jpeg', fileext = '.jpg'));

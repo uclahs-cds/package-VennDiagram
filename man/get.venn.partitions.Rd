@@ -58,7 +58,7 @@ xFig1d = list(
            476:530)
  )
 get.venn.partitions(xFig1d)
-grid.draw(VennDiagram::venn.diagram(x, NULL))
+grid.draw(VennDiagram::venn.diagram(x, NULL, disable.logging = TRUE))
 }
 \author{
 Richard Cotton.
