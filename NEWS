@@ -1,14 +1,12 @@
-VennDiagram 1.6.24 2021-10-08 (Dan Knight)
----------------------------------------------------------------------------------------------------
-MINOR UPDATES
-* Changed example output to avoid creating new image and log files in the package directory
-
-VennDiagram 1.6.23 2021-09-20 (Dan Knight)
+VennDiagram 1.7.0 2021-10-18 (Dan Knight)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
 * Added option to disable .log file output and print to console instead
 * Updated coding style to current lab standards
     - Changed double quotes to single quotes
+
+BUG
+* Changed example output to avoid creating new image and log files in the package directory
 
 VennDiagram 1.6.22 2018-08-13 (Christopher Lalansingh)
 ---------------------------------------------------------------------------------------------------
