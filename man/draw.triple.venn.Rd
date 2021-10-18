@@ -105,7 +105,14 @@ venn.plot <- draw.triple.venn(20, 40, 60, 0, 0, 0, 0,
  c("First", "Second", "Third"), sep.dist = 0.1, rotation.degree = 30);
 
 # Writing to file
-tiff(filename = "Triple_Venn_diagram.tiff", compression = "lzw");
+tiff(
+    filename = tempfile(
+        pattern = 'Triple_Venn_diagram',
+        fileext = '.tiff'
+        ),
+    compression = "lzw"
+    );
+    
 grid.draw(venn.plot);
 dev.off();
 }

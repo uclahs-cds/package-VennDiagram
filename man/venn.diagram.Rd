@@ -174,11 +174,17 @@ venn.diagram(x, filename, disable.logging = FALSE, height = 3000,
 \dontrun{
 venn.plot <- venn.diagram(
 	list(A = 1:150, B = 121:170), 
-	"Venn_2set_simple.tiff"
+	filename = tempfile(
+	    pattern = 'Venn_2set_simple',
+	    fileext = '.tiff'
+	    )
 	);
 venn.plot <- venn.diagram(
 	list(A = 1:150, B = 121:170, C = 101:200), 
-	"Venn_3set_simple.tiff"
+	filename = tempfile(
+	    pattern = 'Venn_3set_simple',
+	    fileext = '.tiff'
+	    )
 	);
 }
 
@@ -188,7 +194,10 @@ venn.plot <- venn.diagram(
 		"A" = 1:100,
 		"B" = 96:140
 		),
-	filename = "Venn_2set_complex.tiff",
+	filename = tempfile(
+	    pattern = 'Venn_2set_complex',
+	    fileext = '.tiff'
+	    ),
 	scaled = TRUE,
 	ext.text = TRUE,
 	ext.line.lwd = 2,
@@ -213,7 +222,10 @@ venn.plot <- venn.diagram(
 		"Num B" = c(paste("Num", 61:70), paste("Num", 71:100)),
 		"Num C" = c(paste("Num", 41:60), paste("Num", 61:70))),
 	euler.d = TRUE,
-	filename = "Euler_3set_simple.tiff",
+	filename = tempfile(
+	    pattern = 'Euler_3set_simple',
+	    fileext = '.tiff'
+	    ),
 	cat.pos = c(-20, 0, 20),
 	cat.dist = c(0.05, 0.05, 0.02),
 	cex = 2.5,
@@ -229,7 +241,10 @@ venn.plot <- venn.diagram(
 		C = c(81:90)
 		),
 	euler.d = TRUE,
-	filename = "Euler_3set_scaled.tiff",
+	filename = tempfile(
+	    pattern = 'Euler_3set_scaled',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.pos = 0
@@ -250,7 +265,10 @@ venn.plot <- venn.diagram(
 		B = B,
 		C = C
 		),
-	filename = "Venn_4set_pretty.tiff",
+	filename = tempfile(
+	    pattern = 'Venn_4set_pretty', 
+	    fileext = '.tiff'
+	    ),
 	col = "transparent",
 	fill = c("cornflowerblue", "green", "yellow", "darkorchid1"),
 	alpha = 0.50,
@@ -278,7 +296,10 @@ venn.plot <- venn.diagram(
 		D = D,
 		E = E
 		),
-	filename = "Venn_5set_pretty.tiff",
+	filename = tempfile(
+	    pattern = 'Venn_5set_pretty',
+	    fileext = '.tiff'
+	    ),
 	col = "black",
 	fill = c("dodgerblue", "goldenrod1", "darkorange1", "seagreen3", "orchid3"),
 	alpha = 0.50,
@@ -305,7 +326,10 @@ venn.plot <- venn.diagram(
 		expression( bold('B'^'2: going up') ),
 		expression( paste(bold('C'^'3'), bold('X'['i' <= 'r'^'2']^'2') ) )
 		),
-	filename = 'Fig3-1_triple_labels_sub_and_superscripts.tiff',
+	filename = tempfile(
+	    pattern = 'Fig3-1_triple_labels_sub_and_superscripts',
+	    fileext = '.tiff'
+	    ),
 	output = TRUE,
 	height = 3000,
 	width = 3000,
@@ -339,7 +363,10 @@ venn.plot <- venn.diagram(
 		expression( bold('A'['3']) )
 		),
 	euler.d = TRUE,
-	filename = "Fig3-2_Euler_3set_simple_with_subscripts.tiff",
+	filename = tempfile(
+	    pattern = 'Fig3-2_Euler_3set_simple_with_subscripts',
+	    fileext = '.tiff'
+	    ),
 	cat.pos = c(-20, 0, 20),
 	cat.dist = c(0.05, 0.05, 0.02),
 	cex = 2.5,
@@ -354,7 +381,8 @@ venn.plot <- venn.diagram(
 			sample1 = c(1:40),
 			sample2 = c(30:60)
 			),
-		filename = NULL
+		filename = NULL,
+		disable.logging = TRUE
 		);
 
 # Save picture to non-TIFF file type
@@ -364,10 +392,11 @@ venn.plot <- venn.diagram(
 		A = 1:10,
 		B = 6:25
 		),
-	filename = NULL
+	filename = NULL,
+	disable.logging = TRUE
 	);
 
-jpeg("venn_jpeg.jpg");
+jpeg(tempfile(pattern = 'venn_jpeg', fileext = '.jpg'));
 grid.draw(venn.plot);
 dev.off();
 
@@ -382,7 +411,10 @@ venn.plot <- venn.diagram(
 	x = list(
 		Label = 1:100
 		),
-	filename = "1A-single_Venn.tiff",
+	filename = tempfile(
+	    pattern = '1A-single_Venn',
+	    fileext = '.tiff'
+	    ),
 	col = "black",
 	lwd = 9,
 	fontface = "bold",
@@ -399,7 +431,10 @@ venn.plot <- venn.diagram(
 		X = 1:150,
 		Y = 121:180
 		),
-	filename = "1B-double_Venn.tiff",
+	filename = tempfile(
+	    pattern = '1B-double_Venn',
+	    fileext = '.tiff'
+	    ),
 	lwd = 4,
 	fill = c("cornflowerblue", "darkorchid1"),
 	alpha = 0.75,
@@ -422,7 +457,10 @@ venn.plot <- venn.diagram(
 		B = c(141:200, 71:110, 111:120, 201:230),
 		G = c(231:280, 111:120, 121:140, 201:230)
 		),
-	filename = "1C-triple_Venn.tiff",
+	filename = tempfile(
+	    pattern = '1C-triple_Venn',
+	    fileext = '.tiff'
+	    ),
 	col = "transparent",
 	fill = c("red", "blue", "green"),
 	alpha = 0.5,
@@ -451,7 +489,10 @@ venn.plot <- venn.diagram(
 		III = c(406:475, 286:335, 106:140, 141:160, 166:175, 181:205, 336:375, 
 		476:530)
 		),
-	filename = "1D-quadruple_Venn.tiff",
+	filename = tempfile(
+	    pattern = '1D-quadruple_Venn',
+	    fileext = '.tiff'
+	    ),
 	col = "black",
 	lty = "dotted",
 	lwd = 4,
@@ -474,7 +515,10 @@ venn.plot <- venn.diagram(
 		A = 1:105,
 		B = 101:115
 		),
-	filename = "2-1_special_case_ext-text.tiff",
+	filename = tempfile(
+	    pattern = '2-1_special_case_ext-text',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.pos = c(-20, 20),
@@ -491,7 +535,10 @@ venn.plot <- venn.diagram(
 		A = 1:100,
 		B = 1:10
 		),
-	filename = "2-2_special_case_pairwise-inclusion.tiff",
+	filename = tempfile(
+	    pattern = '2-2_special_case_pairwise-inclusion',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.pos = 0
@@ -503,7 +550,10 @@ venn.plot <- venn.diagram(
 		A = 1:150,
 		B = 151:250
 		),
-	filename = "2-3_special_case_pairwise-exclusion.tiff",
+	filename = tempfile(
+	    pattern = '2-3_special_case_pairwise-exclusion',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.pos = c(0, 0),
@@ -517,7 +567,10 @@ venn.plot <- venn.diagram(
 		B = c(171:230, 101:140, 161:170, 291:320),
 		C = c(141:160, 161:170, 291:320)
 		),
-	filename = "2-4_triple_special_case-001.tiff",
+	filename = tempfile(
+	    pattern = '2-4_triple_special_case-001',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.dist = c(0.05, 0.05, -0.1)
@@ -530,7 +583,10 @@ venn.plot <- venn.diagram(
 		B = c(61:70, 71:100),
 		C = c(41:60, 61:70)
 		),
-	filename = "2-5_triple_special_case-012AA.tiff",
+	filename = tempfile(
+	    pattern = '2-5_triple_special_case-012AA',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.pos = c(-25, 0, 30),
@@ -544,7 +600,10 @@ venn.plot <- venn.diagram(
 		B = c(1:25),
 		C = c(1:5)
 		),
-	filename = "2-6_triple_special_case-022AAAO.tiff",
+	filename = tempfile(
+	    pattern = '2-6_triple_special_case-022AAAO',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.pos = 0,
@@ -558,7 +617,10 @@ venn.plot <- venn.diagram(
 		B = c(21:80),
 		C = c(81:210)
 		),
-	filename = "2-7_triple_special_case-100.tiff",
+	filename = tempfile(
+	    pattern = '2-7_triple_special_case-100',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.dist = 0.05
@@ -571,7 +633,10 @@ venn.plot <- venn.diagram(
 		B = c(41:150),
 		C = c(71:100)
 		),
-	filename = "2-8_triple_special_case-011A.tiff",
+	filename = tempfile(
+	    pattern = '2-8_triple_special_case-011A',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.dist = c(0.07, 0.07, 0.02),
@@ -585,7 +650,10 @@ venn.plot <- venn.diagram(
 		B = c(11:90),
 		C = c(81:90)
 		),
-	filename = "2-9_triple_special_case-121AO.tiff",
+	filename = tempfile(
+	    pattern = '2-9_triple_special_case-121AO',
+	    fileext = '.tiff'
+	    ),
 	cex = 2.5,
 	cat.cex = 2.5,
 	cat.pos = 0,

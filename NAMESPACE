@@ -21,7 +21,8 @@ export(
 	rotate.venn.degrees,
 	venn.diagram,
 	calculate.overlap,
-	get.venn.partitions
+	get.venn.partitions,
+	make.truth.table
 	)
 importFrom("grDevices", "dev.off", "png", "svg", "tiff")
 importFrom("stats", "aggregate", "setNames", "phyper")

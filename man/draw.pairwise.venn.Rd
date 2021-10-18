@@ -119,7 +119,13 @@ venn.plot <- draw.pairwise.venn(
 	);
 
 # Writing to file
-tiff(filename = "Pairwise_Venn_diagram.tiff", compression = "lzw");
+tiff(
+    filename = tempfile(
+        pattern = 'Pairwise_Venn_diagram',
+        fileext = '.tiff'
+        ),
+    compression = "lzw");
+    
 grid.draw(venn.plot);
 dev.off();
 }
