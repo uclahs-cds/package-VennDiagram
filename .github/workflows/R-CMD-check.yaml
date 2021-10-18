@@ -1,0 +1,24 @@
+---
+name: R-CMD-check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  R-CMD-check:
+    runs-on: ubuntu-latest
+
+    container:
+      image: blcdsdockerregistry/bl-r-devel:latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: VennDiagram
+      - run: R CMD build --compact-vignettes="gs+qpdf" VennDiagram
+      - run: R CMD check --as-cran --run-donttest VennDiagram_*.tar.gz
