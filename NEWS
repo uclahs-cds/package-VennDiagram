@@ -1,3 +1,8 @@
+VennDiagram 1.7.1 2021-12-01 (Dan Knight)
+---------------------------------------------------------------------------------------------------
+BUG
+* Modified test functions to be compatible with different versions of the R graphics engine
+
 VennDiagram 1.7.0 2021-10-18 (Dan Knight)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
