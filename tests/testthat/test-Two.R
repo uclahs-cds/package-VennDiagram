@@ -56,18 +56,9 @@ venn.test <- c(venn.test,list(draw.pairwise.venn(
     rotation.degree = 45
     )))
 
+venn.test <- prepare.test.cases(venn.test);
+
 testNames <- c('scaled','not-scaled','area-labels','no-intersect');
-
-#Strip the polygons of their x and y values. They have equivalent information in their params field
-
-for(i in 1:length(venn.test)){
-	for(j in 1:length(venn.test[[i]])){
-		if(class(venn.test[[i]][[j]])[1] == 'polygon'){
-			venn.test[[i]][[j]]$x <- NULL;
-			venn.test[[i]][[j]]$y <- NULL;
-		}
-	}
-}
 
 #Loop over all of the test cases
 for(i in 1:length(venn.test)){

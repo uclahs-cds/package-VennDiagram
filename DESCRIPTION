@@ -1,11 +1,11 @@
 Package: VennDiagram
-Version: 1.7.0
+Version: 1.7.1
 Type: Package
 Title: Generate High-Resolution Venn and Euler Plots
-Date: 2021-10-18
+Date: 2021-12-01
 Author: Hanbo Chen
 Maintainer: Paul Boutros <pboutros@mednet.ucla.edu>
-Depends: R (>= 2.14.1), grid (>= 2.14.1), futile.logger
+Depends: R (>= 3.5.0), grid (>= 2.14.1), futile.logger
 Description: A set of functions to generate high-resolution Venn and Euler plots. Includes handling for several special cases, including two-case scaling, and extensive customization of plot shape and structure.
 License: GPL-2
 LazyLoad: yes
