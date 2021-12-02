@@ -380,18 +380,10 @@ venn.test <- c(venn.test,list(draw.triple.venn(
     scaled = FALSE
     )))
 
+
+venn.test <- prepare.test.cases(venn.test);
+
 testNames <- c('default','colour-default','001','010','011A','011O','012AA','021AA','022AAAO','022AAOO','023','032','033','100','110','111A','112AA','120','121AO','122AAOO','130');
-
-#Strip the polygons of their x and y values. They have equivalent information in their params field
-
-for(i in 1:length(venn.test)){
-	for(j in 1:length(venn.test[[i]])){
-		if(class(venn.test[[i]][[j]])[1] == 'polygon'){
-			venn.test[[i]][[j]]$x <- NULL;
-			venn.test[[i]][[j]]$y <- NULL;
-		}
-	}
-}
 
 #Loop over all of the test cases
 for (i in 1:length(venn.plot)) {
