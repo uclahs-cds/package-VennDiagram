@@ -120,7 +120,7 @@ stop('Unexpected parameter length for "cat.fontface"'); }
 	else if (length(cat.fontfamily) != 3) { flog.error('Unexpected parameter length for "cat.fontfamily"',name='VennDiagramLogger')
 stop('Unexpected parameter length for "cat.fontfamily"'); }
 
-	if (!(class(cat.just) == 'list' & length(cat.just) == 3)) { flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
+	if (!(is.list(cat.just) & length(cat.just) == 3)) { flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
 stop('Unexpected parameter format for "cat.just"'); }
 	else if (!(length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2 & length(cat.just[[3]]) == 2)) { flog.error('Unexpected parameter format for "cat.just',name='VennDiagramLogger')
 stop('Unexpected parameter format for "cat.just"'); }
