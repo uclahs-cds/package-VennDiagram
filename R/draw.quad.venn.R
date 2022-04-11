@@ -187,7 +187,7 @@ stop(paste('Impossible:', areas.error[i], 'produces negative area'));
 
             ## figure out what function to use
             func = cex.prop
-            if(class(cex.prop) != 'function'){
+            if (!is(cex.prop, 'function')) {
                 if(cex.prop == 'lin'){
                     func = function(x) x
                 }
