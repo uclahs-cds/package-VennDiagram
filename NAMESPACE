@@ -27,6 +27,7 @@ export(
 importFrom("grDevices", "dev.off", "png", "svg", "tiff")
 importFrom("stats", "aggregate", "setNames", "phyper")
 importFrom("utils", "capture.output", "combn")
+importFrom("methods", "is")
 import(grid,
       futile.logger
 )
