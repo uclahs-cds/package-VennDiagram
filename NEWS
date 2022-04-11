@@ -1,7 +1,7 @@
 VennDiagram 1.7.3 2022-04-08 (Dan Knight)
 ---------------------------------------------------------------------------------------------------
 BUG
-* Improved type checking using more robust is.list() function instead of using class name string
+* Improved type checking using more robust is functions instead of comparing the class name string
 
 VennDiagram 1.7.2 2022-03-31 (Dan Knight)
 ---------------------------------------------------------------------------------------------------
