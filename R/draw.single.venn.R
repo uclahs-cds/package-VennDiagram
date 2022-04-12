@@ -70,7 +70,7 @@ stop('Unexpected parameter length for "cat.cex"'); }
 stop('Unexpected parameter length for "cat.fontface"'); }
 	if (length(cat.fontfamily) != 1) { flog.error('Unexpected parameter length for "cat.fontfamily"',name='VennDiagramLogger')
 stop('Unexpected parameter length for "cat.fontfamily"'); }
-	if (!(class(cat.just) == 'list' & length(cat.just) == 1 & length(cat.just[[1]]) == 2)) { flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
+	if (!(is.list(cat.just) && length(cat.just) == 1 && length(cat.just[[1]]) == 2)) { flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
 stop('Unexpected parameter format for "cat.just"'); }
 
 	cat.pos <- cat.pos + rotation.degree;
