@@ -2,7 +2,7 @@
 library(testthat)
 
 #Suppress plotting for sanity
-options(device = pdf());
+options(device = pdf(file = NULL));
 
 test_that(
     'Disabled log file export', {
