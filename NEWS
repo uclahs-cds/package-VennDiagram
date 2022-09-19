@@ -3,6 +3,9 @@ VennDiagram 1.7.4 2022-09-19 (Michael Chirico, Dan Knight)
 BUG
 * Removed output filename in tests for better isolation
 
+MINOR UPDATES
+* Added GitHub repo URL to package metadata
+
 VennDiagram 1.7.3 2022-04-08 (Dan Knight)
 ---------------------------------------------------------------------------------------------------
 BUG
