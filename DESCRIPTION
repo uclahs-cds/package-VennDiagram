@@ -10,6 +10,7 @@ Imports:
 Depends: R (>= 3.5.0), grid (>= 2.14.1), futile.logger
 Description: A set of functions to generate high-resolution Venn and Euler plots. Includes handling for several special cases, including two-case scaling, and extensive customization of plot shape and structure.
 URL: https://github.com/uclahs-cds/public-R-VennDiagram
+BugReports: https://github.com/uclahs-cds/public-R-VennDiagram/issues
 License: GPL-2
 LazyLoad: yes
 Suggests: testthat
