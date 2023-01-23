@@ -18,6 +18,13 @@ Or to install the latest development version from Github:
 
 devtools::install_github("uclahs-cds/public-R-VennDiagram")
 ```
+## Getting help
+For guidance or support with VennDiagram check out [Discussions](https://github.com/uclahs-cds/public-R-VennDiagram/discussions)
+
+See [Issues](https://github.com/uclahs-cds/public-R-VennDiagram/issues) to submit bugs, suggest new features or view current works
+
+[Pull requests](https://github.com/uclahs-cds/public-R-VennDiagram/pulls) are also open for discussion.
+
 ## Citation information
 
 Chen, H., Boutros, P.C. VennDiagram: a package for the generation of highly-customizable Venn and Euler diagrams in R. BMC Bioinformatics 12, 35 (2011). https://doi.org/10.1186/1471-2105-12-35
