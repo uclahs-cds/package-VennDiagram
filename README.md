@@ -4,7 +4,7 @@ VennDiagram is a R package for generating high-resolution, customizable Venn dia
 
 ## Description
 
-A set of functions to generate high-resolution Venn and Euler plots. Includes handling for several special cases including two-case scaling, and extensive customization of plot shape and structure.
+A set of functions to generate high-resolution Venn and Euler plots. Includes handling for several special cases including two-case scaling, and extensive customization of plot shape and structure. 
 
 ## Installation
 
@@ -18,7 +18,12 @@ Or to install the latest development version from Github:
 
 devtools::install_github("uclahs-cds/public-R-VennDiagram")
 ```
+## Resources
+
+Available resources for VennDiagram include the package [CRAN page](https://cran.r-project.org/web/packages/VennDiagram/index.html) and [reference manual](https://cran.r-project.org/web/packages/VennDiagram/VennDiagram.pdf).
+
 ## Getting help
+
 For guidance or support with VennDiagram check out [Discussions](https://github.com/uclahs-cds/public-R-VennDiagram/discussions)
 
 See [Issues](https://github.com/uclahs-cds/public-R-VennDiagram/issues) to submit bugs, suggest new features or view current works
