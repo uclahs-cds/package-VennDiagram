@@ -1,10 +1,30 @@
 # VennDiagram
 
-VennDiagram is a R package for generating high-resolution, customizable Venn diagrams with up to four sets and Euler diagrams with up to three sets.
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Example plots](#example-plots)
+4. [Resources](#resources)
+5. [Getting help](#getting-help)
+6. [Citation information](#citation-information)
+7. [License](#license)
 
 ## Description
 
-A set of functions to generate high-resolution Venn and Euler plots. Includes handling for several special cases including two-case scaling, and extensive customization of plot shape and structure. 
+VennDiagram is a R package for generating high-resolution, customizable Venn diagrams with up to four sets and Euler diagrams with up to three sets. Includes handling for several special cases including two-case scaling, and extensive customization of plot shape and structure.
+
+## Example plots
+
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-12-35/MediaObjects/12859_2010_Article_5075_Fig1_HTML.jpg?as=webp)
+
+**The four types of Venn diagrams drawn by the VennDiagram package.** **A)** A one-set Venn diagram showing rudimentary customizable features such as label font size, label font face, and shape-fill. **B)** A two-set Venn diagram showing more advanced features such as scaling, individual shape-fill specifications, and individual caption label placement. **C)** A three-set Venn diagram showing a different shape-line type ("transparent") and the "text" option of caption label placement where the caption labels are attached to area labels. **D)** A four-set Venn diagram showing a combination of all previous features plus the ability to customize titles.
+
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-12-35/MediaObjects/12859_2010_Article_5075_Fig2_HTML.jpg?as=webp)
+
+**Selected Venn diagram special cases and Euler diagrams drawn by the VennDiagram package.** Row 1, column 1: automatically drawn, customizable lines that optimize display of partial areas when individual partial areas become too small in two-set Venn diagrams. Row 1, column 2: a two-set Euler diagram showing total inclusion of one of the sets. Row 1, column 3: a two-set Euler diagram showing two distinct sets. Row 2, column 1: a three-set Euler diagram where one set has no discrete elements. Row 2, column 2: a three-set Euler diagram where one set has no discrete elements is totally included in one of the other two sets. Row 2, column 3: a three-set Euler diagram where two sets have no discrete elements and are included in a larger third set. Row 3, column 1: a three-set Euler diagram showing total inclusion of two sets that are distinct from the third set. Row 3, column 2: a three-set Euler diagram where one set is totally included in another set, which is itself totally included in the third set. Row 3, column 2: a three-set Euler diagram showing three distinct sets.
+
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-12-35/MediaObjects/12859_2010_Article_5075_Fig3_HTML.jpg?as=webp)
+
+**A side-by-side comparison of an Euler diagram and a Venn diagram for the same hypothetical sets.** A) The Euler diagram shows only non-zero areas and can therefore be more graphically accurate. B) The Venn diagram shows the non-existent area as an area with zero content. Though this is not graphically accurate, it preserves the recognisability of a Venn diagram.
 
 ## Installation
 
@@ -18,6 +38,7 @@ Or to install the latest development version from Github:
 
 devtools::install_github("uclahs-cds/public-R-VennDiagram")
 ```
+
 ## Resources
 
 Available resources for VennDiagram include the package [CRAN page](https://cran.r-project.org/web/packages/VennDiagram/index.html) and [reference manual](https://cran.r-project.org/web/packages/VennDiagram/VennDiagram.pdf).
@@ -36,7 +57,7 @@ Chen, H., Boutros, P.C. VennDiagram: a package for the generation of highly-cust
 
 ## License
 
-Author: Hanbo Chen, Paul C. Boutros (PBoutros@mednet.ucla.edu)
+Authors: Hanbo Chen, Paul C. Boutros (PBoutros@mednet.ucla.edu)
 
 VennDiagram is licensed under the GNU General Public License version 2. See the file LICENSE.md for the terms of the GNU GPL license.
 
