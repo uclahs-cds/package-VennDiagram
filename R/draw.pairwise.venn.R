@@ -142,7 +142,7 @@ stop('Unexpected parameter length for "cat.fontfamily"'); }
 	if (length(offset) != 1) { flog.error('Unexpected parameter length for "Offset". Try using "rotation.degree" to achieve non-vertical offsets',name='VennDiagramLogger')
 stop('Unexpected parameter length for "Offset". Try using "rotation.degree" to achieve non-vertical offsets'); }
 
-	if (!(class(cat.just) == 'list' & length(cat.just) == 2 & length(cat.just[[1]]) == 2 & length(cat.just[[2]]) == 2)) {
+	if (!(is.list(cat.just) && length(cat.just) == 2 && length(cat.just[[1]]) == 2 && length(cat.just[[2]]) == 2)) {
 		flog.error('Unexpected parameter format for "cat.just"',name='VennDiagramLogger')
 stop('Unexpected parameter format for "cat.just"');
 		}
@@ -224,15 +224,15 @@ stop('Impossible: cross section area too large.'); }
 		cex <- rev(cex);
 		fontface <- rev(fontface);
 		fontfamily <- rev(fontfamily);
-		#cat.pos <- rev(cat.pos);
-		#cat.dist <- rev(cat.dist);
+		cat.pos <- rev(cat.pos);
+		cat.dist <- rev(cat.dist);
 		cat.col <- rev(cat.col);
-		#cat.cex <- rev(cat.cex);
-		#cat.fontface <- rev(cat.fontface);
-		#cat.fontfamily <- rev(cat.fontfamily);
-		#cat.just <- rev(cat.just);
+		cat.cex <- rev(cat.cex);
+		cat.fontface <- rev(cat.fontface);
+		cat.fontfamily <- rev(cat.fontfamily);
+		cat.just <- rev(cat.just);
 		ext.pos <- rev(ext.pos);
-		#ext.dist <- rev(ext.dist); # ext.dist intentionally not swapped
+		# ext.dist <- rev(ext.dist); # ext.dist intentionally not swapped
 		ext.length <- rev(ext.length);
 		}
 
@@ -368,7 +368,7 @@ stop('Impossible: cross section area too large.'); }
 
                     ## figure out what function to use
                     func = cex.prop
-                    if(class(cex.prop) != 'function'){
+                    if (!is(cex.prop, 'function')) {
                         if(cex.prop == 'lin'){
                             func = function(x) x
                         }

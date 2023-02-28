@@ -54,14 +54,14 @@ is_identical_without_name <- function(x, y,maxLength=5){
 prepare.test.cases <- function(venn.test) {
     for (i in 1:length(venn.test)) {
     	for (j in 1:length(venn.test[[i]])) {
-    	    grob.type <- class(venn.test[[i]][[j]])[1];
+    	    test.grob <- venn.test[[i]][[j]];
     	    
-    		if (grob.type == 'polygon') {
+    		if (is(test.grob, 'polygon')) {
     		    # Strip polygons of their x and y values
     	        # This is also included in the params field
     			venn.test[[i]][[j]]$x <- NULL;
     			venn.test[[i]][[j]]$y <- NULL;
-    		} else if (grob.type == 'text') {
+    		} else if (is(test.grob, 'text')) {
     		    # Strip text of duplicate fontface value
     		    # for backwards compatbility
     		    venn.test[[i]][[j]]$gp$fontface <- NULL;

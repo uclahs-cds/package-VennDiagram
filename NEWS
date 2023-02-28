@@ -1,3 +1,21 @@
+VennDiagram 1.7.4 2022-09-19 (Michael Chirico, Dan Knight)
+---------------------------------------------------------------------------------------------------
+BUG
+* Removed output filename in tests for better isolation
+
+MINOR UPDATES
+* Added GitHub repo URL to package metadata
+
+VennDiagram 1.7.3 2022-04-08 (Dan Knight)
+---------------------------------------------------------------------------------------------------
+BUG
+* Improved type checking using more robust is functions instead of comparing the class name string
+
+VennDiagram 1.7.2 2022-03-31 (Dan Knight)
+---------------------------------------------------------------------------------------------------
+BUG
+* Fixed bug in label positioning
+
 VennDiagram 1.7.1 2021-12-01 (Dan Knight)
 ---------------------------------------------------------------------------------------------------
 BUG
@@ -92,8 +110,7 @@ MINOR UPDATES
 VennDiagram 1.6.10 2015-01-02 (vsabelnykova)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
-* If filename = FALSE, then returns a list called overlap, which contains the user provided elements but split by areas in Venn diagram
-and the gList (graphics list) which can then be plotted separately.
+* If filename = FALSE, then returns a list called overlap, which contains the user provided elements but split by areas in Venn diagram and the gList (graphics list) which can then be plotted separately.
 
 VennDiagram 1.6.9 2014-09-24 (clalansingh)
 ---------------------------------------------------------------------------------------------------
