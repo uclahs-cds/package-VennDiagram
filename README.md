@@ -14,26 +14,61 @@ VennDiagram is a R package for generating high-resolution, customizable Venn dia
 
 ## Example plots
 
+How to make a simple Venn diagram:
+
+```R
+library(VennDiagram)
+vd <- VennDiagram::venn.diagram(list(A = 1:150, B = 121:170), filename = NULL)
+grid::grid.draw(vd)
+```
+![](https://camo.githubusercontent.com/f4c17c926a5be6bfb3aeb42b19d29ef9d6f5440654dd4f078e1c8a113d08907e/68747470733a2f2f692e696d6775722e636f6d2f4d47376f4b41712e706e67)
+
+The four types of Venn diagrams drawn by the VennDiagram package:
+
+<ol type="a">
+    <li>A one-set Venn diagram showing rudimentary customizable features such as label font size, label font face, and shape-fill.</li>
+    <li>A two-set Venn diagram showing more advanced features such as scaling, individual shape-fill specifications, and individual caption label placement.</li>
+    <li>A three-set Venn diagram showing a different shape-line type ("transparent") and the "text" option of caption label placement where the caption labels are attached to area labels.</li>
+    <li>A four-set Venn diagram showing a combination of all previous features plus the ability to customize titles.</li>
+</ol>
+
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-12-35/MediaObjects/12859_2010_Article_5075_Fig1_HTML.jpg?as=webp)
 
-**The four types of Venn diagrams drawn by the VennDiagram package.** **A)** A one-set Venn diagram showing rudimentary customizable features such as label font size, label font face, and shape-fill. **B)** A two-set Venn diagram showing more advanced features such as scaling, individual shape-fill specifications, and individual caption label placement. **C)** A three-set Venn diagram showing a different shape-line type ("transparent") and the "text" option of caption label placement where the caption labels are attached to area labels. **D)** A four-set Venn diagram showing a combination of all previous features plus the ability to customize titles.
+Selected Venn diagram special cases and Euler diagrams drawn by the VennDiagram package.
+
+- **Row 1, column 1**: automatically drawn, customizable lines that optimize display of partial areas when individual partial areas become too small in two-set Venn diagrams.
+- **Row 1, column 2**: a two-set Euler diagram showing total inclusion of one of the sets.
+- **Row 1, column 3**: a two-set Euler diagram showing two distinct sets.
+- **Row 2, column 1**: a three-set Euler diagram where one set has no discrete elements.
+- **Row 2, column 2**: a three-set Euler diagram where one set has no discrete elements is totally included in one of the other two sets.
+- **Row 2, column 3**: a three-set Euler diagram where two sets have no discrete elements and are included in a larger third set.
+- **Row 3, column 1**: a three-set Euler diagram showing total inclusion of two sets that are distinct from the third set.
+- **Row 3, column 2**: a three-set Euler diagram where one set is totally included in another set, which is itself totally included in the third set.
+- **Row 3, column 2**: a three-set Euler diagram showing three distinct sets.
 
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-12-35/MediaObjects/12859_2010_Article_5075_Fig2_HTML.jpg?as=webp)
 
-**Selected Venn diagram special cases and Euler diagrams drawn by the VennDiagram package.** Row 1, column 1: automatically drawn, customizable lines that optimize display of partial areas when individual partial areas become too small in two-set Venn diagrams. Row 1, column 2: a two-set Euler diagram showing total inclusion of one of the sets. Row 1, column 3: a two-set Euler diagram showing two distinct sets. Row 2, column 1: a three-set Euler diagram where one set has no discrete elements. Row 2, column 2: a three-set Euler diagram where one set has no discrete elements is totally included in one of the other two sets. Row 2, column 3: a three-set Euler diagram where two sets have no discrete elements and are included in a larger third set. Row 3, column 1: a three-set Euler diagram showing total inclusion of two sets that are distinct from the third set. Row 3, column 2: a three-set Euler diagram where one set is totally included in another set, which is itself totally included in the third set. Row 3, column 2: a three-set Euler diagram showing three distinct sets.
+A side-by-side comparison of an Euler diagram and a Venn diagram for the same hypothetical sets.
+
+<!-- to get A, B -->
+<ol type="a">
+    <li>The Euler diagram shows only non-zero areas and can therefore be more graphically accurate.</li>
+    <li>The Venn diagram shows the non-existent area as an area with zero content. Though this is not graphically accurate, it preserves the recognisability of a Venn diagram.</li>
+</ol>
 
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-12-35/MediaObjects/12859_2010_Article_5075_Fig3_HTML.jpg?as=webp)
-
-**A side-by-side comparison of an Euler diagram and a Venn diagram for the same hypothetical sets.** A) The Euler diagram shows only non-zero areas and can therefore be more graphically accurate. B) The Venn diagram shows the non-existent area as an area with zero content. Though this is not graphically accurate, it preserves the recognisability of a Venn diagram.
 
 ## Installation
 
 To install the latest public release of VennDiagram from CRAN:
-```
+
+```R
 install.packages("VennDiagram")
 ```
+
 Or to install the latest development version from Github:
-```
+
+```R
 # install.packages("devtools")
 
 devtools::install_github("uclahs-cds/public-R-VennDiagram")
