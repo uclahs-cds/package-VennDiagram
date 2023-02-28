@@ -9,6 +9,26 @@
 # If publications result from research using this SOFTWARE, we ask that the Ontario Institute for Cancer Research be acknowledged and/or
 # credit be given to OICR scientists, as scientifically appropriate.
 
+print.VennDiagram <- plot.VennDiagram <- function(x, newpage = is.null(vp), vp = NULL, ...) {
+	if (newpage) 
+		grid.newpage();
+	grDevices::recordGraphics(
+		expr = requireNamespace("VennDiagram", quietly = TRUE), 
+		list = list(),
+		env = getNamespace("VennDiagram")
+		);
+	if (is.null(vp)) {
+		grid.draw(x);
+	} else {
+		if (is.character(vp)) 
+			seekViewport(vp)
+		else pushViewport(vp);
+		grid.draw(x);
+		upViewport();
+		}
+	invisible(x);
+	}
+
 ### UMBRELLA FUNCTION TO DRAW VENN DIAGRAMS #######################################################
 venn.diagram <- function(
 	x,
@@ -503,6 +523,7 @@ stop('You have misspelled your "imagetype", please try again');
 		}
 		
 	# if file creation was not requested return the plotting object
+	class(grob.list) <- c('VennDiagram', 'gList');
 	return(grob.list);
 	}
 
