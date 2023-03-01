@@ -12,6 +12,22 @@
 
 VennDiagram is a R package for generating high-resolution, customizable Venn diagrams with up to four sets and Euler diagrams with up to three sets. Includes handling for several special cases including two-case scaling, and extensive customization of plot shape and structure.
 
+## Installation
+
+To install the latest public release of VennDiagram from CRAN:
+
+```R
+install.packages("VennDiagram")
+```
+
+Or to install the latest development version from Github:
+
+```R
+# install.packages("devtools")
+
+devtools::install_github("uclahs-cds/public-R-VennDiagram")
+```
+
 ## Example plots
 
 How to make a simple Venn diagram:
@@ -21,6 +37,7 @@ library(VennDiagram)
 vd <- VennDiagram::venn.diagram(list(A = 1:150, B = 121:170), filename = NULL)
 grid::grid.draw(vd)
 ```
+
 ![](https://camo.githubusercontent.com/f4c17c926a5be6bfb3aeb42b19d29ef9d6f5440654dd4f078e1c8a113d08907e/68747470733a2f2f692e696d6775722e636f6d2f4d47376f4b41712e706e67)
 
 The four types of Venn diagrams drawn by the VennDiagram package:
@@ -57,22 +74,6 @@ A side-by-side comparison of an Euler diagram and a Venn diagram for the same hy
 </ol>
 
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-12-35/MediaObjects/12859_2010_Article_5075_Fig3_HTML.jpg?as=webp)
-
-## Installation
-
-To install the latest public release of VennDiagram from CRAN:
-
-```R
-install.packages("VennDiagram")
-```
-
-Or to install the latest development version from Github:
-
-```R
-# install.packages("devtools")
-
-devtools::install_github("uclahs-cds/public-R-VennDiagram")
-```
 
 ## Resources
 
