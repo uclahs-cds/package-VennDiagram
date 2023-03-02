@@ -89,7 +89,29 @@ See [Issues](https://github.com/uclahs-cds/public-R-VennDiagram/issues) to submi
 
 ## Citation information
 
-Chen, H., Boutros, P.C. VennDiagram: a package for the generation of highly-customizable Venn and Euler diagrams in R. BMC Bioinformatics 12, 35 (2011). https://doi.org/10.1186/1471-2105-12-35
+To cite package `VennDiagram` in publications, use:
+
+Chen, H., Boutros, P.C. _VennDiagram: a package for the generation of highly-customizable Venn and Euler diagrams in R_. BMC Bioinformatics 12, 35 (2011). https://doi.org/10.1186/1471-2105-12-35
+
+A BibTeX entry for LaTeX users is:
+
+```
+@Article{,
+    title = {VennDiagram: a package for the generation of highly-customizable Venn and Euler diagrams in R},
+    journal = {BMC Bioinformatics},
+    doi = {10.1186/1471-2105-12-35},
+    url = {https://doi.org/10.1186/1471-2105-12-35},
+    volume = {12},
+    number = {35},
+    year = {2011},
+    month = {January},
+    day = {26},
+    issn = {1471-2105},
+    author = {Hanbo Chen and Paul C Boutros},
+  }
+```
+
+This information is available via `citation('VennDiagram')`
 
 ## License
 
