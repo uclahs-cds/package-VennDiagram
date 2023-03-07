@@ -17,15 +17,16 @@ VennDiagram is a R package for generating high-resolution, customizable Venn dia
 To install the latest public release of VennDiagram from CRAN:
 
 ```R
-install.packages("VennDiagram")
+install.packages("VennDiagram");
 ```
 
 Or to install the latest development version from Github:
 
 ```R
-# install.packages("devtools")
+# If `devtools` is not already installed, run:
+# install.packages("devtools");
 
-devtools::install_github("uclahs-cds/public-R-VennDiagram")
+devtools::install_github("uclahs-cds/public-R-VennDiagram");
 ```
 
 ## Example plots
@@ -33,9 +34,9 @@ devtools::install_github("uclahs-cds/public-R-VennDiagram")
 How to make a simple Venn diagram:
 
 ```R
-library(VennDiagram)
-vd <- VennDiagram::venn.diagram(list(A = 1:150, B = 121:170), filename = NULL)
-grid::grid.draw(vd)
+library(VennDiagram);
+vd <- VennDiagram::venn.diagram(list(A = 1:150, B = 121:170), filename = NULL);
+grid::grid.draw(vd);
 ```
 
 ![](https://camo.githubusercontent.com/f4c17c926a5be6bfb3aeb42b19d29ef9d6f5440654dd4f078e1c8a113d08907e/68747470733a2f2f692e696d6775722e636f6d2f4d47376f4b41712e706e67)
@@ -95,7 +96,7 @@ Chen, H., Boutros, P.C. _VennDiagram: a package for the generation of highly-cus
 
 A BibTeX entry for LaTeX users is:
 
-```
+```BibTeX
 @Article{,
     title = {VennDiagram: a package for the generation of highly-customizable Venn and Euler diagrams in R},
     journal = {BMC Bioinformatics},
