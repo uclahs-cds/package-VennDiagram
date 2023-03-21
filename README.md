@@ -113,7 +113,7 @@ A BibTeX entry for LaTeX users is:
     month = {January},
     day = {26},
     issn = {1471-2105},
-    author = {Hanbo Chen and Paul C Boutros},
+    author = {Hanbo Chen and Paul C Boutros}
   }
 ```
 
