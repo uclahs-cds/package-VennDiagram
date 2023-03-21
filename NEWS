@@ -3,6 +3,11 @@ VennDiagram 1.8.0 2023-02-28 (Stefan Eng)
 MINOR UPDATES
 * Implemented S3 print/plot methods for VennDiagram class
 
+VennDiagram 1.7.5 2023-02-28 (Stefan Eng)
+---------------------------------------------------------------------------------------------------
+MINOR UPDATE
+* Add CITATION file linked to BMC Bioinformatics paper
+
 VennDiagram 1.7.4 2022-09-19 (Michael Chirico, Dan Knight)
 ---------------------------------------------------------------------------------------------------
 BUG
