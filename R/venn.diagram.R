@@ -523,7 +523,10 @@ stop('You have misspelled your "imagetype", please try again');
 		}
 		
 	# if file creation was not requested return the plotting object
-	class(grob.list) <- c('VennDiagram', 'gList');
+	if (! 'VennDiagram' %in% class(grob.list)) {
+		class(grob.list) <- c('VennDiagram', class(grob.list));
+		}
+	
 	return(grob.list);
 	}
 

@@ -356,5 +356,6 @@ stop(paste0('Unknown value passed to cex.prop: ', cex.prop))
 
 	# draw diagram before returning gList is specified by user
 	if (ind) { grid.draw(grob.list); }
+	class(grob.list) <- c('VennDiagram', class(grob.list));
 	return(grob.list);
 	}

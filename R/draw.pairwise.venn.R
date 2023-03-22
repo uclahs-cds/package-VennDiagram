@@ -1214,5 +1214,6 @@ stop('Invalid value for "cat.default.pos", should be either "outer" or "text"');
 	grob.list <- adjust.venn(rotate.venn.degrees(grob.list, rotation.degree, rotation.centre[1], rotation.centre[2]), ...);
 	# draw the plot before returning the grob if specified
 	if (ind) { grid.draw(grob.list); }
+	class(grob.list) <- c('VennDiagram', class(grob.list));
 	return(grob.list);
 	}
