@@ -521,12 +521,11 @@ stop('You have misspelled your "imagetype", please try again');
 		# return a success code
 		return(1);
 		}
-		
-	# if file creation was not requested return the plotting object
+
 	if (! 'VennDiagram' %in% class(grob.list)) {
 		class(grob.list) <- c('VennDiagram', class(grob.list));
 		}
-	
+	# if file creation was not requested return the plotting object
 	return(grob.list);
 	}
 
