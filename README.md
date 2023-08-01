@@ -5,8 +5,9 @@
 3. [Example plots](#example-plots)
 4. [Resources](#resources)
 5. [Getting help](#getting-help)
-6. [Citation information](#citation-information)
-7. [License](#license)
+6. [Contributors](#contributors)
+7. [Citation information](#citation-information)
+8. [License](#license)
 
 ## Description
 
@@ -17,7 +18,7 @@ VennDiagram is a R package for generating high-resolution, customizable Venn dia
 To install the latest public release of VennDiagram from CRAN:
 
 ```R
-install.packages("VennDiagram");
+install.packages('VennDiagram');
 ```
 
 Or to install the latest development version from Github:
@@ -26,7 +27,7 @@ Or to install the latest development version from Github:
 # If `devtools` is not already installed, run:
 # install.packages("devtools");
 
-devtools::install_github("uclahs-cds/public-R-VennDiagram");
+devtools::install_github('uclahs-cds/public-R-VennDiagram');
 ```
 
 ## Example plots
@@ -88,6 +89,10 @@ See [Issues](https://github.com/uclahs-cds/public-R-VennDiagram/issues) to submi
 
 [Pull requests](https://github.com/uclahs-cds/public-R-VennDiagram/pulls) are also open for discussion.
 
+## Contributors
+
+Contributors to this package can be viewed [here](https://github.com/uclahs-cds/public-R-VennDiagram/graphs/contributors) on GitHub.
+
 ## Citation information
 
 To cite package `VennDiagram` in publications, use:
@@ -108,7 +113,7 @@ A BibTeX entry for LaTeX users is:
     month = {January},
     day = {26},
     issn = {1471-2105},
-    author = {Hanbo Chen and Paul C Boutros},
+    author = {Hanbo Chen and Paul C Boutros}
   }
 ```
 
@@ -116,7 +121,7 @@ This information is available via `citation('VennDiagram')`
 
 ## License
 
-Authors: Hanbo Chen, Paul C. Boutros (PBoutros@mednet.ucla.edu)
+Authors: Hanbo Chen, Dan Knight, Stefan Eng & Paul C. Boutros (PBoutros@mednet.ucla.edu)
 
 VennDiagram is licensed under the GNU General Public License version 2. See the file LICENSE.md for the terms of the GNU GPL license.
 
