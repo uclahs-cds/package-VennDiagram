@@ -176,6 +176,7 @@ stop('Invalid cat.default.pos setting');
 		if (reverse) {
 			return(VennDiagram::flip.venn(grob.list, axis = 'v'));
 			}
-		}
+	}
+	class(grob.list) <- c('VennDiagram', class(grob.list));
 	return(grob.list);
 	}

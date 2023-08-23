@@ -157,5 +157,6 @@ stop('Unexpected parameter format for "cat.just"'); }
 	grob.list <- gList(grob.list, tmp);
 	grob.list <- VennDiagram::adjust.venn(VennDiagram::rotate.venn.degrees(grob.list, rotation.degree, rotation.centre[1], rotation.centre[2]), ...);
 	if (ind) { grid.draw(grob.list); }
+	class(grob.list) <- c('VennDiagram', class(grob.list));
 	return(grob.list);
 	}

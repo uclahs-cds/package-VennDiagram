@@ -1,7 +1,8 @@
-VennDiagram 1.7.6 2023-08-23 (Dan Knight)
+VennDiagram 1.8.0 2023-08-23 (Stefan Eng, Dan Knight)
 ---------------------------------------------------------------------------------------------------
-MINOR UPDATE
-* Update CICD-base workflow
+MINOR UPDATES
+* Implemented S3 print/plot methods for VennDiagram class
+* Update CICD workflows
 
 VennDiagram 1.7.5 2023-02-28 (Stefan Eng)
 ---------------------------------------------------------------------------------------------------
