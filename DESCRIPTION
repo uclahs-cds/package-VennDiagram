@@ -1,8 +1,8 @@
 Package: VennDiagram
-Version: 1.7.5
+Version: 1.7.6
 Type: Package
 Title: Generate High-Resolution Venn and Euler Plots
-Date: 2022-09-19
+Date: 2023-08-23
 Author: Hanbo Chen
 Maintainer: Paul Boutros <pboutros@mednet.ucla.edu>
 Imports:
