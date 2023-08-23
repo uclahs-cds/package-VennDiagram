@@ -31,3 +31,5 @@ importFrom("methods", "is")
 import(grid,
       futile.logger
 )
+S3method(print, VennDiagram)
+S3method(plot, VennDiagram)
