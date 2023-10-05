@@ -5,3 +5,5 @@
 metadata.yaml
 
 LICENSE.md
+
+.cicd-env
