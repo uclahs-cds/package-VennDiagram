@@ -12,13 +12,8 @@ on:
 jobs:
   R-CMD-check:
     runs-on: ubuntu-latest
-
-    container:
-      image: blcdsdockerregistry/bl-r-devel:latest
-
+    defaults:
+      run:
+        shell: bash
     steps:
-      - uses: actions/checkout@v2
-        with:
-          path: VennDiagram
-      - run: R CMD build --compact-vignettes="gs+qpdf" VennDiagram
-      - run: R CMD check --as-cran --run-donttest VennDiagram_*.tar.gz
+      - uses: uclahs-cds/tool-R-CMD-check-action@renv
