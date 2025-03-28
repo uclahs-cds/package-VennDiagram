@@ -12,5 +12,8 @@ on:
 jobs:
   R-CMD-check:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: uclahs-cds/tool-R-CMD-check-action@renv
