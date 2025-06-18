@@ -1,4 +1,4 @@
-VennDiagram 1.8.0 2023-08-28 (Stefan Eng, Dan Knight, John Sahrmann)
+VennDiagram 1.8.0 2025-06-17 (Stefan Eng, Dan Knight, John Sahrmann)
 ---------------------------------------------------------------------------------------------------
 MINOR UPDATES
 * Implemented S3 print/plot methods for VennDiagram class
