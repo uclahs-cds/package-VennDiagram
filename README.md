@@ -79,7 +79,7 @@ A side-by-side comparison of an Euler diagram and a Venn diagram for the same hy
 
 ## Resources
 
-Available resources for VennDiagram include the package [CRAN page](https://CRAN.R-project.org/package=VennDiagram) and [reference manual](https://cran.r-project.org/web/packages/VennDiagram/VennDiagram.pdf).
+Available resources for VennDiagram include the package [CRAN page](https://CRAN.R-project.org/package=VennDiagram), which links to the reference manual.
 
 ## Getting help
 
