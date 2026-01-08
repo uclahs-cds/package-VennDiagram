@@ -12,7 +12,7 @@ test_that(
                 filename = NULL,
                 disable.logging = TRUE
                 )
-            )    
+            )
         expect_gt(nchar(paste(disabled.output, collapse = "\n")), 0)
         }
     );
