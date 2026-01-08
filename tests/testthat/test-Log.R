@@ -6,14 +6,13 @@ options(device = pdf(file = NULL));
 
 test_that(
     'Disabled log file export', {
-        disabled.output <- capture_output(
+        disabled.output <- capture_messages(
             venn.diagram(
                 list(A = 1:20, B = 11:30),
                 filename = NULL,
                 disable.logging = TRUE
                 )
-            );
-        
-        expect_gt(nchar(disabled.output), 0);
+            )
+        expect_gt(nchar(paste(disabled.output, collapse = "\n")), 0)
         }
     );

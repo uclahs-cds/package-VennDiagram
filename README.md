@@ -27,7 +27,7 @@ Or to install the latest development version from Github:
 # If `devtools` is not already installed, run:
 # install.packages("devtools");
 
-devtools::install_github('uclahs-cds/public-R-VennDiagram');
+devtools::install_github('uclahs-cds/package-VennDiagram');
 ```
 
 ## Example plots
@@ -79,19 +79,19 @@ A side-by-side comparison of an Euler diagram and a Venn diagram for the same hy
 
 ## Resources
 
-Available resources for VennDiagram include the package [CRAN page](https://cran.r-project.org/web/packages/VennDiagram/index.html) and [reference manual](https://cran.r-project.org/web/packages/VennDiagram/VennDiagram.pdf).
+Available resources for VennDiagram include the package [CRAN page](https://CRAN.R-project.org/package=VennDiagram) and [reference manual](https://cran.r-project.org/web/packages/VennDiagram/VennDiagram.pdf).
 
 ## Getting help
 
-For guidance or support with VennDiagram check out [Discussions](https://github.com/uclahs-cds/public-R-VennDiagram/discussions)
+For guidance or support with VennDiagram check out [Discussions](https://github.com/uclahs-cds/package-VennDiagram/discussions)
 
-See [Issues](https://github.com/uclahs-cds/public-R-VennDiagram/issues) to submit bugs, suggest new features or view current works
+See [Issues](https://github.com/uclahs-cds/package-VennDiagram/issues) to submit bugs, suggest new features or view current works
 
-[Pull requests](https://github.com/uclahs-cds/public-R-VennDiagram/pulls) are also open for discussion.
+[Pull requests](https://github.com/uclahs-cds/package-VennDiagram/pulls) are also open for discussion.
 
 ## Contributors
 
-Contributors to this package can be viewed [here](https://github.com/uclahs-cds/public-R-VennDiagram/graphs/contributors) on GitHub.
+Contributors to this package can be viewed [here](https://github.com/uclahs-cds/package-VennDiagram/graphs/contributors) on GitHub.
 
 ## Citation information
 
