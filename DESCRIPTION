@@ -1,15 +1,21 @@
 Package: VennDiagram
-Version: 1.8.1
+Version: 1.8.2
 Type: Package
 Title: Generate High-Resolution Venn and Euler Plots
-Author: Hanbo Chen
-Maintainer: Paul Boutros <pboutros@sbpdiscovery.org>
+Authors@R: c(
+    person(given = "Hanbo",
+           family = "Chen",
+           role = "aut"),
+    person(given = "Paul",
+           family = "Boutros",
+           role = "cre",
+           email = "pboutros@sbpdiscovery.org"))
 Imports:
   methods
 Depends: R (>= 3.5.0), grid (>= 2.14.1), futile.logger
 Description: A set of functions to generate high-resolution Venn and Euler plots. Includes handling for several special cases, including two-case scaling, and extensive customization of plot shape and structure.
-URL: https://github.com/uclahs-cds/public-R-VennDiagram
-BugReports: https://github.com/uclahs-cds/public-R-VennDiagram/issues
+URL: https://github.com/uclahs-cds/package-VennDiagram
+BugReports: https://github.com/uclahs-cds/package-VennDiagram/issues
 License: GPL-2
 LazyLoad: yes
 Suggests: testthat
