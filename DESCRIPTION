@@ -2,7 +2,6 @@ Package: VennDiagram
 Version: 1.8.2
 Type: Package
 Title: Generate High-Resolution Venn and Euler Plots
-Maintainer: Paul Boutros <pboutros@sbpdiscovery.org>
 Authors@R: c(
     person(given = "Hanbo",
            family = "Chen",
